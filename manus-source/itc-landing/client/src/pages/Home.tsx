@@ -63,10 +63,7 @@ export default function Home() {
         {/* Main Content */}
         <main className="flex flex-1 flex-col justify-center px-6 md:px-16 lg:px-24 pointer-events-auto">
           <div className="max-w-4xl space-y-6">
-            <h2 className="font-orbitron text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl drop-shadow-lg">
-              Our Purpose is to <br />
-              <span className="text-primary-foreground">Regenerate Earth's Biosphere</span>
-            </h2>
+
             
             <p className="max-w-2xl font-rajdhani text-xl font-light tracking-wide text-white/90 md:text-3xl drop-shadow-md">
               Innovation through Economically and Ecologically advantaged Technology
