@@ -32,6 +32,10 @@ export default function Home() {
             <span className="font-rajdhani text-lg font-medium tracking-widest text-white/90 md:text-xl">
               Inception Technology Company
             </span>
+            <p className="mt-4 max-w-sm font-rajdhani text-sm italic text-white/80 leading-relaxed md:text-base">
+              There is a kind of person who sees what this century will demand. They do not think the work is too hard. They do not think the odds are too long. They do not think someone else will get to it in time.<br /><br />
+              ITC is the company built for them. And by them.
+            </p>
           </div>
 
           {/* 3-Bar Navigation Panel */}
@@ -60,20 +64,17 @@ export default function Home() {
           </Sheet>
         </header>
 
-        {/* Main Content */}
-        <main className="flex flex-1 flex-col justify-center px-6 md:px-16 lg:px-24 pointer-events-auto">
-          <div className="max-w-4xl space-y-6">
+        {/* Main Content — empty center */}
+        <main className="flex flex-1 pointer-events-auto" />
 
-            
-            <p className="max-w-2xl font-rajdhani text-xl font-light tracking-wide text-white/90 md:text-3xl drop-shadow-md">
-              Innovation through Economically and Ecologically advantaged Technology
-            </p>
-          </div>
-        </main>
-
-        {/* Footer / Bottom Space */}
-        <footer className="p-6 text-center text-sm text-white/40 md:p-10 pointer-events-auto">
-          &copy; {new Date().getFullYear()} Inception Technology Company. All rights reserved.
+        {/* Footer */}
+        <footer className="flex items-end justify-between p-6 md:p-10 pointer-events-auto">
+          <span className="text-sm text-white/40">
+            &copy; {new Date().getFullYear()} Inception Technology Company. All rights reserved.
+          </span>
+          <p className="max-w-xs font-rajdhani text-sm font-light tracking-wide text-white/70 text-right md:text-base">
+            Innovation through Economically and Ecologically advantaged Technology
+          </p>
         </footer>
       </div>
     </div>
