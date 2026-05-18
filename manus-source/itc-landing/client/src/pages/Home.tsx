@@ -32,7 +32,7 @@ export default function Home() {
             <span className="font-rajdhani text-lg font-medium tracking-widest text-white/90 md:text-xl">
               Inception Technology Company
             </span>
-            <p className="mt-4 max-w-sm font-rajdhani text-sm italic text-white/80 leading-relaxed md:text-base">
+            <p className="mt-4 max-w-sm font-rajdhani text-base italic text-white/80 leading-relaxed md:text-lg">
               There is a kind of person who sees what this century will demand. They do not think the work is too hard. They do not think the odds are too long. They do not think someone else will get to it in time.<br /><br />
               ITC is the company built for them. And by them.
             </p>
