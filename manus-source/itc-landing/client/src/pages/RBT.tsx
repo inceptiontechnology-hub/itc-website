@@ -113,7 +113,7 @@ export default function RBT() {
               Instant Water Safety Testing for a Safer World
             </p>
             <p className="font-rajdhani text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Revolutionary colorimetric water testing that delivers results in seconds — at a fraction of traditional testing costs. Developed by C.E.C. Innovations. Marketed and distributed in the US by DASCO, Inc.
+              Revolutionary colorimetric water testing that delivers results in seconds — at a fraction of traditional testing costs. Developed by C.E.C. Innovations.
             </p>
 
             {/* Hero stats */}
@@ -318,19 +318,9 @@ export default function RBT() {
             <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Request a quote, ask about NGO pricing, or place an order.</p>
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-cyan-600/30 rounded-2xl blur opacity-30" />
-              <div className="relative grid md:grid-cols-2 gap-8 p-8 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl">
+              <div className="relative p-8 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl">
                 <div>
                   <div className="space-y-4">
-                    <div>
-                      <p className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-1">Sales & Distribution (US)</p>
-                      <p className="font-rajdhani text-white font-semibold">DASCO, Inc.</p>
-                      <p className="font-rajdhani text-white/60 text-sm">9000 E. Nichols Ave., Suite 205<br />Centennial, CO 80112</p>
-                      <a href="tel:+13033505050" className="font-rajdhani text-cyan-400 hover:text-cyan-300 transition-colors">(303) 350-5050</a>
-                    </div>
-                    <div>
-                      <p className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-1">Email</p>
-                      <a href="mailto:info@dascoinc.com" className="font-rajdhani text-cyan-400 hover:text-cyan-300 transition-colors">info@dascoinc.com</a>
-                    </div>
                     <div>
                       <p className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-1">Technology Developer</p>
                       <p className="font-rajdhani text-white font-semibold">C.E.C. Innovations</p>
@@ -340,28 +330,6 @@ export default function RBT() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3 justify-center">
-                  <a
-                    href="mailto:info@dascoinc.com?subject=RBT Kit Inquiry"
-                    className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-orbitron text-sm tracking-wider py-3 rounded-lg transition-colors"
-                  >
-                    Request a Quote
-                  </a>
-                  <a
-                    href="tel:+13033505050"
-                    className="block w-full text-center bg-white/10 hover:bg-white/20 text-white font-orbitron text-sm tracking-wider py-3 rounded-lg transition-colors border border-white/20"
-                  >
-                    Call (303) 350-5050
-                  </a>
-                  <a
-                    href="https://www.dascoinc.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center text-cyan-400 font-rajdhani text-sm py-2 hover:text-cyan-300 transition-colors flex items-center justify-center gap-1"
-                  >
-                    Visit dascoinc.com <ExternalLink className="h-3 w-3" />
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -369,7 +337,7 @@ export default function RBT() {
         </main>
 
         <footer className="p-6 text-center text-sm text-white/40 md:p-10">
-          &copy; {new Date().getFullYear()} Inception Technology Company. RBT technology developed by C.E.C. Innovations (Product ID: RBT-LEV-100). Marketed and distributed by DASCO, Inc. All rights reserved.
+          &copy; {new Date().getFullYear()} Inception Technology Company. RBT technology developed by C.E.C. Innovations (Product ID: RBT-LEV-100). All rights reserved.
         </footer>
       </div>
     </div>
