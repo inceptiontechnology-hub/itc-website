@@ -21,34 +21,19 @@ const panels = [
 
 const useCases = [
   {
-    icon: "🧬",
-    title: "Precision Medicine",
-    desc: "Extends molecular profiling from genome to real-time metabolic state. Correlates metabolite signatures against genomic data, medical history, and environmental exposures.",
-  },
-  {
-    icon: "🔬",
-    title: "Oncology & Drug Response",
-    desc: "Track treatment response and toxicity in real time through metabolite levels. Optimize dosing and detect adverse events before clinical symptoms appear.",
-  },
-  {
     icon: "💧",
-    title: "PFAS & Environmental Monitoring",
-    desc: "Detect PFAS/PFOS at as low as 5 ppt in water, blood, or urine. Map environmental exposures to health outcomes at individual and population scale.",
+    title: "Municipal Water Quality Monitoring",
+    desc: "Screen municipal water supplies for up to 72,000 organic compounds per sample — including PFAS, nitrates, heavy metals, industrial solvents, and emerging contaminants — at detection limits as low as 5 ppt. Identify what standard panels miss before it becomes a public health crisis.",
   },
   {
-    icon: "🏥",
-    title: "Population Health",
-    desc: "At less than $500 per curated panel, metabolomic screening is viable at population scale — enabling early intervention years before clinical disease emerges.",
+    icon: "🏛️",
+    title: "Regulatory Compliance & Enforcement",
+    desc: "Give water utilities and regulators a comprehensive compound profile to demonstrate Clean Water Act compliance, satisfy EPA enforcement actions, and respond to consent decrees. AIMS provides the most complete contamination picture available — at a fraction of traditional lab costs.",
   },
   {
-    icon: "⚡",
-    title: "Acute Clinical Care",
-    desc: "Turnaround compressible to hours for acute situations. Mail-in kit system requires no lab visit, no specialized equipment, no technical training.",
-  },
-  {
-    icon: "🌍",
-    title: "Water & Wastewater",
-    desc: "Screen water samples for thousands of organic compounds simultaneously. Identify unknown contaminants, trace sources, protect treatment systems.",
+    icon: "⚖️",
+    title: "Environmental Litigation Support",
+    desc: "Arm plaintiff and defense counsel with defensible, quantitative data on contamination source, composition, and concentration. AIMS-generated compound profiles have been used to identify unknown contaminants, establish causation, and support damages calculations in water contamination litigation.",
   },
 ];
 
@@ -169,11 +154,11 @@ export default function AIMS() {
             </div>
           </div>
 
-          {/* Why Metabolomics */}
+          {/* Applications */}
           <div className="max-w-5xl mx-auto w-full mb-16">
-            <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Why Metabolomics — And Why Now</h3>
+            <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Where AIMS Is Being Applied</h3>
             <p className="font-rajdhani text-center text-white/60 mb-8 text-lg max-w-3xl mx-auto">
-              Genomics tells you predisposition. Metabolomics tells you what is actually happening in the body <em>right now</em> — making metabolites the most clinically actionable biomarker class.
+              Municipal water utilities, regulatory agencies, and environmental litigators are using AIMS to detect what conventional testing cannot find.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {useCases.map((u) => (
