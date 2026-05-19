@@ -135,26 +135,6 @@ export default function AIMS() {
             </div>
           </div>
 
-          {/* Molecular Stack */}
-          <div className="max-w-5xl mx-auto w-full mb-16">
-            <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">The Molecular Profiling Stack</h3>
-            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">AIMS fills the last major gap — real-time metabolic intelligence</p>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-              {[
-                { layer: "GENOMICS", sub: "DNA", badge: "Existing platforms", dim: true },
-                { layer: "TRANSCRIPTOMICS", sub: "RNA", badge: "Existing platforms", dim: true },
-                { layer: "PROTEOMICS", sub: "Protein", badge: "Existing platforms", dim: true },
-                { layer: "METABOLOMICS", sub: "What's happening NOW", badge: "← AIMS fills this layer", dim: false },
-              ].map((l) => (
-                <div key={l.layer} className={`relative p-5 rounded-xl border text-center ${l.dim ? "border-white/10 bg-white/5" : "border-cyan-400/50 bg-cyan-400/10"}`}>
-                  <div className={`font-orbitron text-sm font-bold mb-1 ${l.dim ? "text-white/50" : "text-cyan-400"}`}>{l.layer}</div>
-                  <div className={`font-rajdhani text-xs ${l.dim ? "text-white/30" : "text-white/70"}`}>{l.sub}</div>
-                  <div className={`font-rajdhani text-xs mt-2 ${l.dim ? "text-white/20" : "text-cyan-300"}`}>{l.badge}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Two Modes */}
           <div className="max-w-5xl mx-auto w-full mb-16">
             <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Two Powerful Modes</h3>
