@@ -4,10 +4,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "wouter";
 
 const competitorData = [
-  { feature: "Compounds / Sample", aims: "Up to 18,000", lcms: "10–500", metabolon: "1,000–2,000", stdPanel: "20–50" },
-  { feature: "Detection Limit", aims: "5 ppt", lcms: "10–100 ppt", metabolon: "~10 ppt", stdPanel: "µg/L range" },
-  { feature: "Turnaround Time", aims: "48 Hours", lcms: "2–4 Weeks", metabolon: "2–3 Weeks", stdPanel: "1–3 Days" },
-  { feature: "Cost / Sample", aims: "<$250", lcms: "$1,000–$5,000", metabolon: "$1,500–$3,000", stdPanel: "$50–$200" },
+  { feature: "Compounds / Sample", aims: "Up to 72,000", lcms: "10–500", metabolon: "1,000–2,000", stdPanel: "20–50" },
+  { feature: "Detection Limit", aims: "As low as 5 ppt", lcms: "10–100 ppt", metabolon: "~10 ppt", stdPanel: "µg/L range" },
+  { feature: "Turnaround Time", aims: "Less than 48 hrs from receipt", lcms: "2–4 Weeks", metabolon: "2–3 Weeks", stdPanel: "1–3 Days" },
+  { feature: "Cost / Sample", aims: "Less than $500", lcms: "$1,000–$5,000", metabolon: "$1,500–$3,000", stdPanel: "$50–$200" },
   { feature: "AI-Driven Analysis", aims: "✓", lcms: "✗", metabolon: "Partial", stdPanel: "✗" },
   { feature: "Non-Targeted Screening", aims: "✓", lcms: "Limited", metabolon: "✓", stdPanel: "✗" },
   { feature: "Mail-In / Kit-Based", aims: "✓", lcms: "Lab Visit", metabolon: "Specialized", stdPanel: "Lab Visit" },
@@ -16,7 +16,7 @@ const competitorData = [
 const panels = [
   { name: "3 PFAS Panel", price: "$225", type: "Characterized", turnaround: "Standard: $345 · Expedited: $405", detail: "Quantitative to 5 ppt" },
   { name: "13 PFAS Panel", price: "$250", type: "Characterized", turnaround: "Standard: $370 · Expedited: $430", detail: "Quantitative to 5 ppt" },
-  { name: "Non-Targeted Panel", price: "$300", type: "Non-Targeted", turnaround: "Standard: $420 · Expedited: $480", detail: "Semi-quant; up to 18,000 compounds" },
+  { name: "Non-Targeted Panel", price: "$300", type: "Non-Targeted", turnaround: "Standard: $420 · Expedited: $480", detail: "Semi-quant; up to 72,000 compounds" },
 ];
 
 const useCases = [
@@ -33,12 +33,12 @@ const useCases = [
   {
     icon: "💧",
     title: "PFAS & Environmental Monitoring",
-    desc: "Detect PFAS/PFOS at 5 ppt in water, blood, or urine. Map environmental exposures to health outcomes at individual and population scale.",
+    desc: "Detect PFAS/PFOS at as low as 5 ppt in water, blood, or urine. Map environmental exposures to health outcomes at individual and population scale.",
   },
   {
     icon: "🏥",
     title: "Population Health",
-    desc: "At under $250 per curated panel, metabolomic screening is viable at population scale — enabling early intervention years before clinical disease emerges.",
+    desc: "At less than $500 per curated panel, metabolomic screening is viable at population scale — enabling early intervention years before clinical disease emerges.",
   },
   {
     icon: "⚡",
@@ -113,16 +113,16 @@ export default function AIMS() {
               The Missing Layer in Precision Medicine
             </p>
             <p className="font-rajdhani text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Detect up to 18,000 organic compounds per sample in 48 hours at under $250 — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
+              Detect up to 72,000 organic compounds per sample in less than 48 hours from receipt at less than $500 — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
             </p>
 
             {/* Hero stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
               {[
-                { num: "18,000", label: "Compounds / Sample" },
-                { num: "5 ppt", label: "Detection Limit" },
-                { num: "48 HRS", label: "Turnaround Time" },
-                { num: "<$250", label: "Per Curated Panel" },
+                { num: "72,000", label: "Compounds / Sample" },
+                { num: "≤5 ppt", label: "Detection Limit" },
+                { num: "<48 HRS", label: "From Receipt" },
+                { num: "<$500", label: "Per Curated Panel" },
               ].map((s) => (
                 <div key={s.label} className="relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500" />
@@ -166,10 +166,10 @@ export default function AIMS() {
                   <div className="font-orbitron text-xs text-blue-400 tracking-widest uppercase mb-3">Mode 1</div>
                   <h4 className="font-orbitron text-xl font-bold text-white mb-4">Non-Targeted Screening</h4>
                   <p className="font-rajdhani text-white/70 leading-relaxed">
-                    Scans a single 100 mL sample of water, blood, or urine to detect the presence and relative quantity of up to <span className="text-white font-semibold">18,000 distinct organic compounds</span>. Reveals the complete organic chemical landscape without requiring advance knowledge of what to look for.
+                    Scans a single 100 mL sample of water, blood, or urine to detect the presence and relative quantity of up to <span className="text-white font-semibold">72,000 distinct organic compounds</span>. Reveals the complete organic chemical landscape without requiring advance knowledge of what to look for.
                   </p>
                   <div className="mt-4 p-3 bg-blue-900/30 border border-blue-700/30 rounded-lg">
-                    <p className="font-rajdhani text-sm text-blue-300">Results: Semi-quantitative · Up to 18,000 compounds · Water, blood, or urine</p>
+                    <p className="font-rajdhani text-sm text-blue-300">Results: Semi-quantitative · Up to 72,000 compounds · Water, blood, or urine</p>
                   </div>
                 </div>
               </div>
@@ -179,10 +179,10 @@ export default function AIMS() {
                   <div className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-3">Mode 2</div>
                   <h4 className="font-orbitron text-xl font-bold text-white mb-4">Fully Characterized (Targeted)</h4>
                   <p className="font-rajdhani text-white/70 leading-relaxed">
-                    Screens for a curated panel of specific compounds — such as PFAS/PFOS species — with detection sensitivity as low as <span className="text-white font-semibold">5 parts per trillion (ppt)</span>, well within or exceeding current regulatory and clinical thresholds.
+                    Screens for a curated panel of specific compounds — such as PFAS/PFOS species — with detection sensitivity as low as <span className="text-white font-semibold">5 parts per trillion (ppt)</span>, well within or exceeding current regulatory and clinical thresholds. Results delivered in less than 48 hours from receipt.
                   </p>
                   <div className="mt-4 p-3 bg-cyan-900/30 border border-cyan-700/30 rounded-lg">
-                    <p className="font-rajdhani text-sm text-cyan-300">Results: Quantitative to 5 ppt · PFAS, clinical compounds, custom panels</p>
+                    <p className="font-rajdhani text-sm text-cyan-300">Results: As low as 5 ppt · PFAS, clinical compounds, custom panels</p>
                   </div>
                 </div>
               </div>
