@@ -89,7 +89,7 @@ export default function AIMS() {
           {/* Hero */}
           <div className="mb-16 pt-8 text-center max-w-4xl mx-auto w-full">
             <p className="font-orbitron text-xs tracking-[0.5em] text-cyan-400 uppercase mb-4">
-              AI-Integrated Mass Spectrometry
+              Ambient Ionization Mass Spectrometry
             </p>
             <h2 className="font-orbitron text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               AIMS
