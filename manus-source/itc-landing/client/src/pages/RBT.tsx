@@ -5,7 +5,6 @@ import { Link } from "wouter";
 
 const comparisonData = [
   { feature: "Time to Results", rbt: "Instant (seconds)", other: "18–24 hours" },
-  { feature: "Cost per Test", rbt: "$5.50 – $10.00", other: "$50 – $75" },
   { feature: "Equipment Needed", rbt: "None", other: "Incubator, lab supplies" },
   { feature: "Training Required", rbt: "None", other: "Technical training" },
   { feature: "Sensitivity", rbt: "10⁻¹ CFU/ml", other: "1 CFU/100ml" },
@@ -30,12 +29,6 @@ const applications = [
     title: "Remote Communities",
     items: ["Village water supply testing", "Point-of-use treatment verification", "Rainwater harvesting checks", "Small-scale distribution monitoring", "Community empowerment programs"],
   },
-];
-
-const pricingTiers = [
-  { label: "Starter Pack", qty: "10-Pack", price: "$10.00", perUnit: "per test", note: "Perfect for trials & initial evaluation" },
-  { label: "Professional Pack", qty: "250-Pack", price: "$7.00", perUnit: "per test", note: "30% savings vs. starter. Most popular.", featured: true },
-  { label: "Enterprise Pack", qty: "1,000+ Tests", price: "$5.50", perUnit: "per test", note: "45% savings. Custom packaging available." },
 ];
 
 const specs = [
@@ -113,14 +106,14 @@ export default function RBT() {
               Instant Water Safety Testing for a Safer World
             </p>
             <p className="font-rajdhani text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Revolutionary colorimetric water testing that delivers results in seconds — at a fraction of traditional testing costs. Developed by C.E.C. Innovations.
+              Revolutionary colorimetric water testing that delivers results in seconds — with no lab equipment, no training, no waiting. Developed by C.E.C. Innovations.
             </p>
 
             {/* Hero stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
               {[
                 { num: "Instant", label: "Visual Results" },
-                { num: "$5.50", label: "Per Test (Bulk)" },
+                { num: "3 ml", label: "Sample Volume" },
                 { num: "10⁻¹", label: "CFU/ml Detection" },
                 { num: "2 YRS", label: "Shelf Life" },
               ].map((s) => (
@@ -184,7 +177,7 @@ export default function RBT() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
                 { icon: "⚡", title: "Instant Results", desc: "Answers in seconds — no lab equipment, no cultures, no waiting. Make decisions in real time, in the field." },
-                { icon: "💰", title: "Exceptional Value", desc: "90% less expensive than traditional lab testing at $5.50/test bulk. Special NGO pricing available for humanitarian programs." },
+                { icon: "💰", title: "Exceptional Value", desc: "Far less expensive than traditional lab testing. Special NGO pricing available for humanitarian programs." },
                 { icon: "🎯", title: "High Sensitivity", desc: "Detects bacterial presence at 10⁻¹ CFU/ml — approaching lab-grade detection in a simple visual format." },
                 { icon: "✋", title: "No Training Needed", desc: "Simple colorimetric test — if you can see pink vs. purple, you can run this test. Designed for field deployment." },
                 { icon: "🌍", title: "Field Deployable", desc: "Room-temperature stable for 2 years. No refrigeration, no electricity, no incubator. Works anywhere in the world." },
@@ -284,38 +277,10 @@ export default function RBT() {
             </div>
           </div>
 
-          {/* Pricing */}
-          <div className="max-w-4xl mx-auto w-full mb-16">
-            <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Transparent Pricing</h3>
-            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Volume discounts available · Special rates for NGOs and humanitarian programs</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {pricingTiers.map((tier) => (
-                <div key={tier.label} className={`relative group ${tier.featured ? "scale-105" : ""}`}>
-                  <div className={`absolute -inset-1 rounded-2xl blur opacity-30 transition duration-700 group-hover:opacity-50 ${tier.featured ? "bg-gradient-to-r from-cyan-500 to-blue-500" : "bg-gradient-to-r from-blue-600/30 to-cyan-600/30"}`} />
-                  <div className={`relative p-6 bg-black/60 backdrop-blur-sm rounded-xl text-center ${tier.featured ? "border-2 border-cyan-400/50" : "border border-white/10"}`}>
-                    {tier.featured && (
-                      <div className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-2">★ Most Popular</div>
-                    )}
-                    <h4 className="font-orbitron text-base font-bold text-white mb-1">{tier.label}</h4>
-                    <div className="font-rajdhani text-white/50 text-sm mb-3">{tier.qty}</div>
-                    <div className="font-orbitron text-4xl font-bold text-white mb-1">{tier.price}</div>
-                    <div className="font-rajdhani text-white/40 text-xs mb-4">{tier.perUnit}</div>
-                    <div className="font-rajdhani text-sm text-white/60">{tier.note}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 p-5 bg-cyan-900/20 border border-cyan-700/30 rounded-xl text-center">
-              <p className="font-rajdhani text-sm text-cyan-300">
-                <span className="font-semibold">NGO & Contract Pricing:</span> Special discounted rates available for registered NGOs and large contract supply agreements. Contact us for a custom quote.
-              </p>
-            </div>
-          </div>
-
           {/* Contact */}
           <div id="contact" className="max-w-4xl mx-auto w-full mb-16">
             <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Ready to Order?</h3>
-            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Request a quote, ask about NGO pricing, or place an order.</p>
+            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Ready to learn more or place an order? Reach out to our team.</p>
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-cyan-600/30 rounded-2xl blur opacity-30" />
               <div className="relative p-8 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl">

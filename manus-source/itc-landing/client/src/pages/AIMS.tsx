@@ -7,16 +7,9 @@ const competitorData = [
   { feature: "Compounds / Sample", aims: "Up to 72,000", lcms: "10–500", metabolon: "1,000–2,000", stdPanel: "20–50" },
   { feature: "Detection Limit", aims: "As low as 5 ppt", lcms: "10–100 ppt", metabolon: "~10 ppt", stdPanel: "µg/L range" },
   { feature: "Turnaround Time", aims: "Less than 48 hrs from receipt", lcms: "2–4 Weeks", metabolon: "2–3 Weeks", stdPanel: "1–3 Days" },
-  { feature: "Cost / Sample", aims: "Less than $500", lcms: "$1,000–$5,000", metabolon: "$1,500–$3,000", stdPanel: "$50–$200" },
   { feature: "AI-Driven Analysis", aims: "✓", lcms: "✗", metabolon: "Partial", stdPanel: "✗" },
   { feature: "Non-Targeted Screening", aims: "✓", lcms: "Limited", metabolon: "✓", stdPanel: "✗" },
   { feature: "Mail-In / Kit-Based", aims: "✓", lcms: "Lab Visit", metabolon: "Specialized", stdPanel: "Lab Visit" },
-];
-
-const panels = [
-  { name: "3 PFAS Panel", price: "$225", type: "Characterized", turnaround: "Standard: $345 · Expedited: $405", detail: "Quantitative to 5 ppt" },
-  { name: "13 PFAS Panel", price: "$250", type: "Characterized", turnaround: "Standard: $370 · Expedited: $430", detail: "Quantitative to 5 ppt" },
-  { name: "Non-Targeted Panel", price: "$300", type: "Non-Targeted", turnaround: "Standard: $420 · Expedited: $480", detail: "Semi-quant; up to 72,000 compounds" },
 ];
 
 const useCases = [
@@ -28,7 +21,7 @@ const useCases = [
   {
     icon: "🏛️",
     title: "Regulatory Compliance & Enforcement",
-    desc: "Give water utilities and regulators a comprehensive compound profile to demonstrate Clean Water Act compliance, satisfy EPA enforcement actions, and respond to consent decrees. AIMS provides the most complete contamination picture available — at a fraction of traditional lab costs.",
+    desc: "Give water utilities and regulators a comprehensive compound profile to demonstrate Clean Water Act compliance, satisfy EPA enforcement actions, and respond to consent decrees. AIMS provides the most complete contamination picture available.",
   },
   {
     icon: "⚖️",
@@ -98,7 +91,7 @@ export default function AIMS() {
               The Missing Layer in Precision Medicine
             </p>
             <p className="font-rajdhani text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Detect up to 72,000 organic compounds per sample in less than 48 hours from receipt at less than $500 — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
+              Detect up to 72,000 organic compounds per sample in less than 48 hours from receipt — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
             </p>
 
             {/* Hero stats */}
@@ -107,7 +100,7 @@ export default function AIMS() {
                 { num: "72,000", label: "Compounds / Sample" },
                 { num: "≤5 ppt", label: "Detection Limit" },
                 { num: "<48 HRS", label: "From Receipt" },
-                { num: "<$500", label: "Per Curated Panel" },
+                { num: "Mail-In", label: "Kit-Based" },
               ].map((s) => (
                 <div key={s.label} className="relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500" />
@@ -206,34 +199,6 @@ export default function AIMS() {
             </div>
           </div>
 
-          {/* Panels / Pricing */}
-          <div className="max-w-5xl mx-auto w-full mb-16">
-            <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Available Panels</h3>
-            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">
-              Volume discounts: −$15/sample (2–4 samples) · −$30/sample (5+ samples). Freight included in totals shown.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {panels.map((panel) => (
-                <div key={panel.name} className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-cyan-600/30 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-700" />
-                  <div className="relative p-6 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl">
-                    <div className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-2">{panel.type}</div>
-                    <h4 className="font-orbitron text-lg font-bold text-white mb-1">{panel.name}</h4>
-                    <div className="font-orbitron text-3xl font-bold text-white mb-1">{panel.price}</div>
-                    <div className="font-rajdhani text-xs text-white/40 mb-4">list price / sample</div>
-                    <div className="font-rajdhani text-sm text-white/60 mb-3">{panel.detail}</div>
-                    <div className="font-rajdhani text-xs text-white/40 border-t border-white/10 pt-3">{panel.turnaround}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl">
-              <p className="font-rajdhani text-sm text-white/60 text-center">
-                <span className="text-white font-semibold">Water matrix only</span> — other soluble materials require manual quote. Kit, protocol & shipping included. Results delivered as PDF. No minimum order. Credit card or Net 15 (prior approval).
-              </p>
-            </div>
-          </div>
-
           {/* Market */}
           <div className="max-w-5xl mx-auto w-full mb-16">
             <div className="relative">
@@ -258,7 +223,7 @@ export default function AIMS() {
           {/* Contact */}
           <div id="contact" className="max-w-4xl mx-auto w-full mb-16">
             <h3 className="font-orbitron text-2xl font-bold text-center text-white mb-3">Get in Touch</h3>
-            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Request pricing, custom panel quotes, or talk to our team about your specific application.</p>
+            <p className="font-rajdhani text-center text-white/60 mb-8 text-lg">Interested in AIMS? Talk to our team about your specific application.</p>
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-cyan-600/30 rounded-2xl blur opacity-30" />
               <div className="relative p-8 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl">
