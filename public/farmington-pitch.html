@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Non-Targeted Analysis — City of Farmington, NM | ITC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:    #0a0f1e;
+    --darker:  #060c18;
+    --blue:    #1a6fff;
+    --blue2:   #0d4fcc;
+    --cyan:    #00c4e0;
+    --green:   #00d68f;
+    --orange:  #ff8c00;
+    --red:     #ff3b3b;
+    --yellow:  #ffd600;
+    --muted:   #8b9ab5;
+    --light:   #e8edf7;
+    --white:   #ffffff;
+    --card:    rgba(255,255,255,0.05);
+    --card2:   rgba(255,255,255,0.03);
+    --border:  rgba(255,255,255,0.08);
+  }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    width: 1100px;
+    min-height: 700px;
+    margin: 0 auto 60px;
+    padding: 60px 70px;
+    position: relative;
+    page-break-after: always;
+    background: var(--dark);
+  }
+
+  .page:last-child { margin-bottom: 0; }
+
+  /* ── UTILITIES ── */
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .gap-sm { gap: 12px; }
+  .gap-md { gap: 24px; }
+  .gap-lg { gap: 40px; }
+  .items-center { align-items: center; }
+  .items-start { align-items: flex-start; }
+  .justify-between { justify-content: space-between; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+  .mt-sm { margin-top: 12px; }
+  .mt-md { margin-top: 24px; }
+  .mt-lg { margin-top: 40px; }
+  .mb-sm { margin-bottom: 12px; }
+  .mb-md { margin-bottom: 24px; }
+  .w-full { width: 100%; }
+
+  /* ── TYPOGRAPHY ── */
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 10px;
+  }
+  .h1 { font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--white); }
+  .h2 { font-size: 32px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .h3 { font-size: 20px; font-weight: 700; color: var(--white); }
+  .h4 { font-size: 15px; font-weight: 700; color: var(--white); }
+  .lead { font-size: 17px; color: var(--muted); line-height: 1.7; }
+  .body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .small { font-size: 12px; color: var(--muted); }
+  .highlight { color: var(--cyan); }
+  .highlight-yellow { color: var(--yellow); }
+  .highlight-red { color: var(--red); }
+  .highlight-green { color: var(--green); }
+  .white { color: var(--white); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+  .divider-blue {
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+    margin: 16px 0 28px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card-accent {
+    border-left: 3px solid var(--blue);
+  }
+  .card-red { border-left: 3px solid var(--red); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-yellow { border-left: 3px solid var(--yellow); }
+  .card-cyan { border-left: 3px solid var(--cyan); }
+  .card-orange { border-left: 3px solid var(--orange); }
+
+  /* ── STAT BOXES ── */
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .stat-number { font-size: 32px; font-weight: 800; color: var(--white); line-height: 1; }
+  .stat-number.blue { color: var(--blue); }
+  .stat-number.cyan { color: var(--cyan); }
+  .stat-number.red { color: var(--red); }
+  .stat-number.green { color: var(--green); }
+  .stat-number.yellow { color: var(--yellow); }
+  .stat-number.orange { color: var(--orange); }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .badge-red { background: rgba(255,59,59,0.15); color: var(--red); border: 1px solid rgba(255,59,59,0.3); }
+  .badge-yellow { background: rgba(255,214,0,0.12); color: var(--yellow); border: 1px solid rgba(255,214,0,0.3); }
+  .badge-green { background: rgba(0,214,143,0.12); color: var(--green); border: 1px solid rgba(0,214,143,0.3); }
+  .badge-blue { background: rgba(26,111,255,0.15); color: #6fa8ff; border: 1px solid rgba(26,111,255,0.3); }
+  .badge-cyan { background: rgba(0,196,224,0.12); color: var(--cyan); border: 1px solid rgba(0,196,224,0.3); }
+  .badge-orange { background: rgba(255,140,0,0.12); color: var(--orange); border: 1px solid rgba(255,140,0,0.3); }
+
+  /* ── CHECK / CROSS LISTS ── */
+  .check-list, .cross-list { list-style: none; }
+  .check-list li, .cross-list li {
+    padding: 7px 0 7px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .check-list li:last-child, .cross-list li:last-child { border-bottom: none; }
+  .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .cross-list li::before { content: "✗"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+  .check-list li strong, .cross-list li strong { color: var(--white); }
+
+  /* ── STEP CARDS ── */
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+  td {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  td.white { color: var(--white); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ── HEADER BAR ── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .page-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ── COVER PAGE ── */
+  .cover-bg {
+    background: linear-gradient(135deg, #0a0f1e 0%, #0d2060 50%, #060c18 100%);
+    border-bottom: 3px solid var(--blue);
+    min-height: 780px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cover-watermark {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(26,111,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover-watermark::before {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,196,224,0.1);
+  }
+  .cover-watermark::after {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,111,255,0.2) 0%, transparent 70%);
+  }
+
+  /* ── ALERT BOX ── */
+  .alert {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .alert-red { background: rgba(255,59,59,0.08); border: 1px solid rgba(255,59,59,0.25); }
+  .alert-yellow { background: rgba(255,214,0,0.06); border: 1px solid rgba(255,214,0,0.25); }
+  .alert-blue { background: rgba(26,111,255,0.08); border: 1px solid rgba(26,111,255,0.25); }
+  .alert-icon { font-size: 20px; flex-shrink: 0; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-row { margin-bottom: 14px; }
+  .progress-label { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .progress-label span:first-child { font-size: 13px; color: var(--muted); }
+  .progress-label span:last-child { font-size: 13px; font-weight: 700; color: var(--white); }
+  .progress-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; }
+  .progress-fill { height: 6px; border-radius: 3px; }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(26,111,255,0.1), rgba(0,196,224,0.05));
+    border: 1px solid rgba(26,111,255,0.2);
+    border-radius: 14px;
+    padding: 28px;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 70px;
+    right: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .page-footer span { font-size: 11px; color: var(--muted); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page {
+      width: 100%;
+      margin: 0;
+      padding: 40px 50px;
+      page-break-after: always;
+    }
+    @page { size: letter landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 1: COVER -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page cover-bg" style="padding: 60px 70px;">
+  <div>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 60px;">
+      <div>
+        <div class="logo-text">ITC</div>
+        <div class="logo-sub">Inception Technology Company</div>
+      </div>
+      <div style="width:1px; height:36px; background:rgba(255,255,255,0.1); margin:0 6px;"></div>
+      <div style="font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase;">AIMS Platform</div>
+    </div>
+
+    <div style="max-width: 580px; position:relative; z-index:2;">
+      <div class="eyebrow">Prepared Exclusively For</div>
+      <div style="font-size:13px; color:var(--cyan); font-weight:600; margin-bottom:24px;">
+        Shaña Reeves, City Manager — City of Farmington, NM
+      </div>
+      <div class="h1" style="font-size:42px; margin-bottom: 20px;">
+        What Your Wastewater<br>
+        <span style="color:var(--cyan);">Already Knows</span><br>
+        About Your Community
+      </div>
+      <div class="divider-blue"></div>
+      <p class="lead" style="max-width:480px;">
+        Advanced non-targeted mass spectrometry that detects 72,000+ organic compounds in a single 25mL sample — turning your wastewater system into a real-time community health intelligence platform.
+      </p>
+    </div>
+  </div>
+
+  <div class="cover-watermark"></div>
+
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: 60px; border-top:1px solid rgba(255,255,255,0.08); padding-top:28px;">
+    <div>
+      <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px;">Presented by</div>
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Inception Technology Company, LLC</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:3px;">dba ITC &nbsp;·&nbsp; 6555 Gharrett Ave, Missoula, MT 59803 &nbsp;·&nbsp; (406) 293-2386</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px;">Primary Contact</div>
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Lillie Geiersbach</div>
+      <div style="font-size:12px; color:var(--cyan); margin-top:3px;">lillie@inceptiontechnology.org</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px;">Date</div>
+      <div style="font-size:14px; color:var(--white); font-weight:600;">May 2026</div>
+      <div style="font-size:11px; color:var(--muted); margin-top:2px;">Confidential</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 2: THE CHALLENGE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">The Challenge</div>
+  </div>
+
+  <div class="eyebrow">Why Traditional Monitoring Isn't Enough</div>
+  <div class="h2" style="margin-bottom:8px;">Farmington's Monitoring Gap</div>
+  <div class="divider-blue"></div>
+
+  <div class="grid-2" style="gap:32px; align-items:start;">
+    <div>
+      <div class="h4" style="color:var(--green); margin-bottom:16px;">✓ &nbsp;What Your Current System Does Well</div>
+      <ul class="check-list">
+        <li>Changes in <strong>BOD, COD, TSS, ammonia, DO</strong></li>
+        <li>Signals when a <strong>known threshold</strong> has been crossed</li>
+        <li>Provides consistent <strong>operational trending</strong></li>
+        <li>Flags <strong>WHEN</strong> a problem is occurring</li>
+        <li>Meets <strong>standard NPDES permit</strong> reporting requirements</li>
+      </ul>
+    </div>
+    <div>
+      <div class="h4" style="color:var(--red); margin-bottom:16px;">✗ &nbsp;What It Cannot Tell You</div>
+      <ul class="cross-list">
+        <li><strong>WHO</strong> is causing the problem — which source or industry</li>
+        <li><strong>WHAT</strong> compound is driving it — beyond your tested panel</li>
+        <li><strong>WHERE</strong> in the system it is coming from</li>
+        <li><strong>WHY</strong> your parameters are changing</li>
+        <li><strong>HOW</strong> to resolve it before it becomes a crisis</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider" style="margin: 28px 0;"></div>
+
+  <div class="eyebrow" style="margin-bottom:16px;">What's Happening Right Now in Farmington</div>
+  <div class="grid-2" style="gap:16px;">
+
+    <div class="alert alert-red">
+      <div class="alert-icon">🚨</div>
+      <div>
+        <div class="h4" style="font-size:13px; margin-bottom:6px; color:var(--red);">San Juan County Detention Center — May 2026</div>
+        <div class="body">Seven female detainees overdosed on fentanyl after it was smuggled into the facility. A woman who had been sober since January nearly died. Your wastewater system received those metabolites. Your current monitoring saw nothing.</div>
+      </div>
+    </div>
+
+    <div class="alert alert-red">
+      <div class="alert-icon">💊</div>
+      <div>
+        <div class="h4" style="font-size:13px; margin-bottom:6px; color:var(--red);">108,400 Fentanyl Pills — March 2026</div>
+        <div class="body">Region II Narcotics Task Force dismantled 20 drug trafficking operations across San Juan County. That drug load is metabolizing in your community and entering your wastewater system daily.</div>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <div class="alert-icon">⚠️</div>
+      <div>
+        <div class="h4" style="font-size:13px; margin-bottom:6px; color:var(--yellow);">Two Regulatory Violations — March 2026</div>
+        <div class="body">Turbidity monitoring lapse (April 2025) and infrastructure reporting delay. Administrative — but the notices went to every ratepayer. A proactive monitoring upgrade changes that story permanently.</div>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow">
+      <div class="alert-icon">🧪</div>
+      <div>
+        <div class="h4" style="font-size:13px; margin-bottom:6px; color:var(--yellow);">PFAS Regulations + New NPDES Permit</div>
+        <div class="body">Draft permit NM0031135 (Nov 2024) brings new monitoring requirements. Federal PFAS MCLs at 4 ppt are in effect. Your current testing panel doesn't cover fluorinated compounds comprehensively.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>2</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 3: THE SOLUTION -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">The Solution</div>
+  </div>
+
+  <div class="eyebrow">Compound Intelligence at Scale</div>
+  <div class="h2" style="margin-bottom:8px;">Three Steps from Sample to Action</div>
+  <div class="divider-blue"></div>
+
+  <div class="grid-3" style="margin-top: 8px;">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="h3" style="font-size:16px; margin-bottom:10px;">Advanced Mass Spec</div>
+      <div class="body">A single 25mL sample from any point in your system — influent, effluent, manholes, industrial discharge points — is analyzed via high-resolution mass spectrometry, detecting thousands of individual organic compounds simultaneously.</div>
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border);">
+        <div class="badge badge-cyan">72,000+ Detectable Compounds</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="h3" style="font-size:16px; margin-bottom:10px;">Compound Intelligence</div>
+      <div class="body">Every detected compound is cross-referenced against the EPA's DSSTox database and proprietary intelligence layer to identify source industry, function (herbicide, pharmaceutical, flame retardant, etc.), toxicity profile, and regulatory status.</div>
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border);">
+        <div class="badge badge-blue">Source · Function · Impact · Severity</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="h3" style="font-size:16px; margin-bottom:10px;">Actionable Intelligence</div>
+      <div class="body">Raw chemistry is transformed into clear, prioritized findings — compound severity scores, removal efficiency by category, source attribution, trend analysis over time, and regulatory defensible documentation.</div>
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border);">
+        <div class="badge badge-green">Clear Findings · Regulatory Reports</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-md">
+    <div class="eyebrow" style="margin-bottom:16px;">What a Farmington Sample Would Cover</div>
+    <div class="grid-2" style="gap:16px;">
+      <div>
+        <div class="h4" style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Sample Locations</div>
+        <div class="grid-2" style="gap:10px;">
+          <div class="card" style="padding:12px 16px;">
+            <div style="font-size:12px; color:var(--white); font-weight:600;">Influent</div>
+            <div class="small">Community-wide baseline</div>
+          </div>
+          <div class="card" style="padding:12px 16px;">
+            <div style="font-size:12px; color:var(--white); font-weight:600;">Effluent</div>
+            <div class="small">Removal efficiency proof</div>
+          </div>
+          <div class="card" style="padding:12px 16px;">
+            <div style="font-size:12px; color:var(--white); font-weight:600;">Industrial Manholes</div>
+            <div class="small">Source attribution</div>
+          </div>
+          <div class="card" style="padding:12px 16px;">
+            <div style="font-size:12px; color:var(--white); font-weight:600;">Detention Center Trunk</div>
+            <div class="small">Drug metabolite tracking</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="h4" style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Sample Types Accepted</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <div class="badge badge-blue">Wastewater</div>
+          <div class="badge badge-blue">Influent / Effluent</div>
+          <div class="badge badge-blue">Biosolids</div>
+          <div class="badge badge-blue">Fats, Oils, Grease</div>
+          <div class="badge badge-blue">Storm Water</div>
+          <div class="badge badge-blue">Surface Water</div>
+          <div class="badge badge-blue">Pump Station Discharge</div>
+          <div class="badge badge-blue">Industrial Effluent</div>
+          <div class="badge badge-blue">Environmental Samples</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>3</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 4: DRUG METABOLITES / WASTEWATER EPIDEMIOLOGY -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">Drug & Pharmaceutical Detection</div>
+  </div>
+
+  <div class="eyebrow">Wastewater-Based Epidemiology</div>
+  <div class="h2" style="margin-bottom:8px;">Your Wastewater Knows Before Your ER Does</div>
+  <div class="divider-blue"></div>
+
+  <div class="grid-2" style="gap:32px; align-items:start;">
+    <div>
+      <p class="body" style="margin-bottom:20px;">
+        The CDC's National Wastewater Surveillance System proved during COVID-19 that community-level exposure can be detected in wastewater <strong style="color:var(--white);">days to weeks before clinical data emerges.</strong> The same methodology — applied to illicit drugs, novel synthetic opioids, and pharmaceutical residues — gives Farmington a real-time intelligence advantage no other monitoring system provides.
+      </p>
+
+      <div class="card card-red" style="margin-bottom:14px;">
+        <div class="h4" style="margin-bottom:8px;">What AIMS Detects in Your System</div>
+        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:10px;">
+          <span class="badge badge-red">Fentanyl &amp; Analogs</span>
+          <span class="badge badge-red">Novel Opioids (Nitazenes)</span>
+          <span class="badge badge-red">Carfentanil</span>
+          <span class="badge badge-red">Methamphetamine</span>
+          <span class="badge badge-orange">Benzodiazepines</span>
+          <span class="badge badge-orange">Etizolam / Clonazolam</span>
+          <span class="badge badge-yellow">Cocaine Metabolites</span>
+          <span class="badge badge-yellow">Heroin Metabolites</span>
+          <span class="badge badge-blue">Rx Opioids</span>
+          <span class="badge badge-blue">Antidepressants</span>
+          <span class="badge badge-blue">Prescription Hormones</span>
+        </div>
+      </div>
+
+      <div class="card card-cyan">
+        <div class="h4" style="margin-bottom:10px; color:var(--cyan);">What This Gives Farmington</div>
+        <ul class="check-list">
+          <li><strong>Early warning</strong> when a new drug or novel analog enters the community</li>
+          <li><strong>Load quantification</strong> — how much is circulating and from which zones</li>
+          <li><strong>Source attribution</strong> — industrial district vs. residential vs. corrections facility</li>
+          <li><strong>Trend monitoring</strong> — are interventions working over time?</li>
+          <li><strong>Inter-agency data</strong> — shareable with Sheriff, DA, and Public Health</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px;">San Juan County Drug Context</div>
+
+      <div class="grid-2" style="gap:12px; margin-bottom:16px;">
+        <div class="stat-box">
+          <div class="stat-number red">108,400</div>
+          <div class="stat-label">Fentanyl Pills Seized<br>March 2026</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number orange">20</div>
+          <div class="stat-label">Drug Trafficking Ops<br>Dismantled, March 2026</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number yellow">7</div>
+          <div class="stat-label">Detainees Overdosed<br>SJ Detention, May 2026</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number red">#1</div>
+          <div class="stat-label">NM Ranked Among Worst<br>States for Fentanyl Deaths</div>
+        </div>
+      </div>
+
+      <div class="card" style="background: rgba(255,59,59,0.06); border-color: rgba(255,59,59,0.2);">
+        <div class="h4" style="color:var(--red); font-size:13px; margin-bottom:10px;">The Detention Center Question</div>
+        <p class="body" style="font-size:13px;">
+          On May 19, 2026 — just days ago — seven women overdosed on fentanyl inside your county detention center. The drug entered a controlled facility. It also entered your wastewater system. <strong style="color:var(--white);">Your current monitoring saw nothing unusual.</strong>
+        </p>
+        <p class="body" style="font-size:13px; margin-top:10px;">
+          With AIMS sampling the detention center trunk line, you could have detected the fentanyl fingerprint entering the system — and known a new, potent analog was circulating before the first overdose.
+        </p>
+      </div>
+
+      <div class="card mt-sm">
+        <div class="h4" style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Real-World Detection Example (CEC Data)</div>
+        <table>
+          <thead>
+            <tr><th>Compound</th><th>Type</th><th>Peak Intensity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="white">Primidone</td><td>Pharmaceutical</td><td style="color:var(--cyan);">194.2K</td></tr>
+            <tr><td class="white">Cyclobenzaprine</td><td>Pharmaceutical</td><td style="color:var(--cyan);">98.8K</td></tr>
+            <tr><td class="white">Paraquat</td><td>Herbicide (Ag)</td><td style="color:var(--yellow);">372.1K</td></tr>
+            <tr><td class="white">Benzalkonium Cl.</td><td>Biocide</td><td style="color:var(--orange);">54.9K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>4</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 5: AGRICULTURAL & INDUSTRIAL / PFAS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">Industrial · Agricultural · PFAS</div>
+  </div>
+
+  <div class="eyebrow">The Full Compound Picture</div>
+  <div class="h2" style="margin-bottom:8px;">What San Juan Basin Is Putting Into Your System</div>
+  <div class="divider-blue"></div>
+
+  <div class="grid-3" style="gap:20px;">
+
+    <div>
+      <div class="h4" style="color:var(--green); margin-bottom:4px;">🌾 Agricultural Runoff</div>
+      <div class="small" style="margin-bottom:14px; color:var(--muted);">San Juan Basin is major agricultural land — fruit orchards, alfalfa, irrigated crops</div>
+      <div class="card" style="padding:16px;">
+        <table style="font-size:12px;">
+          <thead><tr><th>Compound</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr><td class="white">Paraquat</td><td>Herbicide — #1 detected in NTA samples nationwide</td></tr>
+            <tr><td class="white">Glyphosate</td><td>Herbicide</td></tr>
+            <tr><td class="white">Hexazinone</td><td>Selective herbicide</td></tr>
+            <tr><td class="white">Aminomethylphosphonic acid</td><td>Glyphosate metabolite</td></tr>
+            <tr><td class="white">Organophosphate residues</td><td>Insecticides</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-yellow" style="margin-top:12px; padding:12px 14px;">
+        <div>
+          <div style="font-size:12px; color:var(--yellow); font-weight:600; margin-bottom:3px;">Navajo Nation Downstream</div>
+          <div class="small">Navajo Nation farms irrigate from the San Juan River. Contaminants not captured at your WWTP have direct environmental justice consequences.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h4" style="color:var(--orange); margin-bottom:4px;">⚙️ Oil &amp; Gas / Industrial</div>
+      <div class="small" style="margin-bottom:14px; color:var(--muted);">Four Corners is one of the most productive natural gas fields in the US</div>
+      <div class="card" style="padding:16px;">
+        <table style="font-size:12px;">
+          <thead><tr><th>Compound Category</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td class="white">Benzene / Toluene / Xylene</td><td>Petroleum refining</td></tr>
+            <tr><td class="white">PAHs (polycyclic aromatics)</td><td>Combustion / refining</td></tr>
+            <tr><td class="white">Flame retardants</td><td>Industrial manufacturing</td></tr>
+            <tr><td class="white">Industrial solvents</td><td>Drilling / extraction</td></tr>
+            <tr><td class="white">Catalyst compounds</td><td>Petrochemical processing</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-blue" style="margin-top:12px; padding:12px 14px;">
+        <div>
+          <div style="font-size:12px; color:#6fa8ff; font-weight:600; margin-bottom:3px;">Pretreatment Enforcement</div>
+          <div class="small">AIMS identifies which industrial dischargers are introducing compounds outside their permit — giving you documented leverage for pretreatment compliance actions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h4" style="color:var(--cyan); margin-bottom:4px;">⚠️ PFAS &amp; Fluorinated Compounds</div>
+      <div class="small" style="margin-bottom:14px; color:var(--muted);">Federal MCL now 4 ppt for PFOA/PFOS. New permit NM0031135 increases monitoring obligations.</div>
+      <div class="card" style="padding:16px; border-color:rgba(0,196,224,0.2);">
+        <div class="stat-box" style="margin-bottom:12px; background:rgba(255,59,59,0.06); border-color:rgba(255,59,59,0.2);">
+          <div class="stat-number red" style="font-size:28px;">350+</div>
+          <div class="stat-label">Fluorinated Compounds Detected<br>in a Single AIMS Sample Run</div>
+        </div>
+        <div class="body" style="font-size:12px;">Standard targeted PFAS panels test for 7–40 compounds. AIMS detects all fluorinated signatures simultaneously — perfluoroalkyls, polyfluoroalkyls, precursors, and unknowns — in the same 25mL sample used for everything else.</div>
+      </div>
+      <div class="alert" style="margin-top:12px; padding:12px 14px; background:rgba(0,196,224,0.06); border:1px solid rgba(0,196,224,0.2);">
+        <div>
+          <div style="font-size:12px; color:var(--cyan); font-weight:600; margin-bottom:3px;">Regulatory Alert</div>
+          <div class="small">NMED and EPA are increasing PFAS scrutiny under new federal rules. Getting ahead of this now — with documented baseline data — protects Farmington from future enforcement surprises.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:24px;">
+    <div class="card" style="background:rgba(255,255,255,0.02);">
+      <div style="display:flex; gap:40px; align-items:center;">
+        <div style="flex:1;">
+          <div class="eyebrow" style="margin-bottom:8px;">Endocrine Disruptors</div>
+          <div class="body" style="font-size:13px;">Pharmaceutical hormones, phthalates, BPA, and synthetic estrogens are ubiquitous in municipal wastewater. These compounds persist through standard treatment and accumulate in biosolids used for land application. AIMS identifies them, quantifies removal efficiency, and provides documentation for downstream partners including Navajo Nation water users.</div>
+        </div>
+        <div style="width:1px; height:60px; background:var(--border);"></div>
+        <div style="flex:1; text-align:center;">
+          <div class="grid-2" style="gap:12px;">
+            <div class="stat-box"><div class="stat-number green" style="font-size:24px;">70.1%</div><div class="stat-label">Pharma Removal Efficiency (Avg)</div></div>
+            <div class="stat-box"><div class="stat-number yellow" style="font-size:24px;">55.7%</div><div class="stat-label">Agro Compound Removal (Avg)</div></div>
+          </div>
+          <div class="small" style="margin-top:10px;">Source: CEC Innovations real-world WWTP data</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>5</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 6: DASHBOARD / WHAT YOUR REPORTS LOOK LIKE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">Intelligence Dashboard</div>
+  </div>
+
+  <div class="eyebrow">Sample Farmington Report</div>
+  <div class="h2" style="margin-bottom:8px;">What Your Intelligence Dashboard Delivers</div>
+  <div class="divider-blue"></div>
+
+  <!-- Top KPIs -->
+  <div class="grid-4" style="margin-bottom:24px;">
+    <div class="stat-box">
+      <div class="stat-number blue">18,000+</div>
+      <div class="stat-label">Compounds Detected<br>Per Sample Run</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number red">39</div>
+      <div class="stat-label">High-Severity<br>Alerts Generated</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number orange">25</div>
+      <div class="stat-label">Industries<br>Identified</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number yellow">49</div>
+      <div class="stat-label">High-Severity<br>Categories</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap:20px;">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px;">Compound Severity by Category</div>
+      <div class="card" style="padding:20px;">
+        <div class="progress-row">
+          <div class="progress-label"><span>Drug Metabolites / Pharmaceuticals</span><span style="color:var(--red);">HIGH</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:88%; background:var(--red);"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>PFAS / Fluorinated Compounds</span><span style="color:var(--red);">HIGH</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:82%; background:var(--red);"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Biocides / Herbicides</span><span style="color:var(--orange);">ELEVATED</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:72%; background:var(--orange);"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Industrial / Petroleum</span><span style="color:var(--yellow);">MODERATE</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:58%; background:var(--yellow);"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Endocrine Disruptors</span><span style="color:var(--yellow);">MODERATE</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:51%; background:var(--yellow);"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Flame Retardants</span><span style="color:var(--green);">LOW</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:30%; background:var(--green);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px;">High-Severity Category Examples</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="card card-red" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="h4" style="font-size:13px;">Biocides &amp; Herbicides</div>
+            <div class="badge badge-red">3 HIGH</div>
+          </div>
+          <div class="small">Paraquat · Glufosinate · Benzalkonium chloride +260 more &nbsp;|&nbsp; Tags: Aquatic Toxicity · Biological Treatment</div>
+        </div>
+        <div class="card card-red" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="h4" style="font-size:13px;">PFAS / Fluorinated</div>
+            <div class="badge badge-red">⚠ REGULATORY ALERT</div>
+          </div>
+          <div class="small">350+ fluorinated compounds detected · Perfluoroalkyl · Polyfluoroalkyl · PFOS precursors · Trifluoromethyl compounds</div>
+        </div>
+        <div class="card card-orange" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="h4" style="font-size:13px;">Pharmaceutical Residues</div>
+            <div class="badge badge-orange">2 HIGH</div>
+          </div>
+          <div class="small">Human &amp; veterinary medications · Synthetic hormones · CNS drugs · Tags: Endocrine Disruption · Bioaccumulation</div>
+        </div>
+        <div class="card card-yellow" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div class="h4" style="font-size:13px;">Industrial Colorants &amp; Catalysts</div>
+            <div class="badge badge-yellow">2 HIGH</div>
+          </div>
+          <div class="small">Petroleum-derived · Manufacturing markers · 1,472 detections avg · Signal strength 80%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>6</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 7: WHY NOW / STRATEGIC CASE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+      <div class="logo-sub">Non-Targeted Analysis</div>
+    </div>
+    <div class="page-label">Strategic Case</div>
+  </div>
+
+  <div class="eyebrow">Why Farmington. Why Now.</div>
+  <div class="h2" style="margin-bottom:8px;">The Case for Moving First</div>
+  <div class="divider-blue"></div>
+
+  <div class="grid-2" style="gap:28px;">
+    <div>
+      <div class="h4" style="margin-bottom:16px; color:var(--cyan);">Four Converging Forces</div>
+
+      <div class="card card-accent" style="margin-bottom:12px;">
+        <div class="h4" style="font-size:13px; margin-bottom:6px;">1. &nbsp;New Leadership, New Mandate</div>
+        <p class="body" style="font-size:13px;">City Manager Shaña Reeves assumed leadership with a 22-year institutional track record and a clear drive to modernize Farmington's operations. She was handed two regulatory violation notices from day one. AIMS gives her the forward-looking data infrastructure to demonstrate proactive, next-generation governance from the start.</p>
+      </div>
+
+      <div class="card card-accent" style="margin-bottom:12px;">
+        <div class="h4" style="font-size:13px; margin-bottom:6px;">2. &nbsp;Regulatory Pressure is Accelerating</div>
+        <p class="body" style="font-size:13px;">Draft permit NM0031135 brings new monitoring requirements. Federal PFAS MCLs are in force. NMED has already cited Farmington twice this year. The question isn't whether enhanced monitoring is coming — it's whether Farmington gets ahead of it or reacts to it.</p>
+      </div>
+
+      <div class="card card-accent" style="margin-bottom:12px;">
+        <div class="h4" style="font-size:13px; margin-bottom:6px;">3. &nbsp;The Drug Crisis Demands New Tools</div>
+        <p class="body" style="font-size:13px;">108,400 fentanyl pills. 7 overdoses in county detention. 20 trafficking operations. San Juan County is at the epicenter of NM's fentanyl epidemic. Wastewater epidemiology is now endorsed by CDC, SAMHSA, and the White House ONDCP as a public health intelligence tool. Farmington can lead.</p>
+      </div>
+
+      <div class="card card-accent">
+        <div class="h4" style="font-size:13px; margin-bottom:6px;">4. &nbsp;Environmental Justice Obligation</div>
+        <p class="body" style="font-size:13px;">The San Juan River is sacred and essential to Navajo Nation communities downstream. Documenting what Farmington's WWTP is and isn't removing — and actively reducing that burden — is not just regulatory compliance. It's the right thing to do, and it protects the city from future liability.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="h4" style="margin-bottom:16px; color:var(--cyan);">How AIMS Changes the Narrative</div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
+          <div style="background:var(--red); color:white; border-radius:6px; padding:4px 10px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px;">BEFORE</div>
+          <p class="body" style="font-size:13px;">"The City of Farmington received two violation notices regarding monitoring and reporting deficiencies…"</p>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start;">
+          <div style="background:var(--green); color:white; border-radius:6px; padding:4px 10px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px;">AFTER</div>
+          <p class="body" style="font-size:13px;">"Farmington has implemented advanced non-targeted analysis, giving us real-time visibility into 72,000+ compounds — more monitoring capability than any other city in New Mexico."</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="eyebrow" style="margin-bottom:12px;">Comparable Programs Already Underway</div>
+      <div class="card" style="padding:16px;">
+        <table style="font-size:12px;">
+          <thead><tr><th>Program</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="white">CDC NWSS (COVID Wastewater)</td><td style="color:var(--green);">Active nationwide</td></tr>
+            <tr><td class="white">WastewaterSCAN (Stanford/Emory)</td><td style="color:var(--green);">Active, 380+ sites</td></tr>
+            <tr><td class="white">ONDCP Wastewater Drug Testing</td><td style="color:var(--green);">Endorsed &amp; funded</td></tr>
+            <tr><td class="white">EPA NTA Research Programs</td><td style="color:var(--yellow);">Expanding</td></tr>
+            <tr><td class="white">Farmington, NM</td><td style="color:var(--orange); font-weight:700;">Opportunity</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert alert-blue" style="margin-top:14px;">
+        <div class="alert-icon">💡</div>
+        <div>
+          <div class="h4" style="font-size:12px; margin-bottom:4px; color:#6fa8ff;">Grant Funding Available</div>
+          <p class="small">SAMHSA, EPA, and DOJ (Byrne JAG) all have funding streams that support wastewater-based drug surveillance programs. ITC can assist in identifying applicable grant opportunities to offset implementation costs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential</span>
+    <span>7</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE 8: NEXT STEPS / CONTACT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page" style="min-height:700px; display:flex; flex-direction:column; justify-content:space-between;">
+  <div>
+    <div class="page-header">
+      <div>
+        <div class="logo-text" style="font-size:14px;">ITC &nbsp;·&nbsp; AIMS Platform</div>
+        <div class="logo-sub">Non-Targeted Analysis</div>
+      </div>
+      <div class="page-label">Next Steps</div>
+    </div>
+
+    <div class="eyebrow">Moving Forward</div>
+    <div class="h2" style="margin-bottom:8px;">Let's Start the Conversation</div>
+    <div class="divider-blue"></div>
+
+    <div class="grid-2" style="gap:32px;">
+      <div>
+        <div class="h4" style="margin-bottom:16px; color:var(--cyan);">Proposed Engagement Path</div>
+
+        <div style="position:relative; padding-left:28px;">
+          <div style="position:absolute; left:9px; top:0; bottom:0; width:1px; background:var(--border);"></div>
+
+          <div style="position:relative; margin-bottom:24px;">
+            <div style="position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--blue);"></div>
+            <div class="h4" style="font-size:13px; margin-bottom:4px;">Step 1 — Technical Briefing (30 min)</div>
+            <p class="body" style="font-size:13px;">Phone or video call with W/WW Operations Manager and ITC team. Walk through the AIMS methodology, sample workflow, and what a Farmington-specific report looks like.</p>
+          </div>
+
+          <div style="position:relative; margin-bottom:24px;">
+            <div style="position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--blue2);"></div>
+            <div class="h4" style="font-size:13px; margin-bottom:4px;">Step 2 — Pilot Sample Analysis</div>
+            <p class="body" style="font-size:13px;">Submit a single 25mL influent sample. Receive a full compound intelligence report for Farmington's actual wastewater stream — specific to your system, your basin, your community.</p>
+          </div>
+
+          <div style="position:relative; margin-bottom:24px;">
+            <div style="position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--cyan);"></div>
+            <div class="h4" style="font-size:13px; margin-bottom:4px;">Step 3 — Results Presentation</div>
+            <p class="body" style="font-size:13px;">In-person or video presentation of Farmington findings to City Manager and W/WW leadership. Includes compound severity ranking, regulatory implications, and recommended monitoring program.</p>
+          </div>
+
+          <div style="position:relative;">
+            <div style="position:absolute; left:-23px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--green);"></div>
+            <div class="h4" style="font-size:13px; margin-bottom:4px;">Step 4 — Program Design &amp; Proposal</div>
+            <p class="body" style="font-size:13px;">ITC delivers a tailored monitoring program proposal — sampling frequency, locations, deliverables, pricing, and grant funding options — for City Council consideration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="h4" style="margin-bottom:16px; color:var(--cyan);">Your ITC Contact</div>
+
+        <div class="contact-card" style="margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+            <div style="width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg, var(--blue), var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; color:white; flex-shrink:0;">LG</div>
+            <div>
+              <div class="h3" style="font-size:18px;">Lillie Geiersbach</div>
+              <div class="small" style="color:var(--cyan); margin-top:2px;">Inception Technology Company, LLC</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:14px;">✉️</span>
+              <span style="font-size:14px; color:var(--white);">lillie@inceptiontechnology.org</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:14px;">🏢</span>
+              <span style="font-size:13px; color:var(--muted);">6555 Gharrett Ave, Missoula, MT 59803</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:14px;">📞</span>
+              <span style="font-size:14px; color:var(--white);">(406) 293-2386</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:14px;">🌐</span>
+              <span style="font-size:14px; color:var(--cyan);">inceptiontechnology.org</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background:rgba(0,214,143,0.05); border-color:rgba(0,214,143,0.2); padding:16px;">
+          <div class="h4" style="font-size:13px; color:var(--green); margin-bottom:8px;">Why ITC</div>
+          <ul class="check-list">
+            <li><strong>Authorized US distributor</strong> for CEC Innovations AIMS technology</li>
+            <li><strong>Exclusive coverage</strong> — Farmington and New Mexico</li>
+            <li>Dedicated to mission-driven technologies that <strong>regenerate Earth</strong> while delivering economic value</li>
+            <li>Local program support, grant assistance, and long-term partnership</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer CTA -->
+  <div style="background: linear-gradient(135deg, rgba(26,111,255,0.12), rgba(0,196,224,0.06)); border:1px solid rgba(26,111,255,0.2); border-radius:12px; padding:24px 32px; display:flex; justify-content:space-between; align-items:center; margin-top:32px;">
+    <div>
+      <div class="h3" style="font-size:16px;">Ready to see what Farmington's water already knows?</div>
+      <div class="body" style="margin-top:4px;">Contact Lillie Geiersbach to schedule your technical briefing.</div>
+    </div>
+    <div style="text-align:right; flex-shrink:0; margin-left:24px;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">lillie@inceptiontechnology.org</div>
+      <div style="font-size:13px; color:var(--cyan); margin-top:3px;">(406) 293-2386</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Inception Technology Company, LLC &nbsp;·&nbsp; dba ITC &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; May 2026</span>
+    <span>8</span>
+  </div>
+</div>
+
+</body>
+</html>
