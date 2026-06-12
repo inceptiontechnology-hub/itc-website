@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import PasswordGate from "./components/PasswordGate";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -33,6 +34,7 @@ function Router() {
 
 function App() {
   return (
+    <PasswordGate>
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
@@ -44,6 +46,7 @@ function App() {
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
+    </PasswordGate>
   );
 }
 
