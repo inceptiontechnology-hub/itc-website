@@ -6,7 +6,6 @@ import { Link } from "wouter";
 const competitorData = [
   { feature: "Compounds / Sample", aims: "Up to 72,000", lcms: "10–500", metabolon: "1,000–2,000", stdPanel: "20–50" },
   { feature: "Detection Limit", aims: "As low as 5 ppt", lcms: "10–100 ppt", metabolon: "~10 ppt", stdPanel: "µg/L range" },
-  { feature: "Turnaround Time", aims: "Less than 48 hrs from receipt", lcms: "2–4 Weeks", metabolon: "2–3 Weeks", stdPanel: "1–3 Days" },
   { feature: "AI-Driven Analysis", aims: "✓", lcms: "✗", metabolon: "Partial", stdPanel: "✗" },
   { feature: "Non-Targeted Screening", aims: "✓", lcms: "Limited", metabolon: "✓", stdPanel: "✗" },
   { feature: "Mail-In / Kit-Based", aims: "✓", lcms: "Lab Visit", metabolon: "Specialized", stdPanel: "Lab Visit" },
@@ -91,7 +90,7 @@ export default function AIMS() {
               The Missing Layer in Precision Medicine
             </p>
             <p className="font-rajdhani text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Detect up to 72,000 organic compounds per sample in less than 48 hours from receipt — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
+              Detect up to 72,000 organic compounds per sample — with no equivalent anywhere in the market. Developed by Dr. Paul Westlund at C.E.C. Innovations.
             </p>
 
             {/* Hero stats */}
@@ -99,7 +98,6 @@ export default function AIMS() {
               {[
                 { num: "72,000", label: "Compounds / Sample" },
                 { num: "≤5 ppt", label: "Detection Limit" },
-                { num: "<48 HRS", label: "From Receipt" },
                 { num: "Mail-In", label: "Kit-Based" },
               ].map((s) => (
                 <div key={s.label} className="relative group">
@@ -137,7 +135,7 @@ export default function AIMS() {
                   <div className="font-orbitron text-xs text-cyan-400 tracking-widest uppercase mb-3">Mode 2</div>
                   <h4 className="font-orbitron text-xl font-bold text-white mb-4">Fully Characterized (Targeted)</h4>
                   <p className="font-rajdhani text-white/70 leading-relaxed">
-                    Screens for a curated panel of specific compounds — such as PFAS/PFOS species — with detection sensitivity as low as <span className="text-white font-semibold">5 parts per trillion (ppt)</span>, well within or exceeding current regulatory and clinical thresholds. Results delivered in less than 48 hours from receipt.
+                    Screens for a curated panel of specific compounds — such as PFAS/PFOS species — with detection sensitivity as low as <span className="text-white font-semibold">5 parts per trillion (ppt)</span>, well within or exceeding current regulatory and clinical thresholds.
                   </p>
                   <div className="mt-4 p-3 bg-cyan-900/30 border border-cyan-700/30 rounded-lg">
                     <p className="font-rajdhani text-sm text-cyan-300">Results: As low as 5 ppt · PFAS, clinical compounds, custom panels</p>
