@@ -122,7 +122,7 @@ export default function AIMS() {
                   <div className="font-orbitron text-xs text-blue-400 tracking-widest uppercase mb-3">Mode 1</div>
                   <h4 className="font-orbitron text-xl font-bold text-white mb-4">Non-Targeted Screening</h4>
                   <p className="font-rajdhani text-white/70 leading-relaxed">
-                    Scans a single 100 mL sample of water, blood, or urine to detect the presence and relative quantity of up to <span className="text-white font-semibold">72,000 distinct organic compounds</span>. Reveals the complete organic chemical landscape without requiring advance knowledge of what to look for.
+                    Scans a single 25 mL sample of water, blood, or urine to detect the presence and relative quantity of up to <span className="text-white font-semibold">72,000 distinct organic compounds</span>. Reveals the complete organic chemical landscape without requiring advance knowledge of what to look for.
                   </p>
                   <div className="mt-4 p-3 bg-blue-900/30 border border-blue-700/30 rounded-lg">
                     <p className="font-rajdhani text-sm text-blue-300">Results: Semi-quantitative · Up to 72,000 compounds · Water, blood, or urine</p>
