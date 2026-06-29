@@ -26,7 +26,7 @@ const team = [
     name: "Jeff Streck",
     title: "Sales & Marketing Lead",
     image: null,
-    bio: null,
+    bio: "Jeff Streck brings over two decades of business-building experience to ITC, where he leads sales strategy and growth. After earning his MBA, Jeff spent nearly twenty years in the wine and beverage industry mastering operational efficiency and market development across retail, wholesale, and producer levels. That business acumen now serves a deeper purpose. Driven by a passion for protecting the planet for his kids, Jeff connects enterprises, municipalities, and NGOs with the cutting-edge environmental technologies ITC brings to market. He's based in Centennial, Colorado.",
   },
 ];
 
