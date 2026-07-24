@@ -14,6 +14,7 @@ export default function Home() {
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay muted loop playsInline
         src="/hero.mp4"
+        poster="/hero-poster.jpg"
       />
 
       {/* ── Overlay ── */}
