@@ -15,8 +15,8 @@ const MUTED = "#6b7a8d";   // mid-tone text
 const BORDER = "#e2e6ea";
 
 // ─── Typography ───────────────────────────────────────────────────────────
-const DISPLAY = "'Playfair Display', Georgia, serif";
-const BODY    = "'EB Garamond', Georgia, serif";
+const DISPLAY = "'Libre Baskerville', Georgia, serif";
+const BODY    = "'Lora', Georgia, serif";
 const ORBITRON = "'Orbitron', sans-serif";
 
 // ─── Scroll reveal ────────────────────────────────────────────────────────
@@ -174,7 +174,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-16">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
             style={{ fontSize: "0.65rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "22px", fontFamily: BODY }}>
-            Regenerate Earth's Biosphere
+            Helping Our Planet
           </motion.p>
 
           <motion.h1
@@ -186,22 +186,36 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Deploying Technologies<br />to Benefit Earth's Biosphere
+            Deploying Technology<br />That Benefits Our Biosphere
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }} className="mt-10">
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
             <a href="#technologies"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "10px",
                 background: WHITE, color: NAVY,
-                padding: "14px 48px", fontFamily: BODY, fontSize: "0.95rem",
+                padding: "14px 40px", fontFamily: BODY, fontSize: "0.95rem",
                 fontWeight: 500, letterSpacing: "0.08em", textDecoration: "none",
                 transition: "background 0.2s, color 0.2s",
               }}
               onMouseEnter={e => { e.currentTarget.style.background = GREEN; e.currentTarget.style.color = WHITE; }}
               onMouseLeave={e => { e.currentTarget.style.background = WHITE; e.currentTarget.style.color = NAVY; }}>
-              Our Technologies <ArrowRight size={14} />
+              Explore the Tech <ArrowRight size={14} />
+            </a>
+            <a href="#contact"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "10px",
+                background: "transparent", color: WHITE,
+                padding: "13px 40px", fontFamily: BODY, fontSize: "0.95rem",
+                fontWeight: 500, letterSpacing: "0.08em", textDecoration: "none",
+                border: "1px solid rgba(255,255,255,0.6)",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.borderColor = WHITE; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)"; }}>
+              Contact Us
             </a>
           </motion.div>
         </div>
@@ -357,7 +371,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════
           5. CONTACT — navy (dark for contrast)
       ══════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: NAVY, padding: "96px 0" }}>
+      <section id="contact" style={{ backgroundColor: NAVY, padding: "96px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-start">
 
