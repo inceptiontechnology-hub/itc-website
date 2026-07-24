@@ -38,7 +38,7 @@ const Label = ({ children, light = false }: { children: React.ReactNode; light?:
   <p style={{
     fontSize: "0.72rem", letterSpacing: "0.36em", textTransform: "uppercase",
     color: light ? "rgba(255,255,255,0.55)" : GREEN,
-    marginBottom: "14px", fontFamily: BODY,
+    marginBottom: "14px", fontFamily: BODY, fontWeight: 800,
   }}>
     {children}
   </p>
@@ -145,8 +145,8 @@ export default function Home() {
             <p style={{ fontFamily: ORBITRON, fontSize: "2.6rem", fontWeight: 700, lineHeight: 1, letterSpacing: "0.06em", color: WHITE }}>
               ITC
             </p>
-            <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", color: "rgba(255,255,255,0.65)", marginTop: "5px", textTransform: "uppercase", fontFamily: BODY }}>
-              Inception Technology Company
+            <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", color: "rgba(255,255,255,0.65)", marginTop: "5px", textTransform: "uppercase", fontFamily: BODY, lineHeight: 1.5 }}>
+              Inception Technology<br />Company, LLC
             </p>
           </div>
           <p className="hidden md:block max-w-xs text-right"
@@ -251,7 +251,7 @@ export default function Home() {
                     onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
                     <Label>{p.tag}</Label>
                     <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
-                    <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em" }}>{p.sub}</p>
+                    <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
                     <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                     <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
                     <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
