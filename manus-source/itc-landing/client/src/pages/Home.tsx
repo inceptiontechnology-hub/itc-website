@@ -82,10 +82,27 @@ const team = [
   { initials: "JE", name: "Jyl Ensminger",     role: "Montana" },
 ];
 
-const steps = [
-  { n: "01", title: "Identify", body: "We scan the landscape for technologies that are economically AND ecologically superior — both bars, always, no trade-offs." },
-  { n: "02", title: "Deploy", body: "We connect proven technology with markets, scientific backing, and field-credible execution across our exclusive U.S. territory." },
-  { n: "03", title: "Scale", body: "We build the distribution, relationships, and infrastructure to drive real adoption — in the land, the lab, and the boardroom." },
+const tenants = [
+  {
+    keyword: "Simple",
+    tagline: "Works in the real world",
+    body: "If operators in the field can't use it, it won't scale. Every technology we bring to market must work in the hands of the people who need it — no PhD required.",
+  },
+  {
+    keyword: "True",
+    tagline: "Backed by science",
+    body: "Peer-reviewed data and field-verified results, full stop. No vaporware, no greenwash, no performance claims we can't defend under scrutiny.",
+  },
+  {
+    keyword: "Economical",
+    tagline: "Advantaged on returns",
+    body: "Better performance at a competitive cost. The market adopts it because it wins on economics — not because someone feels compelled to write a check out of obligation.",
+  },
+  {
+    keyword: "Regenerative",
+    tagline: "Net-positive is the floor",
+    body: "Active restoration of soil, water, air, and biology. We don't settle for 'less bad.' The technology must leave the biosphere measurably better than it found it.",
+  },
 ];
 
 export default function Home() {
@@ -302,22 +319,33 @@ export default function Home() {
             </FadeUp>
           </div>
 
-          {/* Process */}
+          {/* Four Tenants */}
           <FadeUp>
             <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
-            <Label>How We Operate</Label>
-            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "48px" }}>
-              Identify. Deploy. Scale.
+            <Label>Our Standards</Label>
+            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "16px" }}>
+              Four requirements. No exceptions.
             </h2>
+            <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
+              These aren't values on a wall. They're the filter every technology in our portfolio must clear before we put our name behind it.
+            </p>
           </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {steps.map((s, i) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {tenants.map((t, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <div style={{ borderTop: `2px solid ${GREEN}`, paddingTop: "24px" }}>
-                  <p style={{ fontFamily: DISPLAY, fontSize: "2.5rem", fontWeight: 700, color: "rgba(26,107,60,0.45)", lineHeight: 1, marginBottom: "14px" }}>{s.n}</p>
-                  <h3 style={{ fontFamily: DISPLAY, fontSize: "1.15rem", fontWeight: 700, color: NAVY, marginBottom: "12px", letterSpacing: "0.02em" }}>{s.title}</h3>
-                  <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{s.body}</p>
+                <div style={{
+                  borderTop: `3px solid ${GREEN}`,
+                  border: `1px solid ${BORDER}`,
+                  borderTopWidth: "3px",
+                  borderTopColor: GREEN,
+                  padding: "36px 32px",
+                  height: "100%",
+                }}>
+                  <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px" }}>{t.keyword}</h3>
+                  <p style={{ fontSize: "0.68rem", letterSpacing: "0.28em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "20px" }}>{t.tagline}</p>
+                  <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
+                  <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{t.body}</p>
                 </div>
               </FadeUp>
             ))}
