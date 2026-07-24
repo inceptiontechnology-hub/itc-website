@@ -180,7 +180,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           TECHNOLOGIES — 3 product cards
       ══════════════════════════════════════════════════════ */}
-      <section id="technologies" style={{ backgroundColor: NAVY, paddingTop: "96px", paddingBottom: "96px" }}>
+      <section id="technologies" style={{ backgroundColor: "#152440", paddingTop: "96px", paddingBottom: "96px" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
 
           <FadeUp>
