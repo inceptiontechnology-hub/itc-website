@@ -324,7 +324,7 @@ export default function Home() {
             <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
             <Label>Our Standards</Label>
             <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "16px" }}>
-              Four requirements. No exceptions.
+              The criteria behind every decision.
             </h2>
             <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
               These aren't values on a wall. They're the filter every technology in our portfolio must clear before we put our name behind it.
