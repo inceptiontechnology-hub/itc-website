@@ -1,277 +1,362 @@
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useState, useRef } from "react";
+import { Menu, X } from "lucide-react";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 
-// Gallery — biosphere tech domains
-const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85", label: "Regenerative Agriculture", tall: true },
-  { src: "https://images.unsplash.com/photo-1437377013344-64eeab8b6bcd?auto=format&fit=crop&w=800&q=85", label: "Water Systems" },
-  { src: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=800&q=85", label: "Forest Ecosystem" },
-  { src: "https://images.unsplash.com/photo-1466611349788-3b2ac4aa5f71?auto=format&fit=crop&w=800&q=85", label: "Wind Energy", wide: true },
-  { src: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=85", label: "Soil Health" },
-  { src: "https://images.unsplash.com/photo-1526374548513-eb55d7a92e9d?auto=format&fit=crop&w=800&q=85", label: "Solar Systems" },
-  { src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=85", label: "Green Infrastructure" },
-  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85", label: "Clean Water" },
-  { src: "https://images.unsplash.com/photo-1565520831234-538553da03a4?auto=format&fit=crop&w=800&q=85", label: "Construction", wide: true },
-  { src: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=85", label: "Boreal Forest" },
-  { src: "https://images.unsplash.com/photo-1505459023801-95646e832e2e?auto=format&fit=crop&w=800&q=85", label: "Marine Ecosystems" },
-  { src: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=85", label: "Watershed" },
+// ─── Reusable animation wrapper ────────────────────────────
+const FadeUp = ({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+// ─── Orange corner brackets decoration ─────────────────────
+const Brackets = ({ className = "" }: { className?: string }) => (
+  <div className={`pointer-events-none ${className}`}>
+    {/* Top-left */}
+    <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#F26522]" />
+    {/* Top-right */}
+    <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#F26522]" />
+    {/* Bottom-left */}
+    <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#F26522]" />
+    {/* Bottom-right */}
+    <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#F26522]" />
+  </div>
+);
+
+// ─── Stock images (Unsplash — free commercial license) ─────
+const stripImages = [
+  {
+    src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    alt: "Regenerative Agriculture",
+    label: "Agriculture",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=800&q=80",
+    alt: "Water Systems",
+    label: "Water",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+    alt: "Construction",
+    label: "Construction",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    alt: "Ecosystem",
+    label: "Ecosystem",
+  },
 ];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <div className="bg-[#020917] text-white min-h-screen overflow-x-hidden font-rajdhani">
+    <div
+      className="min-h-screen overflow-x-hidden"
+      style={{ backgroundColor: "#111827", color: "#ffffff", fontFamily: "'Rajdhani', sans-serif" }}
+    >
 
-      {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative h-screen w-full overflow-hidden">
+      {/* ══════════════════════════════════════════════════════
+          HERO — Earth video background
+      ══════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
 
-        {/* Video */}
+        {/* Video background */}
         <video
-          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay muted loop playsInline
           src="/iss-sunrise.mp4"
-          poster="/images/earth-poster.jpg"
         />
-
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+        {/* Dark overlay */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,14,30,0.65) 0%, rgba(10,14,30,0.45) 50%, rgba(10,14,30,0.85) 100%)" }} />
 
         {/* ── Nav ── */}
-        <nav
-          className={`absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 transition-all duration-500 ${
-            scrolled ? "bg-[#020917]/80 backdrop-blur-md border-b border-white/10" : ""
-          }`}
-        >
+        <nav className="relative z-20 flex items-start justify-between px-8 pt-8 md:px-14 md:pt-10">
+          {/* Logo */}
           <div>
-            <span className="font-orbitron text-4xl font-bold tracking-wider text-white md:text-5xl">ITC</span>
-            <p className="text-xs tracking-[0.3em] text-white/50 mt-0.5 hidden md:block">
-              INCEPTION TECHNOLOGY COMPANY
+            <p style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "3rem", fontWeight: 700, lineHeight: 1, letterSpacing: "0.05em" }}>ITC</p>
+            <p style={{ fontSize: "0.65rem", letterSpacing: "0.3em", color: "rgba(255,255,255,0.6)", marginTop: "4px" }}>INCEPTION TECHNOLOGY COMPANY</p>
+          </div>
+
+          {/* Top-right intro text — desktop only */}
+          <div className="hidden md:block max-w-xs text-right">
+            <p style={{ fontStyle: "italic", color: "rgba(255,255,255,0.75)", fontSize: "0.95rem", lineHeight: 1.7 }}>
+              ITC connects proven environmental technology with the science, business, and leadership to put it to work at scale.
             </p>
           </div>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {[
-              { href: "/about", label: "About" },
-              { href: "/products", label: "Products" },
-              { href: "/aims", label: "AIMS" },
-              { href: "/rbt", label: "Bacterial Test" },
-            ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-sm tracking-wider text-white/70 hover:text-white transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
-            <a
-              href="/products#contact"
-              className="bg-[#f97316] hover:bg-[#ea580c] text-white text-sm px-6 py-2.5 rounded-full font-semibold tracking-wider transition-all hover:scale-105 shadow-lg shadow-orange-900/30"
-            >
-              Contact
-            </a>
-          </div>
-
           {/* Mobile hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white p-2"
-            aria-label="Toggle menu"
-          >
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white p-2 z-50">
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </nav>
 
-        {/* Mobile menu overlay */}
+        {/* Mobile menu */}
         {menuOpen && (
-          <div className="absolute inset-0 z-40 bg-[#020917]/97 flex flex-col items-center justify-center gap-10">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/about", label: "About" },
-              { href: "/products", label: "Products" },
-              { href: "/aims", label: "AIMS" },
-              { href: "/rbt", label: "Rapid Bacterial Test" },
-            ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-2xl font-medium tracking-wider hover:text-[#60a5fa] transition-colors"
-              >
-                {l.label}
+          <div className="absolute inset-0 z-40 flex flex-col items-center justify-center gap-8" style={{ background: "rgba(10,14,30,0.97)" }}>
+            {[{ href: "/", l: "Home" }, { href: "/about", l: "About" }, { href: "/products", l: "Products" }, { href: "/aims", l: "AIMS" }, { href: "/rbt", l: "Bacterial Test" }].map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+                className="text-2xl font-semibold tracking-wider hover:text-[#F26522] transition-colors">
+                {item.l}
               </Link>
             ))}
-            <a
-              href="/products#contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-4 bg-[#f97316] text-white text-lg px-8 py-3 rounded-full font-semibold tracking-wider"
-            >
-              Contact Us
-            </a>
           </div>
         )}
 
-        {/* ── Hero copy ── */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-24">
-          <p className="text-[#60a5fa] text-xs tracking-[0.4em] uppercase mb-6">
-            Regenerate Earth's Biosphere
-          </p>
-          <h2 className="font-orbitron text-5xl md:text-7xl xl:text-[5.5rem] font-bold text-white leading-[1.05] max-w-5xl">
-            Technology Built
-            <br />
-            <span className="text-[#22c55e]">for This Planet</span>
-          </h2>
-          <p className="mt-8 max-w-lg text-lg text-white/60 leading-relaxed">
-            There is a kind of person who sees what this century will demand.
-            They do not think the work is too hard. They do not think the odds
-            are too long. ITC is built for them.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center">
-            <a
-              href="#mission"
-              className="bg-[#f97316] hover:bg-[#ea580c] text-white px-9 py-3.5 rounded-full font-semibold tracking-wider transition-all hover:scale-105 shadow-xl shadow-orange-900/30 text-base"
-            >
-              Our Mission
-            </a>
+        {/* ── Hero content ── */}
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-20 pt-8">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{
+              fontFamily: "'Orbitron', sans-serif",
+              fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              maxWidth: "900px",
+              textShadow: "0 2px 40px rgba(0,0,0,0.5)",
+            }}
+          >
+            Deploying Technologies<br />to Benefit Earth's Biosphere
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-10"
+          >
             <Link
               href="/products"
-              className="border border-white/25 hover:border-white/50 text-white px-9 py-3.5 rounded-full font-semibold tracking-wider transition-all hover:bg-white/8 text-base"
+              style={{
+                display: "inline-block",
+                background: "#F26522",
+                color: "#fff",
+                padding: "14px 48px",
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                transition: "background 0.2s, transform 0.2s",
+              }}
+              onMouseEnter={e => { (e.target as HTMLElement).style.background = "#d9541a"; (e.target as HTMLElement).style.transform = "scale(1.03)"; }}
+              onMouseLeave={e => { (e.target as HTMLElement).style.background = "#F26522"; (e.target as HTMLElement).style.transform = "scale(1)"; }}
             >
-              Our Products →
+              Portfolio
             </Link>
-          </div>
-        </div>
-
-        {/* Scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 text-[10px] tracking-[0.3em]">
-          <span>SCROLL</span>
-          <ChevronDown size={18} className="animate-bounce mt-1" />
+          </motion.div>
         </div>
       </section>
 
-      {/* ─── MISSION ──────────────────────────────────────────── */}
-      <section id="mission" className="py-28 px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          <div>
-            <p className="text-[#60a5fa] text-xs tracking-[0.4em] uppercase mb-5">The Mission</p>
-            <h3 className="font-orbitron text-3xl md:text-4xl font-bold text-white leading-snug">
-              We identify and deploy
-              <br />
-              technologies that{" "}
-              <span className="text-[#22c55e]">regenerate Earth</span>
-              <br />
-              — and win on economics
-            </h3>
-          </div>
-          <div className="space-y-8">
-            <p className="text-white/55 text-lg leading-relaxed">
-              Our portfolio spans water, regenerative agriculture, construction,
-              and safe chemistry — united by one filter: is it better for the
-              biosphere <em>and</em> better for the bottom line?
+      {/* ══════════════════════════════════════════════════════
+          IMAGE STRIP
+      ══════════════════════════════════════════════════════ */}
+      <section className="grid grid-cols-2 md:grid-cols-4">
+        {stripImages.map((img, i) => (
+          <motion.div
+            key={i}
+            className="relative overflow-hidden"
+            style={{ aspectRatio: "4/3" }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: i * 0.1 }}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 flex items-end p-4"
+              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)" }}>
+              <span style={{ fontSize: "0.7rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)" }}>
+                {img.label}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          OUR MISSION
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24 px-8 md:px-20" style={{ backgroundColor: "#111827" }}>
+        <FadeUp>
+          <div className="relative max-w-3xl mx-auto text-center p-12">
+            <Brackets />
+            <p style={{ fontSize: "0.7rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#F26522", marginBottom: "24px" }}>
+              Our Mission
             </p>
-            <div className="grid grid-cols-2 gap-5">
+            <h2 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.5rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "24px" }}>
+              Technologies that Regenerate Earth
+            </h2>
+            <p style={{ fontSize: "1.1rem", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.9, fontFamily: "Georgia, serif" }}>
+              ITC connects world-changing, environmentally beneficial technologies with the scientific understanding, business expertise, and principled leadership required to deliver the impact these ideas are meant to make.
+            </p>
+          </div>
+        </FadeUp>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          HOW WE OPERATE
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24 px-8 md:px-20" style={{ backgroundColor: "#0d1220" }}>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+
+          {/* Text side */}
+          <FadeUp delay={0}>
+            <div className="relative p-8 md:p-12">
+              <Brackets />
+              <p style={{ fontSize: "0.7rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#F26522", marginBottom: "20px" }}>
+                How We Operate
+              </p>
+              <h2 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)", fontWeight: 700, lineHeight: 1.2, marginBottom: "20px" }}>
+                Field Credibility You Can't Hire at a Consulting Firm
+              </h2>
+              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.85, fontStyle: "italic", fontFamily: "Georgia, serif" }}>
+                The team at ITC was chosen to combine decades of product launching experience, advanced analytical science work, and principled leadership. It was built by people who know the land, the lab, and the boardroom.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/about"
+                  style={{
+                    display: "inline-block",
+                    border: "1px solid #F26522",
+                    color: "#F26522",
+                    padding: "10px 32px",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                    fontFamily: "'Orbitron', sans-serif",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={e => { const el = e.target as HTMLElement; el.style.background = "#F26522"; el.style.color = "#fff"; }}
+                  onMouseLeave={e => { const el = e.target as HTMLElement; el.style.background = "transparent"; el.style.color = "#F26522"; }}
+                >
+                  Meet the Team
+                </Link>
+              </div>
+            </div>
+          </FadeUp>
+
+          {/* Video side */}
+          <FadeUp delay={0.2}>
+            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: "16/10" }}>
+              <video
+                className="w-full h-full object-cover"
+                autoPlay muted loop playsInline
+                src="/forest-stream.mp4"
+                poster="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80"
+              />
+              {/* Subtle orange border accent */}
+              <div className="absolute inset-0 pointer-events-none" style={{ border: "1px solid rgba(242,101,34,0.3)" }} />
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          WHAT WE DEPLOY — stat strip
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#111827", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <FadeUp>
+          <div className="max-w-5xl mx-auto">
+            <p style={{ fontSize: "0.7rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#F26522", textAlign: "center", marginBottom: "48px" }}>
+              What We Deploy
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { n: "72,000+", d: "Compounds detected by AIMS", c: "#f97316" },
-                { n: "4 Domains", d: "Water · Ag · Building · Chemistry", c: "#22c55e" },
-                { n: "6 States", d: "Exclusive distribution territory", c: "#60a5fa" },
-                { n: "48 hr", d: "AIMS turnaround from Calgary", c: "#f97316" },
-              ].map((s) => (
-                <div key={s.n} style={{ borderLeftColor: s.c }} className="border-l-2 pl-4">
-                  <p className="font-orbitron text-xl font-bold text-white">{s.n}</p>
-                  <p className="text-white/40 text-sm mt-1 leading-snug">{s.d}</p>
-                </div>
+                { n: "72,000+", l: "Organic compounds\ndetectable by AIMS" },
+                { n: "48 hrs", l: "AIMS turnaround\nfrom Calgary" },
+                { n: "6 States", l: "Exclusive distribution\nterritory" },
+                { n: "4 Domains", l: "Water · Ag\nBuilding · Chemistry" },
+              ].map((s, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.12 }}
+                  style={{ borderTop: "2px solid #F26522", paddingTop: "20px" }}
+                >
+                  <p style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "2rem", fontWeight: 700, color: "#fff", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "10px", lineHeight: 1.6, letterSpacing: "0.05em", whiteSpace: "pre-line" }}>{s.l}</p>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
-      {/* ─── GALLERY ──────────────────────────────────────────── */}
-      <section id="gallery" className="pb-28 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-[#60a5fa] text-xs tracking-[0.4em] uppercase mb-4">
-              Technology for the Biosphere
-            </p>
-            <h3 className="font-orbitron text-3xl md:text-4xl font-bold text-white">
-              We go anywhere
-              <br />
-              <span className="text-[#22c55e]">the planet needs us</span>
-            </h3>
-            <p className="mt-4 text-white/40 text-base max-w-md mx-auto leading-relaxed">
-              Water. Agriculture. Construction. Safe Chemistry. One mission drives every technology we choose.
-            </p>
-          </div>
-
-          {/* Masonry grid */}
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
-            {galleryImages.map((img, i) => (
-              <div
-                key={i}
-                className="group relative overflow-hidden rounded-lg break-inside-avoid"
-              >
-                <img
-                  src={img.src}
-                  alt={img.label}
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                  style={{ aspectRatio: img.tall ? "3/4" : img.wide ? "16/9" : "4/3" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white text-sm font-semibold tracking-wider">{img.label}</p>
-                  </div>
-                </div>
-                {/* Subtle always-on bottom fade */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* ══════════════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24 px-8 text-center" style={{ backgroundColor: "#0d1220" }}>
+        <FadeUp>
+          <p style={{ fontSize: "0.7rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#F26522", marginBottom: "20px" }}>
+            Ready to work with us?
+          </p>
+          <h2 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 700, marginBottom: "36px", lineHeight: 1.2 }}>
+            The time to move is now.
+          </h2>
+          <a
+            href="/products#contact"
+            style={{
+              display: "inline-block",
+              background: "#F26522",
+              color: "#fff",
+              padding: "16px 56px",
+              fontFamily: "'Orbitron', sans-serif",
+              fontSize: "0.8rem",
+              fontWeight: 600,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "background 0.2s",
+            }}
+          >
+            Get in Touch
+          </a>
+        </FadeUp>
       </section>
 
-      {/* ─── CTA STRIP ────────────────────────────────────────── */}
-      <section className="border-t border-white/10 py-20 px-8 text-center bg-gradient-to-b from-transparent to-[#030f20]">
-        <p className="text-[#60a5fa] text-xs tracking-[0.4em] uppercase mb-4">Ready to work with us?</p>
-        <h3 className="font-orbitron text-3xl md:text-4xl font-bold text-white mb-8">
-          The time to move is now.
-        </h3>
-        <a
-          href="/products#contact"
-          className="inline-block bg-[#f97316] hover:bg-[#ea580c] text-white px-10 py-4 rounded-full font-semibold text-lg tracking-wider transition-all hover:scale-105 shadow-xl shadow-orange-900/40"
-        >
-          Get in Touch
-        </a>
-      </section>
-
-      {/* ─── FOOTER ───────────────────────────────────────────── */}
-      <footer className="border-t border-white/10 py-12 px-8">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="font-orbitron text-2xl font-bold text-white">ITC</span>
-            <p className="text-white/30 text-xs mt-1 tracking-wider">INCEPTION TECHNOLOGY COMPANY</p>
-          </div>
-          <p className="text-white/30 text-sm text-center md:text-right max-w-xs leading-relaxed">
+      {/* ══════════════════════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════════════════════ */}
+      <footer className="py-10 px-8 md:px-14" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", backgroundColor: "#0d1220" }}>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p style={{ fontFamily: "'Orbitron', sans-serif", fontSize: "1.4rem", fontWeight: 700 }}>ITC</p>
+          <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.05em" }}>
             Innovation through Economically and Ecologically advantaged Technology
           </p>
-          <p className="text-white/20 text-xs">
+          <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.2)" }}>
             &copy; {new Date().getFullYear()} Inception Technology Company
           </p>
         </div>
       </footer>
+
     </div>
   );
 }
