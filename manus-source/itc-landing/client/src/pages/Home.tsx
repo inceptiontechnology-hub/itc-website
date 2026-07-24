@@ -91,7 +91,7 @@ const tenants = [
   {
     keyword: "True",
     tagline: "Backed by science",
-    body: "Peer-reviewed data and field-verified results, full stop. No vaporware, no greenwash, no performance claims we can't defend under scrutiny.",
+    body: "Peer-reviewed data and field-verified results, full stop. No greenwash, no performance claims we can't defend under scrutiny.",
   },
   {
     keyword: "Economical",
