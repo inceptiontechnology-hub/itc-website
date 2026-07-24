@@ -10,9 +10,9 @@ const FORMSPREE_ID = "YOUR_FORM_ID"; // replace with your formspree.io form ID
 const NAVY  = "#132040";
 const GREEN = "#1a6b3c";
 const WHITE = "#ffffff";
-const OFF   = "#f7f8f6";   // very light off-white for alternating sections
-const MUTED = "#6b7a8d";   // mid-tone text
-const BORDER = "#e2e6ea";
+const OFF   = "#eef3ef";   // light green-tinted off-white — clearly distinct from white
+const MUTED = "#445060";   // mid-tone text — darker for contrast
+const BORDER = "#b8c4d0";  // more visible borders
 
 // ─── Typography ───────────────────────────────────────────────────────────
 const DISPLAY = "'Libre Baskerville', Georgia, serif";
@@ -36,7 +36,7 @@ const FadeUp = ({ children, delay = 0, className = "" }: {
 
 const Label = ({ children, light = false }: { children: React.ReactNode; light?: boolean }) => (
   <p style={{
-    fontSize: "0.65rem", letterSpacing: "0.36em", textTransform: "uppercase",
+    fontSize: "0.72rem", letterSpacing: "0.36em", textTransform: "uppercase",
     color: light ? "rgba(255,255,255,0.55)" : GREEN,
     marginBottom: "14px", fontFamily: BODY,
   }}>
@@ -244,18 +244,18 @@ export default function Home() {
               <FadeUp key={i} delay={i * 0.1}>
                 <Link href={p.href} style={{ textDecoration: "none" }}>
                   <div className="flex flex-col h-full" style={{
-                    border: `1px solid ${BORDER}`, padding: "40px 32px",
-                    transition: "border-color 0.25s, box-shadow 0.25s",
+                    borderTop: `3px solid ${NAVY}`, borderLeft: `1px solid ${BORDER}`, borderRight: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "40px 32px",
+                    transition: "border-top-color 0.25s, box-shadow 0.25s",
                   }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = GREEN; e.currentTarget.style.boxShadow = "0 4px 24px rgba(26,107,60,0.08)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.boxShadow = "none"; }}>
+                    onMouseEnter={e => { e.currentTarget.style.borderTopColor = GREEN; e.currentTarget.style.boxShadow = "0 6px 32px rgba(19,32,64,0.10)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
                     <Label>{p.tag}</Label>
                     <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
                     <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em" }}>{p.sub}</p>
                     <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                     <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
                     <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
-                      <p style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: GREEN, lineHeight: 1 }}>{p.stat}</p>
+                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: GREEN, lineHeight: 1 }}>{p.stat}</p>
                       <p style={{ fontSize: "0.68rem", color: MUTED, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
                     </div>
                     <div style={{ marginTop: "18px", display: "flex", alignItems: "center", gap: "8px", color: GREEN, fontSize: "0.82rem", letterSpacing: "0.05em", fontStyle: "italic" }}>
@@ -291,7 +291,7 @@ export default function Home() {
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <div style={{ borderLeft: `3px solid ${GREEN}`, paddingLeft: "32px" }}>
+              <div style={{ borderLeft: `4px solid ${GREEN}`, paddingLeft: "32px", borderTop: `1px solid ${BORDER}`, paddingTop: "24px" }}>
                 <p style={{ fontFamily: DISPLAY, fontSize: "1.25rem", fontWeight: 500, lineHeight: 1.7, color: NAVY, fontStyle: "italic" }}>
                   "Built by people who know the land, the lab, and the boardroom — field credibility you can't hire at a consulting firm."
                 </p>
@@ -315,7 +315,7 @@ export default function Home() {
             {steps.map((s, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <div style={{ borderTop: `2px solid ${GREEN}`, paddingTop: "24px" }}>
-                  <p style={{ fontFamily: DISPLAY, fontSize: "2.5rem", fontWeight: 400, color: "rgba(26,107,60,0.2)", lineHeight: 1, marginBottom: "14px" }}>{s.n}</p>
+                  <p style={{ fontFamily: DISPLAY, fontSize: "2.5rem", fontWeight: 700, color: "rgba(26,107,60,0.45)", lineHeight: 1, marginBottom: "14px" }}>{s.n}</p>
                   <h3 style={{ fontFamily: DISPLAY, fontSize: "1.15rem", fontWeight: 700, color: NAVY, marginBottom: "12px", letterSpacing: "0.02em" }}>{s.title}</h3>
                   <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{s.body}</p>
                 </div>
