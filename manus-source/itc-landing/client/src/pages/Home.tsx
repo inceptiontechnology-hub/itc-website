@@ -297,9 +297,8 @@ export default function Home() {
           {/* Mission */}
           <div className="mb-24">
             <FadeUp>
-              <Label>Who We Are</Label>
-              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.9rem, 3.5vw, 2.9rem)", fontWeight: 700, lineHeight: 1.15, color: NAVY, marginBottom: "28px" }}>
-                Not a distributor. Not a startup chasing a trend.
+              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "28px" }}>
+                Who We Are
               </h2>
               <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, fontStyle: "italic", maxWidth: "680px" }}>
                 ITC connects proven analytical and environmental technologies with the scientific expertise, business experience, and operational credibility to deploy them at scale.
@@ -313,7 +312,7 @@ export default function Home() {
           {/* Four Tenants */}
           <FadeUp>
             <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
-            <Label>Our Standards</Label>
+            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "20px" }}>Our Standards</h2>
             <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
               These aren't values on a wall. They're the filter every technology in our portfolio must clear before we put our name behind it.
             </p>
@@ -347,7 +346,7 @@ export default function Home() {
       <section style={{ backgroundColor: WHITE, padding: "96px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
-            <Label>The Team</Label>
+            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "4px" }}>The Team</h2>
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 56px" }} />
           </FadeUp>
 
