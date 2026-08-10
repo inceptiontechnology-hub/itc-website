@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 // ─── Contact form ─────────────────────────────────────────────────────────
-const FORMSPREE_ID = "YOUR_FORM_ID"; // replace with your formspree.io form ID
 
 // ─── Palette ──────────────────────────────────────────────────────────────
 const NAVY  = "#132040";
@@ -114,9 +113,9 @@ export default function Home() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       setStatus(res.ok ? "success" : "error");
