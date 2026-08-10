@@ -1,110 +1,114 @@
 // Vercel serverless function — contact form handler
-// Sends one email to jeff@itc.eco + scott@itc.eco via Gmail API OAuth2
+// Sends one email to jeff@itc.eco + scott@itc.eco via Gmail API OAuth2.
 
-const https = require('https');
+function encodeBase64Url(value) {
+  return Buffer.from(value, "utf8")
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
 
-function post(hostname, path, headers, body) {
-  return new Promise((resolve, reject) => {
-    const data = typeof body === 'string' ? body : JSON.stringify(body);
-    const req = https.request(
-      { hostname, path, method: 'POST', headers: { ...headers, 'Content-Length': Buffer.byteLength(data) } },
-      (res) => {
-        let raw = '';
-        res.on('data', c => raw += c);
-        res.on('end', () => resolve({ status: res.statusCode, body: raw }));
-      }
-    );
-    req.on('error', reject);
-    req.write(data);
-    req.end();
-  });
+function sanitizeHeader(value) {
+  return String(value || "").replace(/[\r\n]+/g, " ").trim();
 }
 
 async function getAccessToken() {
-  const params = new URLSearchParams({
-    client_id:     process.env.GMAIL_CLIENT_ID,
-    client_secret: process.env.GMAIL_CLIENT_SECRET,
-    refresh_token: process.env.GMAIL_REFRESH_TOKEN,
-    grant_type:    'refresh_token',
+  const response = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: process.env.GMAIL_CLIENT_ID || "",
+      client_secret: process.env.GMAIL_CLIENT_SECRET || "",
+      refresh_token: process.env.GMAIL_REFRESH_TOKEN || "",
+      grant_type: "refresh_token",
+    }),
   });
-  const res = await post(
-    'oauth2.googleapis.com',
-    '/token',
-    { 'Content-Type': 'application/x-www-form-urlencoded' },
-    params.toString()
-  );
-  const json = JSON.parse(res.body);
-  if (!json.access_token) throw new Error('Token refresh failed: ' + res.body);
-  return json.access_token;
-}
 
-function buildRaw(from, to, subject, text) {
-  const msg = [
-    `From: ITC Website <${from}>`,
-    `To: ${to}`,
-    `Subject: ${subject}`,
-    `MIME-Version: 1.0`,
-    `Content-Type: text/plain; charset=UTF-8`,
-    ``,
-    text,
-  ].join('\r\n');
-  return Buffer.from(msg).toString('base64url');
-}
-
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-
-  const { name, email, phone, interest, message } = req.body || {};
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  const result = await response.json();
+  if (!response.ok || !result.access_token) {
+    throw new Error(`Gmail token refresh failed (${response.status})`);
   }
+  return result.access_token;
+}
 
-  const subject = `ITC Contact: ${name}${interest ? ` — ${interest}` : ''}`;
-  const body = [
-    `New contact form submission via itc.eco`,
-    ``,
-    `Name:     ${name}`,
-    `Email:    ${email}`,
-    `Phone:    ${phone || 'Not provided'}`,
-    `Interest: ${interest || 'Not specified'}`,
-    ``,
-    `Message:`,
-    `────────────────────────────`,
+function buildMessage({ name, email, phone, interest, message }) {
+  const safeName = sanitizeHeader(name);
+  const safeEmail = sanitizeHeader(email);
+  const safeInterest = sanitizeHeader(interest);
+  const subject = `ITC Contact: ${safeName}${safeInterest ? ` — ${safeInterest}` : ""}`;
+  const text = [
+    "New contact form submission via itc.eco",
+    "",
+    `Name:     ${safeName}`,
+    `Email:    ${safeEmail}`,
+    `Phone:    ${phone || "Not provided"}`,
+    `Interest: ${interest || "Not specified"}`,
+    "",
+    "Message:",
+    "────────────────────────────",
     message,
-    `────────────────────────────`,
-    ``,
-    `Reply directly to this email to respond to ${name}.`,
-  ].join('\n');
+    "────────────────────────────",
+    "",
+    `Reply to this email to respond to ${safeName}. Jeff and Scott are both included on the original message.`,
+  ].join("\n");
 
+  return [
+    "From: ITC Website <scott@itc.eco>",
+    "To: Jeff Streck <jeff@itc.eco>, Scott Ensminger <scott@itc.eco>",
+    `Reply-To: ${safeName} <${safeEmail}>`,
+    `Subject: ${subject}`,
+    "MIME-Version: 1.0",
+    "Content-Type: text/plain; charset=UTF-8",
+    "",
+    text,
+  ].join("\r\n");
+}
+
+export default async function handler(req, res) {
   try {
-    const token = await getAccessToken();
-    const raw   = buildRaw(
-      'scott@itc.eco',
-      'jeff@itc.eco, scott@itc.eco',
-      subject,
-      body
-    );
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-    const send = await post(
-      'gmail.googleapis.com',
-      '/gmail/v1/users/me/messages/send',
-      { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-      JSON.stringify({ raw })
-    );
+    if (req.method === "OPTIONS") return res.status(200).end();
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-    if (send.status < 200 || send.status >= 300) {
-      console.error('Gmail error:', send.body);
-      return res.status(500).json({ error: 'Failed to send' });
+    let payload = req.body;
+    if (typeof payload === "string") {
+      try {
+        payload = JSON.parse(payload);
+      } catch {
+        return res.status(400).json({ error: "Invalid JSON" });
+      }
+    }
+
+    const { name, email, phone, interest, message } = payload || {};
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const accessToken = await getAccessToken();
+    const gmailResponse = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        raw: encodeBase64Url(buildMessage({ name, email, phone, interest, message })),
+      }),
+    });
+
+    if (!gmailResponse.ok) {
+      const errorText = await gmailResponse.text();
+      console.error("Gmail send failed", gmailResponse.status, errorText);
+      return res.status(502).json({ error: "Email delivery failed" });
     }
 
     return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error('Contact handler error:', err);
-    return res.status(500).json({ error: 'Server error' });
+  } catch (error) {
+    console.error("Contact handler failed", error);
+    return res.status(500).json({ error: "Server error" });
   }
-};
+}

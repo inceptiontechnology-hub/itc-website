@@ -85,22 +85,22 @@ const tenants = [
   {
     keyword: "Simple",
     tagline: "Works in the real world",
-    body: "If operators in the field can't use it, it won't scale. Every technology we bring to market must work in the hands of the people who need it — no PhD required.",
+    body: "Good tools work without instruction. The people running these operations are busy — the technology has to work the first time, in real conditions, without a troubleshooting manual.",
   },
   {
     keyword: "True",
     tagline: "Backed by science",
-    body: "Peer-reviewed data and field-verified results, full stop. No greenwash, no performance claims we can't defend under scrutiny.",
+    body: "Every claim we make, we can back. The science has to hold up before anything ships, and we can explain every result in plain language to the people who actually use it.",
   },
   {
     keyword: "Economical",
     tagline: "Advantaged on returns",
-    body: "Better performance at a competitive cost. The market adopts it because it wins on economics — not because someone feels compelled to write a check out of obligation.",
+    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is — adoption happens because it makes financial sense to the people buying it.",
   },
   {
-    keyword: "Lasting",
-    tagline: "Results that hold",
-    body: "The technology has to produce measurable, durable outcomes — not just better compliance paperwork. Tools that mask problems don't make the cut.",
+    keyword: "Enduring",
+    tagline: "Built to last",
+    body: "We want to be proud of these decisions ten years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
   },
 ];
 
@@ -190,7 +190,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-16">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
             style={{ fontSize: "0.65rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "22px", fontFamily: BODY }}>
-            Water. Wastewater. Environment.
+            Efficient. Economical. Effective.
           </motion.p>
 
           <motion.h1
@@ -313,7 +313,7 @@ export default function Home() {
             <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
             <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "20px" }}>Our Standards</h2>
             <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
-              These aren't values on a wall. They're the filter every technology in our portfolio must clear before we put our name behind it.
+              We've been around long enough to know what actually holds up. Every technology we put our name behind clears these four tests.
             </p>
           </FadeUp>
 
