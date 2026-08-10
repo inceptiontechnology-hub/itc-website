@@ -47,39 +47,39 @@ const Label = ({ children, light = false }: { children: React.ReactNode; light?:
 // ─── Products ─────────────────────────────────────────────────────────────
 const products = [
   {
-    href: "/aims",
-    tag: "Environmental Detection",
-    name: "AIMS",
-    sub: "Ambient Ionization Mass Spectrometry",
-    body: "Identify 72,000+ organic compounds in water, urine, or blood — with results in 48 hours. Not a test. An intelligence system.",
+    href: "/nta-aquity.html",
+    tag: "Source Intelligence",
+    name: "NTA + Aquity",
+    sub: "Non-Targeted Analysis + Intelligence Platform",
+    body: "Screen 72,000+ organic compounds from a single 25 mL sample — no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
     stat: "72,000+", unit: "Detectable compounds",
   },
   {
-    href: "/aims",
-    tag: "Source Intelligence",
-    name: "Aquity",
-    sub: "Non-Targeted Analysis Platform",
-    body: "Aquity maps every detected compound back to its industrial and geographic source. Municipalities get answers — not a PDF of unknowns.",
+    href: "/aims.html",
+    tag: "Targeted Detection",
+    name: "AIMS",
+    sub: "Ambient Ionization Mass Spectrometry",
+    body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt — with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
     stat: "48 hr", unit: "Lab turnaround",
   },
   {
-    href: "/rbt",
+    href: "/rbt.html",
     tag: "Field Detection",
-    name: "Bacterial Test",
-    sub: "Rapid Water Safety",
-    body: "3mL. 10 seconds. No lab. No expertise required. Disrupting a $2.3B market with a test anyone can run anywhere.",
-    stat: "$10", unit: "Per test at scale",
+    name: "Rapid Bacterial Test",
+    sub: "Instant Field Water Safety",
+    body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
+    stat: "10 sec", unit: "Field results",
   },
 ];
 
 // ─── Team ─────────────────────────────────────────────────────────────────
 const team = [
-  { initials: "SE", name: "Scott Ensminger",   role: "Founder" },
-  { initials: "JS", name: "Jeff Streck",        role: "Sales & Marketing" },
-  { initials: "HE", name: "Hunter Ensminger",  role: "Operations" },
-  { initials: "LG", name: "Lillie Geiersbach", role: "Montana" },
-  { initials: "LD", name: "Logan Deal",         role: "Business Development" },
-  { initials: "JE", name: "Jyl Ensminger",     role: "Montana" },
+  { initials: "SE", name: "Scott Ensminger", role: "Founder", bio: "Twenty years in cattle operations, wildlife ecology, public health, and wastewater before founding ITC. He was the customer this company was built to serve — and leads strategy and commercial from farm to lab to boardroom." },
+  { initials: "JS", name: "Jeff Streck", role: "Sales & Marketing", bio: "Based in Colorado, Jeff builds ITC's commercial relationships and owns the external brand. He connects the portfolio with buyers across agriculture, water, and municipal markets." },
+  { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter runs logistics, partnerships, and the operational backbone. When ITC makes a commitment, he's the reason it holds — from distribution through partner coordination." },
+  { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie bridges the lab and the field, translating the science behind the portfolio into language operators, municipalities, and buyers can act on. The technology gets understood as deeply as it gets sold." },
+  { initials: "LD", name: "Logan Deal", role: "General Manager", bio: "Based in Texas, Logan runs day-to-day operations across the company. She keeps timelines, teams, and commitments aligned — on time, on spec." },
+  { initials: "JE", name: "Jyl Ensminger", role: "Montana", bio: "" },
 ];
 
 const tenants = [
@@ -259,7 +259,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((p, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <Link href={p.href} style={{ textDecoration: "none" }}>
+                <a href={p.href} style={{ textDecoration: "none" }}>
                   <div className="flex flex-col h-full" style={{
                     borderTop: `3px solid ${NAVY}`, borderLeft: `1px solid ${BORDER}`, borderRight: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "40px 32px",
                     transition: "border-top-color 0.25s, box-shadow 0.25s",
@@ -275,11 +275,13 @@ export default function Home() {
                       <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: GREEN, lineHeight: 1 }}>{p.stat}</p>
                       <p style={{ fontSize: "0.68rem", color: MUTED, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
                     </div>
-                    <div style={{ marginTop: "18px", display: "flex", alignItems: "center", gap: "8px", color: GREEN, fontSize: "0.82rem", letterSpacing: "0.05em", fontStyle: "italic" }}>
-                      Learn more <ArrowRight size={13} />
+                    <div style={{ marginTop: "18px" }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                        View details <ArrowRight size={12} />
+                      </span>
                     </div>
                   </div>
-                </Link>
+                </a>
               </FadeUp>
             ))}
           </div>
@@ -366,7 +368,7 @@ export default function Home() {
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 56px" }} />
           </FadeUp>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {team.map((m, i) => (
               <FadeUp key={i} delay={i * 0.08}>
                 <div>
@@ -382,17 +384,14 @@ export default function Home() {
                     </span>
                   </div>
                   <p style={{ fontFamily: DISPLAY, fontSize: "1.05rem", fontWeight: 600, color: NAVY, marginBottom: "4px" }}>{m.name}</p>
-                  <p style={{ fontSize: "0.78rem", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" }}>{m.role}</p>
+                  <p style={{ fontSize: "0.78rem", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: m.bio ? "12px" : "0" }}>{m.role}</p>
+                  {m.bio && (
+                    <p style={{ fontSize: "0.88rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic", margin: "0" }}>{m.bio}</p>
+                  )}
                 </div>
               </FadeUp>
             ))}
           </div>
-
-          <FadeUp delay={0.3}>
-            <p style={{ marginTop: "56px", fontSize: "0.88rem", color: "rgba(19,32,64,0.3)", fontStyle: "italic" }}>
-              Photographs coming soon.
-            </p>
-          </FadeUp>
         </div>
       </section>
 
