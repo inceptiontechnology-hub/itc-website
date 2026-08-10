@@ -99,9 +99,9 @@ const tenants = [
     body: "Better performance at a competitive cost. The market adopts it because it wins on economics — not because someone feels compelled to write a check out of obligation.",
   },
   {
-    keyword: "Regenerative",
-    tagline: "Net-positive is the floor",
-    body: "Active restoration of soil, water, air, and biology. We don't settle for 'less bad.' The technology must leave the biosphere measurably better than it found it.",
+    keyword: "Lasting",
+    tagline: "Results that hold",
+    body: "The technology has to produce measurable, durable outcomes — not just better compliance paperwork. Tools that mask problems don't make the cut.",
   },
 ];
 
@@ -191,7 +191,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-16">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
             style={{ fontSize: "0.65rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "22px", fontFamily: BODY }}>
-            Helping Our Planet
+            Water. Wastewater. Environment.
           </motion.p>
 
           <motion.h1
@@ -203,7 +203,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Deploying Technology<br />That Benefits Our Biosphere
+            Precision Detection.<br />Operational Intelligence.
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -302,10 +302,10 @@ export default function Home() {
                 The mission is the filter.
               </h2>
               <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, fontStyle: "italic" }}>
-                ITC connects world-changing, environmentally beneficial technologies with the scientific understanding, business expertise, and principled leadership required to deliver the impact these ideas are meant to make.
+                ITC connects proven analytical and environmental technologies with the scientific expertise, business experience, and operational credibility to deploy them at scale.
               </p>
               <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, marginTop: "18px", fontStyle: "italic" }}>
-                Every technology in our portfolio must clear two bars: better for the biosphere, and better on economics. We don't accept trade-offs between the two.
+                Every technology in our portfolio must clear two bars: better on performance, and better on economics. We don't accept trade-offs between the two.
               </p>
             </FadeUp>
 
@@ -497,7 +497,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p style={{ fontFamily: ORBITRON, fontSize: "1.2rem", fontWeight: 700, color: WHITE }}>ITC</p>
           <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.25)", fontStyle: "italic" }}>
-            Innovation through Economically and Ecologically Advantaged Technology
+            Precision technology. Proven performance. No trade-offs.
           </p>
           <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.18)" }}>
             &copy; {new Date().getFullYear()} Inception Technology Company
