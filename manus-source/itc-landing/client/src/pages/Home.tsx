@@ -295,29 +295,18 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 md:px-10">
 
           {/* Mission */}
-          <div className="grid md:grid-cols-2 gap-16 items-start mb-24">
+          <div className="mb-24">
             <FadeUp>
               <Label>Who We Are</Label>
               <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.9rem, 3.5vw, 2.9rem)", fontWeight: 700, lineHeight: 1.15, color: NAVY, marginBottom: "28px" }}>
-                The mission is the filter.
+                Not a distributor. Not a startup chasing a trend.
               </h2>
-              <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, fontStyle: "italic" }}>
+              <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, fontStyle: "italic", maxWidth: "680px" }}>
                 ITC connects proven analytical and environmental technologies with the scientific expertise, business experience, and operational credibility to deploy them at scale.
               </p>
-              <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, marginTop: "18px", fontStyle: "italic" }}>
+              <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, marginTop: "18px", fontStyle: "italic", maxWidth: "680px" }}>
                 Every technology in our portfolio must clear two bars: better on performance, and better on economics. We don't accept trade-offs between the two.
               </p>
-            </FadeUp>
-
-            <FadeUp delay={0.15}>
-              <div style={{ borderLeft: `4px solid ${GREEN}`, paddingLeft: "32px", borderTop: `1px solid ${BORDER}`, paddingTop: "24px" }}>
-                <p style={{ fontFamily: DISPLAY, fontSize: "1.25rem", fontWeight: 500, lineHeight: 1.7, color: NAVY, fontStyle: "italic" }}>
-                  "Built by people who know the land, the lab, and the boardroom — field credibility you can't hire at a consulting firm."
-                </p>
-                <p style={{ marginTop: "20px", fontSize: "0.7rem", letterSpacing: "0.25em", textTransform: "uppercase", color: GREEN, fontFamily: BODY }}>
-                  Scott Ensminger — Founder
-                </p>
-              </div>
             </FadeUp>
           </div>
 
@@ -325,9 +314,6 @@ export default function Home() {
           <FadeUp>
             <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
             <Label>Our Standards</Label>
-            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "16px" }}>
-              The criteria behind every decision.
-            </h2>
             <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
               These aren't values on a wall. They're the filter every technology in our portfolio must clear before we put our name behind it.
             </p>
@@ -362,9 +348,6 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
             <Label>The Team</Label>
-            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "4px" }}>
-              People who've done the work.
-            </h2>
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 56px" }} />
           </FadeUp>
 
@@ -405,10 +388,7 @@ export default function Home() {
             {/* Copy */}
             <FadeUp>
               <Label light>Get In Touch</Label>
-              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.9rem, 3.5vw, 2.9rem)", fontWeight: 700, lineHeight: 1.15, color: WHITE, marginBottom: "24px" }}>
-                The time to move is now.
-              </h2>
-              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, fontStyle: "italic", marginBottom: "40px" }}>
+              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, fontStyle: "italic", marginBottom: "40px", marginTop: "20px" }}>
                 Whether you're a municipality, a producer, or a potential partner — if the technology matches the mission, we want to hear from you.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
