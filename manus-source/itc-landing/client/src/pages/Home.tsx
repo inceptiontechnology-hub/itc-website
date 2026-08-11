@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, CheckCircle } from "lucide-react";
-import { Link } from "wouter";
+import { Menu, X, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ─── Contact form ─────────────────────────────────────────────────────────
@@ -67,7 +66,7 @@ const products = [
     name: "Rapid Bacterial Test",
     sub: "Instant Field Water Safety",
     body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
-    stat: "10 sec", unit: "Field results",
+    stat: "20 sec", unit: "Field results",
   },
 ];
 
@@ -83,24 +82,24 @@ const team = [
 
 const tenants = [
   {
-    keyword: "Simple",
+    keyword: "Simple.",
     tagline: "Works in the real world",
     body: "Good tools work without instruction. The people running these operations are busy — the technology has to work the first time, in real conditions, without a troubleshooting manual.",
   },
   {
-    keyword: "True",
+    keyword: "True.",
     tagline: "Backed by science",
     body: "Every claim we make, we can back. The science has to hold up before anything ships, and we can explain every result in plain language to the people who actually use it.",
   },
   {
-    keyword: "Economical",
+    keyword: "Economical.",
     tagline: "Advantaged on returns",
     body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is — adoption happens because it makes financial sense to the people buying it.",
   },
   {
-    keyword: "Enduring",
+    keyword: "Enduring.",
     tagline: "Built to last",
-    body: "We want to be proud of these decisions ten years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
+    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
   },
 ];
 
@@ -165,10 +164,20 @@ export default function Home() {
               Inception Technology<br />Company, LLC
             </p>
           </div>
-          <p className="hidden md:block max-w-xs text-right"
-            style={{ color: "rgba(255,255,255,0.75)", fontSize: "1rem", lineHeight: 1.8, fontStyle: "italic", fontFamily: BODY }}>
-            ITC connects proven environmental technology with the science, business, and leadership to put it to work at scale.
-          </p>
+          <div className="hidden md:flex items-center gap-8" style={{ fontFamily: BODY }}>
+            <a href="#technologies" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none" }}>Products</a>
+            <a href="#blog" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none" }}>Blog</a>
+            <div className="relative group" style={{ paddingBottom: "14px", marginBottom: "-14px" }}>
+              <button type="button" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: WHITE, background: "transparent", border: 0, padding: 0, fontFamily: BODY, fontSize: "0.92rem", fontWeight: 600, cursor: "pointer" }}>
+                About <ChevronDown size={14} />
+              </button>
+              <div className="absolute right-0 top-full hidden group-hover:flex group-focus-within:flex flex-col" style={{ minWidth: "170px", background: "rgba(19,32,64,0.97)", border: "1px solid rgba(255,255,255,0.2)", padding: "8px 0" }}>
+                <a href="#standards" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.86rem", textDecoration: "none", whiteSpace: "nowrap" }}>Our Standards</a>
+                <a href="#team" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.86rem", textDecoration: "none", whiteSpace: "nowrap" }}>The Team</a>
+              </div>
+            </div>
+            <a href="#contact" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: "9px 16px" }}>Contact Us</a>
+          </div>
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2" style={{ color: WHITE }}><Menu size={26} /></button>
         </nav>
 
@@ -177,11 +186,17 @@ export default function Home() {
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-8"
             style={{ background: "rgba(19,32,64,0.97)" }}>
             <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8" style={{ color: WHITE }}><X size={26} /></button>
-            {[{ href: "/", l: "Home" }, { href: "/aims", l: "AIMS & Aquity" }, { href: "/rbt", l: "Bacterial Test" }].map(item => (
-              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+            {[
+              { href: "#technologies", l: "Products" },
+              { href: "#blog", l: "Blog" },
+              { href: "#standards", l: "Our Standards" },
+              { href: "#team", l: "The Team" },
+              { href: "#contact", l: "Contact Us" },
+            ].map(item => (
+              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
                 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 600, color: WHITE, textDecoration: "none" }}>
                 {item.l}
-              </Link>
+              </a>
             ))}
           </div>
         )}
@@ -202,7 +217,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Precision Detection.<br />Operational Intelligence.
+            Curating Innovative Solutions<br />for Classic Problems.
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -243,7 +258,7 @@ export default function Home() {
       <section id="technologies" style={{ backgroundColor: WHITE, padding: "96px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
-            <Label>What We Offer</Label>
+            <Label>Offerings</Label>
             <div className="flex items-end justify-between flex-wrap gap-4 mb-4">
               <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY }}>
                 CEC Technologies
@@ -271,8 +286,8 @@ export default function Home() {
                     <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                     <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
                     <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
-                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: GREEN, lineHeight: 1 }}>{p.stat}</p>
-                      <p style={{ fontSize: "0.68rem", color: MUTED, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
+                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
+                      <p style={{ fontSize: "0.68rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
                     </div>
                     <div style={{ marginTop: "18px" }}>
                       <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
@@ -309,13 +324,11 @@ export default function Home() {
           </div>
 
           {/* Four Tenants */}
-          <FadeUp>
-            <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
-            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "20px" }}>Our Standards</h2>
-            <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.8, fontStyle: "italic", maxWidth: "580px", marginBottom: "48px" }}>
-              We've been around long enough to know what actually holds up. Every technology we put our name behind clears these four tests.
-            </p>
-          </FadeUp>
+          <div id="standards" style={{ scrollMarginTop: "36px" }}>
+            <FadeUp>
+              <div style={{ height: "1px", background: BORDER, marginBottom: "56px" }} />
+              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "48px" }}>Our Standards</h2>
+            </FadeUp>
 
           <div className="grid md:grid-cols-2 gap-6">
             {tenants.map((t, i) => (
@@ -336,13 +349,27 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
+          BLOG — placeholder navigation destination
+      ══════════════════════════════════════════════════ */}
+      <section id="blog" style={{ backgroundColor: NAVY, padding: "72px 0", scrollMarginTop: "36px" }}>
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <FadeUp>
+            <Label light>Blog</Label>
+            <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, lineHeight: 1.15, color: WHITE, marginBottom: "16px" }}>Insights and updates are coming soon.</h2>
+            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "1rem", maxWidth: "620px", lineHeight: 1.8, fontStyle: "italic", margin: 0 }}>A place for practical thinking on technology, business, and the problems worth solving.</p>
+          </FadeUp>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════
           4. TEAM — white
       ══════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: WHITE, padding: "96px 0" }}>
+      <section id="team" style={{ backgroundColor: WHITE, padding: "96px 0", scrollMarginTop: "36px" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
             <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY, marginBottom: "4px" }}>The Team</h2>
