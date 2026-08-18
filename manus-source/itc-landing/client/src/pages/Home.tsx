@@ -66,7 +66,7 @@ const products = [
     name: "Rapid Bacterial Test",
     sub: "Instant Field Water Safety",
     body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
-    stat: "20 sec", unit: "Field results",
+    stat: "10 seconds", unit: "Field results",
   },
 ];
 
@@ -217,7 +217,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Curating Innovative Solutions<br />for Classic Problems.
+            <h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}>Built by people who know the land, the lab, and the boardroom.</h1></h1></h1></h1>
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
