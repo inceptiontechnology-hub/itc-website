@@ -217,7 +217,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Built by people who know the land, the lab, and the boardroom.
+            Scientific solutions, curated for longstanding problems.
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
