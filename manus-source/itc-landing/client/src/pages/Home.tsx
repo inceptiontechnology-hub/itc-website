@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, Check, CheckCircle, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Check, CheckCircle, ChevronDown, Droplets, Crosshair, Timer } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ─── Contact form ─────────────────────────────────────────────────────────
@@ -50,7 +50,9 @@ const products = [
     name: "NTA + Aquity",
     sub: "Non-Targeted Analysis + Intelligence Platform",
     body: "Screen 72,000+ organic compounds from a single 25 mL sample — no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
-    stat: "72,000+", unit: "Detectable compounds",
+    stat: "72,000+", unit: "Compounds screened",
+    icon: Droplets,
+    cta: "Explore NTA + Aquity",
   },
   {
     href: "/aims.html",
@@ -59,6 +61,8 @@ const products = [
     sub: "Ambient Ionization Mass Spectrometry",
     body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt — with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
     stat: "48 hr", unit: "Lab turnaround",
+    icon: Crosshair,
+    cta: "Explore AIMS",
   },
   {
     href: "/rbt.html",
@@ -66,7 +70,9 @@ const products = [
     name: "Rapid Bacterial Test",
     sub: "Instant Field Water Safety",
     body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
-    stat: "10 seconds", unit: "Field results",
+    stat: "10 sec", unit: "Field results",
+    icon: Timer,
+    cta: "Explore rapid testing",
   },
 ];
 
@@ -258,46 +264,59 @@ export default function Home() {
       <section id="technologies" style={{ backgroundColor: WHITE, padding: "96px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
-            <Label>Offerings</Label>
-            <div className="flex items-end justify-between flex-wrap gap-4 mb-4">
-              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY }}>
-                CEC Technologies
-              </h2>
-              <p style={{ color: MUTED, fontSize: "1rem", maxWidth: "300px", lineHeight: 1.7, fontStyle: "italic" }}>
+            <div className="flex items-end justify-between flex-wrap gap-6 mb-4">
+              <div>
+                <p style={{ fontSize: "0.66rem", letterSpacing: "0.3em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "12px" }}>
+                  CEC Technologies
+                </p>
+                <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.08, color: NAVY }}>
+                  Our Technologies
+                </h2>
+              </div>
+              <p style={{ color: MUTED, fontSize: "1rem", maxWidth: "390px", lineHeight: 1.7, fontStyle: "italic", margin: 0 }}>
                 ITC is the exclusive U.S. distributor for CEC Analytics.
               </p>
             </div>
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 48px" }} />
           </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {products.map((p, i) => (
-              <FadeUp key={i} delay={i * 0.1}>
-                <a href={p.href} style={{ textDecoration: "none" }}>
-                  <div className="flex flex-col h-full" style={{
-                    borderTop: `3px solid ${NAVY}`, borderLeft: `1px solid ${BORDER}`, borderRight: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "40px 32px",
-                    transition: "border-top-color 0.25s, box-shadow 0.25s",
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.borderTopColor = GREEN; e.currentTarget.style.boxShadow = "0 6px 32px rgba(19,32,64,0.10)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
-                    <Label>{p.tag}</Label>
-                    <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
-                    <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
-                    <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
-                    <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
-                    <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
-                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
-                      <p style={{ fontSize: "0.68rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
-                    </div>
-                    <div style={{ marginTop: "18px" }}>
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                        View details <ArrowRight size={12} />
+          <div className="grid md:grid-cols-3 gap-6">
+            {products.map((p, i) => {
+              const ProductIcon = p.icon;
+              return (
+                <FadeUp key={i} delay={i * 0.1}>
+                  <a href={p.href} className="group block h-full" style={{ textDecoration: "none" }}>
+                    <div className="flex flex-col h-full" style={{
+                      border: `1px solid ${BORDER}`,
+                      borderRadius: "3px",
+                      background: WHITE,
+                      padding: "34px 28px 28px",
+                      textAlign: "center",
+                      boxShadow: "0 8px 28px rgba(19,32,64,0.06)",
+                      transition: "transform 0.25s, box-shadow 0.25s, border-color 0.25s",
+                    }}
+                      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(19,32,64,0.13)"; e.currentTarget.style.borderColor = GREEN; }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(19,32,64,0.06)"; e.currentTarget.style.borderColor = BORDER; }}>
+                      <div style={{ width: "64px", height: "64px", margin: "0 auto 22px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: OFF, border: `1px solid ${BORDER}`, color: GREEN }}>
+                        <ProductIcon size={28} strokeWidth={1.8} aria-hidden="true" />
+                      </div>
+                      <p style={{ fontSize: "0.64rem", letterSpacing: "0.25em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "12px" }}>{p.tag}</p>
+                      <h3 style={{ fontFamily: DISPLAY, fontSize: "1.65rem", fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: "10px" }}>{p.name}</h3>
+                      <p style={{ fontSize: "0.68rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.1em", lineHeight: 1.5, textTransform: "uppercase", fontWeight: 700 }}>{p.sub}</p>
+                      <div style={{ width: "44px", height: "1px", background: BORDER, margin: "0 auto 20px" }} />
+                      <p style={{ fontSize: "0.94rem", color: MUTED, lineHeight: 1.75, flex: 1, fontStyle: "italic", margin: 0 }}>{p.body}</p>
+                      <div style={{ marginTop: "26px", paddingTop: "22px", borderTop: `1px solid ${BORDER}` }}>
+                        <p style={{ fontFamily: DISPLAY, fontSize: "2.35rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
+                        <p style={{ fontSize: "0.64rem", color: GREEN, marginTop: "7px", letterSpacing: "0.16em", textTransform: "uppercase", fontWeight: 800 }}>{p.unit}</p>
+                      </div>
+                      <span style={{ marginTop: "22px", width: "100%", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "9px", background: NAVY, color: WHITE, padding: "13px 18px", fontFamily: BODY, fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
+                        {p.cta} <ArrowRight size={13} />
                       </span>
                     </div>
-                  </div>
-                </a>
-              </FadeUp>
-            ))}
+                  </a>
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>
