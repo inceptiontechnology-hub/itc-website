@@ -72,7 +72,7 @@ const products = [
 
 // ─── Team ─────────────────────────────────────────────────────────────────
 const team = [
-  { initials: "SE", name: "Scott Ensminger", role: "Founder", bio: "Twenty years in cattle operations, wildlife ecology, public health, and wastewater before founding ITC. He was the customer this company was built to serve — and leads strategy and commercial from farm to lab to boardroom." },
+  { initials: "SE", name: "Scott Ensminger", role: "Founder", bio: "Scott has a BS in Biology with an emphasis in organic chemistry from Iowa State University. His role is to identify emerging technology and imagine how to apply it to solve real-world problems. His experience spans on-site wastewater, drinking water, stormwater, and extensive study of biological soil and water systems in agriculture during 20 years as a commercial farmer." },
   { initials: "JS", name: "Jeff Streck", role: "Sales & Marketing", bio: "Based in Colorado, Jeff builds ITC's commercial relationships and owns the external brand. He connects the portfolio with buyers across agriculture, water, and municipal markets." },
   { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter runs logistics, partnerships, and the operational backbone. When ITC makes a commitment, he's the reason it holds — from distribution through partner coordination." },
   { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie bridges the lab and the field, translating the science behind the portfolio into language operators, municipalities, and buyers can act on. The technology gets understood as deeply as it gets sold." },
