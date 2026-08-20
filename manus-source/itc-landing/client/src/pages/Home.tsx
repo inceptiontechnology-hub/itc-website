@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Check, CheckCircle, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ─── Contact form ─────────────────────────────────────────────────────────
@@ -340,8 +340,18 @@ export default function Home() {
                   borderTopColor: GREEN,
                   padding: "36px 32px",
                   height: "100%",
+                  position: "relative",
                 }}>
-                  <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px" }}>{t.keyword}</h3>
+                  <div aria-label="ITC requirement" title="ITC requirement" style={{
+                    position: "absolute", top: "22px", right: "22px",
+                    width: "34px", height: "34px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "#15805b", color: WHITE,
+                    boxShadow: "0 4px 12px rgba(21,128,91,0.18)",
+                  }}>
+                    <Check size={20} strokeWidth={2.5} aria-hidden="true" />
+                  </div>
+                  <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px", paddingRight: "48px" }}>{t.keyword}</h3>
                   <p style={{ fontSize: "0.68rem", letterSpacing: "0.28em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "20px" }}>{t.tagline}</p>
                   <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                   <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{t.body}</p>
