@@ -99,7 +99,7 @@ const tenants = [
   {
     keyword: "Enduring.",
     tagline: "Built to last",
-    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
+    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time, not just on the day it ships.",
   },
 ];
 
