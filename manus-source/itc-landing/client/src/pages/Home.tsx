@@ -318,7 +318,7 @@ export default function Home() {
                 ITC connects proven analytical and environmental technologies with the scientific expertise, business experience, and operational credibility to deploy them at scale.
               </p>
               <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, marginTop: "18px", fontStyle: "italic", maxWidth: "680px" }}>
-                Every technology in our portfolio must clear two bars: better on performance, and better on economics. We don't accept trade-offs between the two.
+                Every technology in our portfolio must clear two bars: better on performance, and better on economics than anything else out there. We don't accept trade-offs between the two.
               </p>
             </FadeUp>
           </div>
