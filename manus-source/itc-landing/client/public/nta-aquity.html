@@ -4,382 +4,117 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NTA + Aquity — Source Intelligence | ITC</title>
-<meta name="description" content="Screen 72,000+ organic compounds from a single 25 mL water sample. CEC's Aquity platform maps every hit back to its industrial and geographic source. U.S. distribution by ITC." />
+<meta name="description" content="Screen 72,000+ organic compounds from a single 25 mL sample, then turn the results into source intelligence with Aquity. U.S. distribution by ITC." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --navy:#132040;
-    --green:#1a6b3c;
-    --white:#ffffff;
-    --off:#eef3ef;
-    --muted:#445060;
-    --border:#b8c4d0;
-    --font-display:'Libre Baskerville',Georgia,serif;
-    --font-body:'Lora',Georgia,serif;
-    --font-brand:'Orbitron',sans-serif;
-    --maxw:1100px;
-    --ease:cubic-bezier(.25,.46,.45,.94);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:var(--font-body);color:var(--navy);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.7;font-size:17px;}
-  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;margin:0;font-weight:700;}
-  p{margin:0 0 1.1em;}
-  a{color:var(--green);text-decoration:none;transition:color .2s;}
-  a:hover{color:#145c32;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-
-  /* ─── Nav ─────────────────────────────── */
-  .site-nav{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--navy);padding:16px 0;}
-  .site-nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-  .nav-brand{text-decoration:none;}
-  .nav-brand .mark{font-family:var(--font-brand);font-size:1.9rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;display:block;}
-  .nav-brand .sub{font-size:.5rem;letter-spacing:.22em;color:rgba(255,255,255,.48);margin-top:3px;text-transform:uppercase;font-family:var(--font-body);line-height:1.5;display:block;}
-  .nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;}
-  .nav-links a{color:rgba(255,255,255,.68);font-family:var(--font-body);font-size:.9rem;letter-spacing:.02em;}
-  .nav-links a:hover{color:#fff;}
-  .nav-links .cta a{border:1px solid rgba(255,255,255,.35);padding:7px 16px;color:rgba(255,255,255,.85)!important;transition:background .2s,border-color .2s;}
-  .nav-links .cta a:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff!important;}
-
-  /* ─── Page head ──────────────────────── */
-  .page-head{background:var(--navy);color:#fff;padding:130px 0 72px;}
-  .breadcrumb{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px;font-family:var(--font-body);}
-  .breadcrumb a{color:rgba(255,255,255,.5);}
-  .breadcrumb a:hover{color:rgba(255,255,255,.8);}
-  .breadcrumb .sep{margin:0 .5em;opacity:.3;}
-  .eyebrow-light{font-size:.64rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:var(--font-body);font-weight:800;display:block;margin-bottom:18px;}
-  .page-head h1{font-size:clamp(2rem,4.5vw,3.2rem);color:#fff;max-width:22ch;letter-spacing:.01em;}
-  .page-head .lead{font-size:clamp(1rem,1.4vw,1.15rem);color:rgba(255,255,255,.6);max-width:58ch;margin-top:20px;line-height:1.88;font-style:italic;}
-
-  /* ─── Stats band ─────────────────────── */
-  .stats-band{background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-  .stat{padding:44px 28px;border-left:1px solid var(--border);}
-  .stat:first-child{border-left:0;padding-left:0;}
-  .stat__num{font-family:var(--font-display);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:700;color:var(--navy);line-height:1;}
-  .stat__num b{color:var(--green);}
-  .stat__cap{font-size:.78rem;color:var(--muted);margin-top:10px;letter-spacing:.03em;}
-
-  /* ─── Sections ───────────────────────── */
-  .section{padding:96px 0;}
-  .section--off{background:var(--off);}
-  .section--navy{background:var(--navy);color:#fff;}
-  .eyebrow{font-size:.64rem;letter-spacing:.36em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;display:block;margin-bottom:14px;}
-  .section--navy .eyebrow{color:rgba(255,255,255,.5);}
-  h2.title{font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:700;line-height:1.1;color:var(--navy);margin-bottom:20px;}
-  .section--navy h2.title{color:#fff;}
-  .divider{height:1px;background:var(--border);margin:28px 0 48px;}
-  .section--navy .divider{background:rgba(255,255,255,.12);}
-  .lead-text{font-size:clamp(1rem,1.4vw,1.12rem);color:var(--muted);max-width:62ch;line-height:1.9;font-style:italic;}
-  .section--navy .lead-text{color:rgba(255,255,255,.6);}
-
-  /* ─── Prose ──────────────────────────── */
-  .prose p{font-size:1.04rem;color:var(--muted);line-height:1.9;font-style:italic;max-width:66ch;}
-  .prose p b{color:var(--navy);font-style:normal;}
-  .section--navy .prose p{color:rgba(255,255,255,.65);}
-  .section--navy .prose p b{color:#fff;}
-
-  /* ─── Two-col layout ─────────────────── */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-
-  /* ─── Cards grid ─────────────────────── */
-  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:44px;}
-  .section--off .card-grid{background:rgba(180,200,190,.35);}
-  .section--navy .card-grid{background:rgba(255,255,255,.1);}
-  .card{background:var(--white);padding:32px 28px;}
-  .section--off .card{background:#f0f5f1;}
-  .section--navy .card{background:#1b2e52;}
-  .card__mark{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:12px;display:block;}
-  .section--navy .card__mark{color:rgba(255,255,255,.5);}
-  .card h3{font-size:1.15rem;color:var(--navy);margin-bottom:10px;}
-  .section--navy .card h3{color:#fff;}
-  .card p{font-size:.93rem;color:var(--muted);margin:0;line-height:1.85;}
-  .section--navy .card p{color:rgba(255,255,255,.6);}
-
-  /* ─── Panel list ─────────────────────── */
-  .panel{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);padding:26px 30px;margin-bottom:12px;transition:border-top-color .25s,box-shadow .25s;}
-  .panel:hover{border-top-color:var(--green);box-shadow:0 6px 24px rgba(19,32,64,.08);}
-  .section--off .panel{background:var(--off);}
-  .panel__tag{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:8px;display:block;}
-  .panel h3{font-size:1.08rem;color:var(--navy);margin-bottom:7px;}
-  .panel p{font-size:.93rem;color:var(--muted);margin:0;line-height:1.85;}
-
-  /* ─── Framing block ──────────────────── */
-  .framing{border-left:4px solid var(--green);padding:22px 26px;background:var(--off);margin-top:44px;max-width:72ch;}
-  .framing h4{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:10px;}
-  .framing p{font-size:.95rem;color:var(--muted);margin:0;line-height:1.85;}
-  .framing p b{color:var(--navy);}
-
-  /* ─── Chip tags ──────────────────────── */
-  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
-  .chip{font-size:.72rem;color:var(--muted);background:var(--off);border:1px solid var(--border);padding:5px 12px;letter-spacing:.02em;font-family:var(--font-body);}
-  .section--navy .chip{color:rgba(255,255,255,.75);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);}
-
-  /* ─── CTA band ───────────────────────── */
-  .cta-band{background:var(--navy);padding:96px 0;text-align:center;}
-  .cta-band .eyebrow{color:rgba(255,255,255,.5);}
-  .cta-band h2{color:#fff;max-width:22ch;margin:0 auto 20px;}
-  .cta-band .lead-text{max-width:52ch;margin:0 auto 36px;}
-
-  /* ─── Buttons ────────────────────────── */
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 40px;font-family:var(--font-body);font-size:.95rem;font-weight:500;letter-spacing:.06em;text-decoration:none;transition:background .2s,color .2s,border-color .2s;cursor:pointer;}
-  .btn--white{background:var(--white);color:var(--navy);}
-  .btn--white:hover{background:var(--green);color:#fff;}
-  .btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);}
-  .btn--ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff;}
-  .btn--green{background:var(--green);color:#fff;}
-  .btn--green:hover{background:#145c32;color:#fff;}
-
-  /* ─── Back link ──────────────────────── */
-  .back-link{display:inline-flex;align-items:center;gap:.5em;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-top:14px;}
-  .back-link svg{transform:rotate(180deg);}
-  .back-link:hover{color:#145c32;}
-
-  /* ─── Footer ─────────────────────────── */
-  .site-footer{background:#0b1628;border-top:1px solid rgba(255,255,255,.06);padding:28px 0;}
-  .site-footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;}
-  .footer-brand{font-family:var(--font-brand);font-size:1.2rem;font-weight:700;color:#fff;}
-  .footer-mission{font-size:.78rem;color:rgba(255,255,255,.22);font-style:italic;}
-  .footer-copy{font-size:.7rem;color:rgba(255,255,255,.16);}
-
-  /* ─── Reveal ─────────────────────────── */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-  .reveal.in{opacity:1;transform:none;}
-  .reveal[data-d="1"]{transition-delay:.08s;}
-  .reveal[data-d="2"]{transition-delay:.16s;}
-
-  /* ─── Responsive ─────────────────────── */
-  @media(max-width:760px){
-    .stats-grid{grid-template-columns:repeat(2,1fr);}
-    .stat:nth-child(3){border-left:1px solid var(--border);}
-    .card-grid{grid-template-columns:1fr;}
-    .two-col{grid-template-columns:1fr;gap:40px;}
-    .nav-links{display:none;}
-    .section{padding:72px 0;}
-  }
-  @media(max-width:480px){
-    .stats-grid{grid-template-columns:1fr;}
-    .stat{border-left:0!important;padding-left:0!important;border-top:1px solid var(--border);}
-    .stat:first-child{border-top:0;}
-  }
+:root{--navy:#132040;--navy2:#091529;--green:#1a6b3c;--emerald:#1b8a61;--white:#fff;--off:#eef3ef;--muted:#445060;--border:#b8c4d0;--display:'Libre Baskerville',Georgia,serif;--body:'Lora',Georgia,serif;--brand:'Orbitron',sans-serif;--max:1120px;--ease:cubic-bezier(.25,.46,.45,.94)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--navy);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}h1,h2,h3,p{margin-top:0}.wrap{max-width:var(--max);margin:auto;padding:0 28px}.eyebrow{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0 0 14px}.title{font-family:var(--display);font-size:clamp(2rem,3.8vw,3.25rem);line-height:1.12;margin:0;color:var(--navy)}.lead{max-width:690px;color:var(--muted);font-size:1.04rem;line-height:1.9;font-style:italic}.section{padding:100px 0}.section.off{background:var(--off)}.section.navy{background:var(--navy);color:#fff}.section.navy .title{color:#fff}.section.navy .eyebrow{color:#75c59d}.section.navy .lead{color:rgba(255,255,255,.68)}.section-head{margin-bottom:50px}.section-head.center{text-align:center}.section-head.center .lead{margin:18px auto 0}.rule{height:1px;background:var(--border);margin-top:28px}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.in{opacity:1;transform:none}
+/* navigation */
+.nav{position:absolute;z-index:30;left:0;right:0;top:0;border-bottom:1px solid rgba(255,255,255,.12)}.nav .wrap{height:92px;display:flex;align-items:center;justify-content:space-between}.brand strong{font-family:var(--brand);font-size:2rem;letter-spacing:.07em;color:#fff;display:block;line-height:1}.brand span{display:block;color:rgba(255,255,255,.5);font-size:.47rem;text-transform:uppercase;letter-spacing:.24em;line-height:1.5;margin-top:5px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:rgba(255,255,255,.76);font-size:.84rem}.nav-links a:hover{color:#fff}.nav-links .contact{border:1px solid rgba(255,255,255,.5);padding:9px 17px}
+/* hero */
+.hero{position:relative;min-height:760px;overflow:hidden;color:#fff;background:linear-gradient(112deg,#071326 0%,#0d2542 50%,#0b2639 100%);display:flex;align-items:center;padding:145px 0 85px}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,13,27,.22),rgba(4,13,27,.04) 55%,rgba(4,13,27,.22));pointer-events:none}.hero-art{position:absolute;inset:0;opacity:.9}.hero-art svg{width:100%;height:100%;display:block}.hero-copy{position:relative;z-index:2;max-width:860px}.crumb{font-size:.57rem;text-transform:uppercase;letter-spacing:.22em;color:rgba(255,255,255,.5);margin-bottom:38px}.crumb a{color:rgba(255,255,255,.72)}.hero .eyebrow{color:#7ed3aa}.hero h1{font-family:var(--display);font-size:clamp(2.7rem,5.8vw,5.25rem);line-height:1.08;letter-spacing:-.02em;max-width:900px;margin:0;text-shadow:0 5px 30px rgba(0,0,0,.32)}.hero .intro{max-width:790px;color:rgba(255,255,255,.78);font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.85;margin:28px 0 0;font-style:italic}.hero-note{margin-top:32px;display:flex;align-items:center;gap:12px;font-size:.67rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.6)}.hero-note:before{content:"";width:42px;height:1px;background:#76d1a6}
+/* stats */
+.stats{background:#fff;border-bottom:1px solid var(--border)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{padding:38px 28px;border-left:1px solid var(--border)}.stat:first-child{border-left:0}.stat strong{font-family:var(--display);display:block;font-size:clamp(1.75rem,2.7vw,2.45rem);line-height:1;color:var(--navy)}.stat strong em{font-style:normal;color:var(--green)}.stat span{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);display:block;margin-top:10px}
+/* problem */
+.problem-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:75px;align-items:center}.problem-copy p{color:var(--muted);line-height:1.9;font-style:italic}.problem-copy strong{color:var(--navy);font-style:normal}.comparison{display:grid;gap:14px}.compare{position:relative;padding:27px 28px;border:1px solid var(--border);background:#fff}.compare.good{border-left:4px solid var(--green);box-shadow:0 10px 28px rgba(19,32,64,.08)}.compare.bad{border-left:4px solid #8490a0}.compare small{display:block;text-transform:uppercase;letter-spacing:.18em;font-size:.59rem;font-weight:800;color:var(--muted);margin-bottom:9px}.compare.good small{color:var(--green)}.compare h3{font-family:var(--display);font-size:1.16rem;margin:0 0 7px}.compare p{font-size:.88rem;color:var(--muted);margin:0}
+/* process */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);background:#fff}.step{padding:32px 25px;min-height:250px;border-left:1px solid var(--border);position:relative}.step:first-child{border-left:0}.step-num{font-family:var(--brand);font-size:.68rem;letter-spacing:.15em;color:var(--green);margin-bottom:32px}.step-icon{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--green);margin-bottom:22px}.step h3{font-family:var(--display);font-size:1.08rem;margin:0 0 10px}.step p{color:var(--muted);font-size:.87rem;line-height:1.75;margin:0}.step:not(:last-child):after{content:"→";position:absolute;right:-11px;top:47px;z-index:2;width:22px;height:22px;background:#fff;color:var(--green);display:flex;align-items:center;justify-content:center}
+/* signature example */
+.signature{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;gap:12px}.sig-card{background:#fff;border:1px solid rgba(255,255,255,.18);padding:28px 22px;min-height:160px;position:relative}.sig-card:not(:last-child):after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:#77cda4;font-size:1.1rem;z-index:3}.sig-card small{display:block;color:#78cfa6;text-transform:uppercase;font-size:.57rem;letter-spacing:.16em;font-weight:800;margin-bottom:14px}.sig-card strong{display:block;color:#fff;font-family:var(--display);font-size:1rem;line-height:1.55}.sig-card span{display:block;color:rgba(255,255,255,.55);font-size:.78rem;margin-top:8px}
+/* use cases */
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.use{border:1px solid var(--border);border-top:3px solid var(--green);padding:27px 25px;background:#fff}.use h3{font-family:var(--display);font-size:1.08rem;margin:0 0 9px}.use p{font-size:.87rem;color:var(--muted);line-height:1.75;margin:0}
+/* categories */
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.12)}.category{background:#182a4c;padding:27px 25px;min-height:145px}.category-icon{width:34px;height:34px;border:1px solid rgba(117,197,157,.55);color:#75c59d;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1rem}.category h3{font-family:var(--display);font-size:1rem;color:#fff;margin:0 0 8px}.category p{color:rgba(255,255,255,.55);font-size:.81rem;line-height:1.65;margin:0}.more{text-align:center;color:rgba(255,255,255,.62);font-style:italic;margin:30px 0 0}
+/* attribution */
+.attribution{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:center}.node{text-align:center;position:relative;padding:20px 10px}.node:not(:last-child):after{content:"";height:1px;background:var(--border);position:absolute;top:44px;left:68%;right:-32%}.node-dot{width:50px;height:50px;margin:0 auto 17px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--off);border:1px solid var(--border);color:var(--green);font-family:var(--brand);font-size:.66rem;font-weight:700;position:relative;z-index:2}.node:last-child .node-dot{background:var(--green);border-color:var(--green);color:#fff}.node h3{font-family:var(--display);font-size:.88rem;margin:0}.industries{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:34px}.chip{border:1px solid var(--border);background:#fff;padding:7px 13px;color:var(--muted);font-size:.72rem}
+/* sampling */
+.sample-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border)}.sample{padding:25px 20px;border-left:1px solid var(--border);border-top:1px solid var(--border);min-height:115px}.sample:nth-child(-n+4){border-top:0}.sample:nth-child(4n+1){border-left:0}.sample strong{font-family:var(--display);font-size:.92rem}.sample span{display:block;color:var(--muted);font-size:.76rem;margin-top:7px}
+/* CTA/footer */
+.cta{background:linear-gradient(120deg,var(--navy),#183653);color:#fff;padding:96px 0;text-align:center}.cta h2{font-family:var(--display);font-size:clamp(2rem,4vw,3.35rem);margin:0 auto 18px;max-width:760px}.cta p{color:rgba(255,255,255,.68);max-width:620px;margin:0 auto 32px;font-style:italic}.button{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--navy);padding:14px 30px;font-size:.78rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700}.button:hover{background:var(--green);color:#fff}.footer{background:#071221;color:rgba(255,255,255,.4);padding:28px 0;font-size:.7rem}.footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer strong{font-family:var(--brand);color:#fff;font-size:1.1rem;letter-spacing:.06em}
+@media(max-width:850px){.nav-links{display:none}.hero{min-height:700px}.problem-grid{grid-template-columns:1fr;gap:45px}.process{grid-template-columns:repeat(2,1fr)}.step:nth-child(3){border-left:0;border-top:1px solid var(--border)}.step:nth-child(4){border-top:1px solid var(--border)}.signature{grid-template-columns:repeat(2,1fr)}.sig-card:nth-child(2):after{display:none}.use-grid,.category-grid{grid-template-columns:repeat(2,1fr)}.attribution{grid-template-columns:1fr}.node:not(:last-child):after{width:1px;height:24px;top:auto;bottom:-12px;left:50%;right:auto}.sample-grid{grid-template-columns:repeat(2,1fr)}.sample:nth-child(n){border-left:1px solid var(--border);border-top:1px solid var(--border)}.sample:nth-child(-n+2){border-top:0}.sample:nth-child(2n+1){border-left:0}}
+@media(max-width:580px){.wrap{padding:0 20px}.section{padding:74px 0}.hero{min-height:680px;padding-top:125px}.hero h1{font-size:2.55rem}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-top:1px solid var(--border);border-left:0}.stat:nth-child(4){border-top:1px solid var(--border)}.process,.signature,.use-grid,.category-grid,.sample-grid{grid-template-columns:1fr}.step:nth-child(n),.sample:nth-child(n){border-left:0;border-top:1px solid var(--border)}.step:first-child,.sample:first-child{border-top:0}.step:not(:last-child):after,.sig-card:not(:last-child):after{display:none}.footer .wrap{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
-
-<!-- ─── Nav ─────────────────────────────────── -->
-<nav class="site-nav">
-  <div class="wrap">
-    <a href="index.html" class="nav-brand">
-      <span class="mark">ITC</span>
-      <span class="sub">Inception Technology<br>Company, LLC</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="aims.html">AIMS</a></li>
-      <li><a href="rbt.html">Rapid Bacterial Test</a></li>
-      <li class="cta"><a href="index.html#contact">Contact</a></li>
-    </ul>
+<nav class="nav"><div class="wrap"><a class="brand" href="/"><strong>ITC</strong><span>Inception Technology<br>Company, LLC</span></a><div class="nav-links"><a href="/">Home</a><a href="/#technologies">Technologies</a><a href="/aims.html">AIMS</a><a href="/rbt.html">Rapid Bacterial Test</a><a class="contact" href="/#contact">Contact Us</a></div></div></nav>
+<header class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="water" cx="50%" cy="53%" r="58%"><stop offset="0" stop-color="#2f7891" stop-opacity=".42"/><stop offset=".35" stop-color="#153c59" stop-opacity=".28"/><stop offset="1" stop-color="#071326" stop-opacity="0"/></radialGradient>
+        <linearGradient id="drop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c7f2ed" stop-opacity=".85"/><stop offset=".45" stop-color="#499bb0" stop-opacity=".6"/><stop offset="1" stop-color="#0a314d" stop-opacity=".15"/></linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="1600" height="800" fill="url(#water)"/>
+      <g fill="none" stroke="#71c9c0" opacity=".27">
+        <ellipse cx="1120" cy="600" rx="390" ry="76"/><ellipse cx="1120" cy="600" rx="285" ry="54"/><ellipse cx="1120" cy="600" rx="180" ry="32"/><ellipse cx="1120" cy="600" rx="88" ry="15"/>
+      </g>
+      <path d="M1120 165 C1080 236 1020 302 1020 385 C1020 443 1064 487 1120 487 C1176 487 1220 443 1220 385 C1220 302 1160 236 1120 165Z" fill="url(#drop)" stroke="#bdeee8" stroke-opacity=".56" filter="url(#glow)"/>
+      <g stroke="#71c9c0" stroke-opacity=".24" fill="#8ce5d5">
+        <path d="M775 230L920 315L1025 268M1215 275L1350 205L1450 310M820 510L970 445M1250 450L1440 530M980 145L1090 255"/>
+        <circle cx="775" cy="230" r="4"/><circle cx="920" cy="315" r="5"/><circle cx="1025" cy="268" r="3"/><circle cx="1215" cy="275" r="4"/><circle cx="1350" cy="205" r="5"/><circle cx="1450" cy="310" r="3"/><circle cx="820" cy="510" r="4"/><circle cx="970" cy="445" r="3"/><circle cx="1250" cy="450" r="4"/><circle cx="1440" cy="530" r="5"/><circle cx="980" cy="145" r="3"/><circle cx="1090" cy="255" r="4"/>
+      </g>
+    </svg>
   </div>
-</nav>
-
-<!-- ─── Page head ─────────────────────────────── -->
-<header class="page-head">
-  <div class="wrap">
-    <div class="breadcrumb reveal">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <a href="portfolio.html">Portfolio</a><span class="sep">/</span>NTA + Aquity
-    </div>
-    <span class="eyebrow-light reveal">Portfolio · CEC Analytics</span>
-    <h1 class="reveal" data-d="1">NTA + Aquity — Non-Targeted Analysis Platform</h1>
-    <p class="lead reveal" data-d="1">Cast the widest possible net. 72,000+ organic compounds screened from a single 25 mL sample — then every hit traced back to its source by industry and geography.</p>
+  <div class="wrap hero-copy">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; NTA + Aquity</div>
+    <p class="eyebrow reveal">Non-Targeted Analysis + Source Intelligence</p>
+    <h1 class="reveal">Find what you weren’t looking for. Understand where it came from.</h1>
+    <p class="intro reveal">Non-Targeted Analysis screens a single 25 mL sample across 72,000+ organic compounds. Aquity turns those results into source intelligence—connecting detected chemistry to industries, locations, treatment impacts, and potential dischargers.</p>
+    <div class="hero-note reveal">CEC technology · U.S. distribution by ITC</div>
   </div>
 </header>
-
-<!-- ─── Stats band ────────────────────────────── -->
-<section class="stats-band">
-  <div class="wrap stats-grid">
-    <div class="stat reveal">
-      <div class="stat__num">72,000<b>+</b></div>
-      <div class="stat__cap">Compounds screened per sample</div>
-    </div>
-    <div class="stat reveal" data-d="1">
-      <div class="stat__num">25 <b>mL</b></div>
-      <div class="stat__cap">Sample size required</div>
-    </div>
-    <div class="stat reveal" data-d="1">
-      <div class="stat__num">1–2 <b>wk</b></div>
-      <div class="stat__cap">Lab turnaround from receipt</div>
-    </div>
-    <div class="stat reveal" data-d="2">
-      <div class="stat__num"><b>Source</b></div>
-      <div class="stat__cap">Attribution by industry + geography</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── How it works ──────────────────────────── -->
-<section class="section">
-  <div class="wrap">
-    <span class="eyebrow reveal">How it works</span>
-    <h2 class="title reveal" data-d="1">A screen wide enough to catch what you didn't know to look for.</h2>
-    <div class="divider"></div>
-    <div class="two-col">
-      <div class="prose reveal">
-        <p><b>Non-targeted analysis (NTA)</b> doesn't require a predefined compound list. It sweeps across the full organic chemical landscape — detecting, identifying, and ranking 72,000+ compounds from a single 25 mL water sample.</p>
-        <p>Those results feed into the <b>Aquity platform</b>, which cross-references detected compounds against industrial and geographic data to identify likely source industries — and name specific facilities. Operators stop chasing unknowns and start taking action.</p>
-        <p>Where conventional labs tell you what was found, Aquity tells you <b>where it came from and why it matters</b> for treatment operations.</p>
-      </div>
-      <div>
-        <div class="framing reveal" data-d="1">
-          <h4>How this works</h4>
-          <p>Analysis is performed by <b>CEC Analytics</b> at their Calgary, AB facility. Inception Technology Company is a U.S. distributor — we connect municipalities, utilities, and industry with the technology and manage deployment. ITC does not operate the instruments or run the analysis itself.</p>
-        </div>
-        <a href="portfolio.html" class="back-link reveal" data-d="1" style="margin-top:28px;">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back to portfolio
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── What Aquity identifies ────────────────── -->
-<section class="section section--off">
-  <div class="wrap">
-    <span class="eyebrow reveal">What Aquity identifies</span>
-    <h2 class="title reveal" data-d="1">Compound categories and their treatment implications.</h2>
-    <div class="divider"></div>
-    <div class="card-grid">
-      <div class="card reveal">
-        <span class="card__mark">Biocides</span>
-        <h3>Disinfectants & antimicrobials</h3>
-        <p>Highest effluent risk category. Persists through treatment and interferes with biological processes.</p>
-      </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Foamants & emulsifiers</span>
-        <h3>Surfactant-class compounds</h3>
-        <p>Linked to foaming events and nitrification inhibition. Traceable to specific industrial dischargers via trunk line sampling.</p>
-      </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">PFAS & fluorinated</span>
-        <h3>Regulated & emerging fluorinated compounds</h3>
-        <p>Tracked with EPA DTXSID registry linkage. Regulatory alerts flagged for high-concern categories.</p>
-      </div>
-      <div class="card reveal">
-        <span class="card__mark">Pharmaceuticals</span>
-        <h3>Human & veterinary medications</h3>
-        <p>Fingerprinted by drug class with both human and veterinary compound identification.</p>
-      </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Agricultural runoff</span>
-        <h3>Herbicides, pesticides & transformation products</h3>
-        <p>Agricultural input compounds and their breakdown products, with seasonal trend capability.</p>
-      </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Industrial & structural</span>
-        <h3>Flame retardants, crosslinkers & stabilizers</h3>
-        <p>Compounds from construction, electronics, textiles, and plastics manufacturing — ranked by exposure and severity.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Source attribution ────────────────────── -->
-<section class="section section--navy">
-  <div class="wrap">
-    <span class="eyebrow reveal">Source attribution</span>
-    <h2 class="title reveal" data-d="1">Up to 25+ industries identified per sample.</h2>
-    <div class="divider"></div>
-    <p class="lead-text reveal" data-d="1">Aquity doesn't just list compounds — it identifies which industries are contributing them, and can name specific facilities with their risk profiles. This is what no other platform on the market delivers.</p>
-    <div class="chip-row reveal" data-d="1">
-      <span class="chip">Paints & coatings</span>
-      <span class="chip">Textiles</span>
-      <span class="chip">Food & beverage</span>
-      <span class="chip">Household cleaning</span>
-      <span class="chip">Plastics</span>
-      <span class="chip">Electronics</span>
-      <span class="chip">Construction</span>
-      <span class="chip">Pharmaceuticals</span>
-      <span class="chip">Oil & gas</span>
-      <span class="chip">Rubber</span>
-      <span class="chip">Adhesives</span>
-      <span class="chip">Personal care</span>
-      <span class="chip">Agriculture</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Sample types ──────────────────────────── -->
-<section class="section">
-  <div class="wrap">
-    <span class="eyebrow reveal">What can be tested</span>
-    <h2 class="title reveal" data-d="1">Works across every point in the treatment process.</h2>
-    <div class="divider"></div>
-    <div class="two-col">
-      <div>
-        <div class="panel reveal">
-          <span class="panel__tag">Sample matrices</span>
-          <h3>Water & wastewater streams</h3>
-          <p>Water, wastewater, biosolids, foam, FOG (fats/oils/grease), storm water, and environmental samples.</p>
-        </div>
-        <div class="panel reveal" data-d="1">
-          <span class="panel__tag">Sample locations</span>
-          <h3>Any point in the system</h3>
-          <p>Influent, effluent, secondary/tertiary treatment, digesters, pump stations, manholes, compliance points, industrial effluent, and storm water outfalls.</p>
-        </div>
-      </div>
-      <div>
-        <div class="panel reveal">
-          <span class="panel__tag">Real-world use cases</span>
-          <h3>Foaming & nitrification inhibition</h3>
-          <p>Traced to specific source via trunk line comparison — compound signature identified, industrial discharger named.</p>
-        </div>
-        <div class="panel reveal" data-d="1">
-          <span class="panel__tag">Real-world use cases</span>
-          <h3>WET test compliance & COD burden</h3>
-          <p>Individual industrial dischargers identified with toxicity risk profiles. Oxygen demand tracked by source industry over time.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CTA band ──────────────────────────────── -->
-<section class="cta-band">
-  <div class="wrap">
-    <span class="eyebrow reveal">Start a conversation</span>
-    <h2 class="title reveal" data-d="1">We'd like to hear what you're working on.</h2>
-    <p class="lead-text reveal" data-d="1">Operators, municipalities, innovators, investors — there's no wrong reason to get in touch.</p>
-    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;" class="reveal" data-d="2">
-      <a href="index.html#contact" class="btn btn--white">Get in touch <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="portfolio.html" class="btn btn--ghost">View full portfolio</a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Footer ────────────────────────────────── -->
-<footer class="site-footer">
-  <div class="wrap">
-    <span class="footer-brand">ITC</span>
-    <span class="footer-mission">Innovation through Economically and Ecologically Advantaged Technology</span>
-    <span class="footer-copy">&copy; <span id="yr"></span> Inception Technology Company</span>
-  </div>
-</footer>
-
+<section class="stats"><div class="wrap stats-grid">
+  <div class="stat"><strong>72,000<em>+</em></strong><span>Compounds screened</span></div>
+  <div class="stat"><strong>25 <em>mL</em></strong><span>Sample size</span></div>
+  <div class="stat"><strong>1–2 <em>wk</em></strong><span>Lab turnaround</span></div>
+  <div class="stat"><strong><em>Source</em></strong><span>Intelligence—not just data</span></div>
+</div></section>
+<section class="section"><div class="wrap problem-grid">
+  <div class="problem-copy reveal"><p class="eyebrow">The problem</p><h2 class="title">You can’t test for what you don’t know is there.</h2><div class="rule"></div><p style="margin-top:28px">Traditional targeted testing starts with a question: <strong>“Is compound X present?”</strong> That works when you already know what to look for. It is much less useful when you are trying to explain unexplained foaming, toxicity, COD burden, nitrification problems, a WET failure, or an unknown industrial discharge.</p><p><strong>NTA starts without the target list.</strong></p></div>
+  <div class="comparison reveal"><div class="compare bad"><small>Traditional targeted testing</small><h3>“Is compound X present?”</h3><p>Answers a predefined question about a predefined list.</p></div><div class="compare good"><small>Non-Targeted Analysis</small><h3>What is present in this sample?</h3><p>Screens across 72,000+ organic compounds, then prioritizes what matters.</p></div></div>
+</div></section>
+<section class="section off"><div class="wrap"><div class="section-head center reveal"><p class="eyebrow">How it works</p><h2 class="title">From one sample to actionable intelligence.</h2><p class="lead">A wide chemical screen becomes a practical path from detection to investigation.</p></div><div class="process">
+  <div class="step reveal"><div class="step-num">01</div><div class="step-icon">◒</div><h3>25 mL sample</h3><p>Collect water from the point in the system you need to understand.</p></div>
+  <div class="step reveal"><div class="step-num">02</div><div class="step-icon">⌁</div><h3>Non-targeted analysis</h3><p>The sample is screened across 72,000+ organic compounds.</p></div>
+  <div class="step reveal"><div class="step-num">03</div><div class="step-icon">⌘</div><h3>Aquity interpretation</h3><p>Detected chemistry is mapped against industrial, geographic, and regulatory data.</p></div>
+  <div class="step reveal"><div class="step-num">04</div><div class="step-icon">✓</div><h3>Source intelligence</h3><p>See what was detected, where it is concentrated, and why it matters.</p></div>
+</div></div></section>
+<section class="section navy"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Example follow-through</p><h2 class="title">Following a chemical signature.</h2><p class="lead">Compare sample points, connect compounds to industry, and narrow a broad signal into an actionable lead.</p></div><div class="signature">
+  <div class="sig-card"><small>Detected compound</small><strong>Sodium bis(2-ethylhexyl) sulfosuccinate</strong><span>A chemical signal appears in the screen.</span></div>
+  <div class="sig-card"><small>Industry association</small><strong>Electronics manufacturing</strong><span>Aquity maps likely commercial uses.</span></div>
+  <div class="sig-card"><small>System comparison</small><strong>Higher at Sample Point 4</strong><span>Trunk-line sampling narrows the geography.</span></div>
+  <div class="sig-card"><small>Actionable lead</small><strong>Investigate a specific facility</strong><span>Operators have a focused next step.</span></div>
+</div></div></section>
+<section class="section"><div class="wrap"><div class="section-head center reveal"><p class="eyebrow">What it can help solve</p><h2 class="title">Answers for the problems target lists miss.</h2></div><div class="use-grid">
+  <div class="use"><h3>Foaming</h3><p>Identify surfactants, emulsifiers, and other chemistry associated with persistent foaming—and trace likely sources.</p></div>
+  <div class="use"><h3>Nitrification inhibition</h3><p>Find chemical signals that may interfere with biological treatment and investigate the inputs behind them.</p></div>
+  <div class="use"><h3>WET failures & toxicity</h3><p>Look beyond standard target lists for compounds contributing to whole-effluent toxicity and related impacts.</p></div>
+  <div class="use"><h3>COD burden</h3><p>Understand which chemical inputs may be contributing disproportionate oxygen demand.</p></div>
+  <div class="use"><h3>FOG & process upsets</h3><p>Investigate unexpected burdens associated with fats, oils, grease, and other operational disruptions.</p></div>
+  <div class="use"><h3>Industrial discharge</h3><p>Compare sampling points to narrow unknown point and non-point source contributions.</p></div>
+</div></div></section>
+<section class="section navy"><div class="wrap"><div class="section-head center reveal"><p class="eyebrow">What Aquity identifies</p><h2 class="title">One analysis. An enormous chemical landscape.</h2></div><div class="category-grid">
+  <div class="category"><div class="category-icon">✦</div><h3>Biocides & disinfectants</h3><p>Signals with potential biological treatment and effluent implications.</p></div>
+  <div class="category"><div class="category-icon">≈</div><h3>Surfactants & emulsifiers</h3><p>Foamants and related compounds connected to industrial processes.</p></div>
+  <div class="category"><div class="category-icon">F</div><h3>PFAS & fluorinated compounds</h3><p>High-concern chemistry linked to regulatory identifiers.</p></div>
+  <div class="category"><div class="category-icon">+</div><h3>Pharmaceuticals</h3><p>Human and veterinary medication fingerprints by drug class.</p></div>
+  <div class="category"><div class="category-icon">⌁</div><h3>Agricultural inputs</h3><p>Herbicides, pesticides, and transformation products.</p></div>
+  <div class="category"><div class="category-icon">◇</div><h3>Industrial materials</h3><p>Crosslinkers, flame retardants, stabilizers, and structural chemistry.</p></div>
+</div><p class="more">…and thousands more compounds across the organic chemical landscape—all in a single screening.</p></div></section>
+<section class="section off"><div class="wrap"><div class="section-head center reveal"><p class="eyebrow">Source attribution</p><h2 class="title">Finding the compound is only the beginning.</h2><p class="lead">Aquity can identify 25+ contributing industries per sample and support upstream investigation toward likely dischargers.</p></div><div class="attribution">
+  <div class="node"><div class="node-dot">01</div><h3>Unknown chemistry</h3></div><div class="node"><div class="node-dot">02</div><h3>Chemical signature</h3></div><div class="node"><div class="node-dot">03</div><h3>Likely industries</h3></div><div class="node"><div class="node-dot">04</div><h3>Upstream tracking</h3></div><div class="node"><div class="node-dot">05</div><h3>Specific lead</h3></div>
+</div><div class="industries"><span class="chip">Paints & coatings</span><span class="chip">Textiles</span><span class="chip">Food & beverage</span><span class="chip">Household cleaning</span><span class="chip">Plastics</span><span class="chip">Electronics</span><span class="chip">Construction</span><span class="chip">Pharmaceuticals</span><span class="chip">Oil & gas</span><span class="chip">Agriculture</span><span class="chip">Rubber</span></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Sample wherever the question leads</p><h2 class="title">Any point in the system can add context.</h2><p class="lead" style="margin-top:18px">Water, wastewater, biosolids, foam, FOG, storm water, and other environmental samples can be compared across treatment and collection systems.</p></div><div class="sample-grid">
+  <div class="sample"><strong>Influent</strong><span>Understand the incoming chemical load.</span></div><div class="sample"><strong>Effluent</strong><span>See what persists through treatment.</span></div><div class="sample"><strong>Digesters</strong><span>Investigate process vulnerability.</span></div><div class="sample"><strong>Pump stations</strong><span>Compare branches of the collection system.</span></div><div class="sample"><strong>Manholes</strong><span>Narrow signals through trunk-line sampling.</span></div><div class="sample"><strong>Industrial effluent</strong><span>Characterize a potential contribution.</span></div><div class="sample"><strong>Storm outfalls</strong><span>Investigate runoff and intermittent inputs.</span></div><div class="sample"><strong>Compliance points</strong><span>Add chemical context to regulatory results.</span></div>
+</div></div></section>
+<section class="cta"><div class="wrap"><p class="eyebrow" style="color:#78cfa6">Talk to ITC</p><h2>Have a water problem you can’t explain?</h2><p>Tell us what is happening. We will help determine whether NTA + Aquity can find the answer.</p><a class="button" href="/#contact">Start a conversation <span>→</span></a></div></section>
+<footer class="footer"><div class="wrap"><strong>ITC</strong><span>Inception Technology Company, LLC</span><span>© <span id="year"></span> ITC</span></div></footer>
 <script>
-(function(){
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold: 0.12, rootMargin: '0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -6%'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
