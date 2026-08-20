@@ -84,7 +84,7 @@ const tenants = [
   {
     keyword: "Simple.",
     tagline: "Works in the real world",
-    body: "Good tools work without instruction. The people running these operations are busy — the technology has to work the first time, in real conditions, without a troubleshooting manual.",
+    body: "Good tools work without instruction. The people running the operations that we engage with are busy. The technology must work the first time, in real conditions, without a troubleshooting manual.",
   },
   {
     keyword: "True.",
