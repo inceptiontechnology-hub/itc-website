@@ -94,7 +94,7 @@ const tenants = [
   {
     keyword: "Economical.",
     tagline: "Advantaged on returns",
-    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is — adoption happens because it makes financial sense to the people buying it.",
+    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is, adoption happens because it makes financial sense to the people buying it.",
   },
   {
     keyword: "Enduring.",
