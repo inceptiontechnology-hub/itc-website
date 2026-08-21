@@ -7,353 +7,206 @@
 <meta name="description" content="10-second bacterial detection from 3 mL of water. No lab, no training required. $10 per test at scale. U.S. distributed by ITC." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --navy:#0d2154;
-    --green:#1a6b3c;
-    --white:#ffffff;
-    --off:#eef3ef;
-    --muted:#445060;
-    --border:#b8c4d0;
-    --font-display:'Libre Baskerville',Georgia,serif;
-    --font-body:'Lora',Georgia,serif;
-    --font-brand:'Orbitron',sans-serif;
-    --maxw:1100px;
-    --ease:cubic-bezier(.25,.46,.45,.94);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:var(--font-body);color:var(--navy);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.7;font-size:17px;}
-  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;margin:0;font-weight:700;}
-  p{margin:0 0 1.1em;}
-  a{color:var(--green);text-decoration:none;transition:color .2s;}
-  a:hover{color:#145c32;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+:root{--navy:#0d2154;--deep:#060f28;--green:#1a6b3c;--emerald:#0d7250;--gold:#C9A444;--white:#fff;--off:#eef3ef;--muted:#445060;--border:#b8c4d0;--display:'Libre Baskerville',Georgia,serif;--body:'Lora',Georgia,serif;--brand:'Orbitron',sans-serif;--max:1120px;--ease:cubic-bezier(.25,.46,.45,.94)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--navy);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}h1,h2,h3,p{margin-top:0}.wrap{max-width:var(--max);margin:auto;padding:0 28px}.eyebrow{font-size:0.77rem;letter-spacing:.34em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0 0 14px}.title{font-family:var(--display);font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.12;margin:0;color:var(--navy)}.lead{color:var(--muted);font-size:1.04rem;line-height:1.9;font-style:italic}.section{padding:100px 0}.off{background:var(--off)}.navy-section{background:var(--navy);color:#fff}.rule{height:1px;background:var(--border);margin:28px 0 46px}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.in{opacity:1;transform:none}
 
-  /* ─── Nav ─────────────────────────────── */
-  .site-nav{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--navy);padding:16px 0;}
-  .site-nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-  .nav-brand{text-decoration:none;}
-  .nav-brand .mark{font-family:var(--font-brand);font-size:1.9rem;font-weight:700;letter-spacing:.06em;color:#fff;line-height:1;display:block;}
-  .nav-brand .sub{font-size:0.62rem;letter-spacing:.22em;color:rgba(255,255,255,.48);margin-top:3px;text-transform:uppercase;font-family:var(--font-body);line-height:1.5;display:block;}
-  .nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;}
-  .nav-links a{color:rgba(255,255,255,.68);font-family:var(--font-body);font-size:.9rem;letter-spacing:.02em;}
-  .nav-links a:hover{color:#fff;}
-  .nav-links .cta a{border:1px solid rgba(255,255,255,.35);padding:7px 16px;color:rgba(255,255,255,.85)!important;transition:background .2s,border-color .2s;}
-  .nav-links .cta a:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff!important;}
+/* nav */
+.nav{position:absolute;left:0;right:0;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.13)}.nav .wrap{height:92px;display:flex;align-items:center;justify-content:space-between}.brand strong{display:block;font:700 2.3rem/1 var(--brand);letter-spacing:.07em;color:#fff}.brand span{display:block;margin-top:5px;color:rgba(255,255,255,.5);font-size:0.55rem;text-transform:uppercase;letter-spacing:.24em;line-height:1.5}.nav-links{display:flex;align-items:center;gap:28px}.nav-links a{font-size:0.97rem;font-weight:600;color:rgba(255,255,255,.76)}.nav-links a:hover{color:#fff}.nav-links .contact{border:1px solid rgba(255,255,255,.52);padding:9px 17px}
 
-  /* ─── Page head ──────────────────────── */
-  .page-head{background:var(--navy);color:#fff;padding:130px 0 72px;}
-  .breadcrumb{font-size:0.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px;font-family:var(--font-body);}
-  .breadcrumb a{color:rgba(255,255,255,.5);}
-  .breadcrumb a:hover{color:rgba(255,255,255,.8);}
-  .breadcrumb .sep{margin:0 .5em;opacity:.3;}
-  .eyebrow-light{font-size:0.75rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:var(--font-body);font-weight:800;display:block;margin-bottom:18px;}
-  .page-head h1{font-size:clamp(2rem,4.5vw,3.2rem);color:#fff;max-width:22ch;letter-spacing:.01em;}
-  .page-head .lead{font-size:clamp(1rem,1.4vw,1.15rem);color:rgba(255,255,255,.6);max-width:58ch;margin-top:20px;line-height:1.88;font-style:italic;}
+/* hero */
+.hero{position:relative;min-height:640px;overflow:hidden;display:flex;align-items:center;padding:145px 0 85px;color:#fff;background:url('rbt-hero.png') center center/cover no-repeat}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(5,14,35,0.75) 0%,rgba(5,14,35,0.52) 60%,rgba(5,14,35,0.68) 100%);pointer-events:none}.hero-copy{position:relative;z-index:2;max-width:850px}.crumb{font-size:0.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:rgba(255,255,255,.5);margin-bottom:45px}.crumb a{color:rgba(255,255,255,.74)}.hero .eyebrow{color:var(--gold);font-size:0.79rem}.hero h1{font-family:var(--display);font-size:clamp(3rem,6.5vw,6rem);line-height:.98;letter-spacing:-.025em;margin:0;text-shadow:0 5px 30px rgba(0,0,0,.35)}.hero h1 span{display:block;font-family:var(--body);font-size:clamp(1.1rem,1.95vw,1.6rem);line-height:1.4;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.74);margin-top:20px}.hero .intro{max-width:680px;color:rgba(255,255,255,.76);font-size:clamp(1.08rem,1.55vw,1.28rem);font-weight:500;line-height:1.85;margin:28px 0 0;font-style:italic}
 
-  /* ─── Stats band ─────────────────────── */
-  .stats-band{background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-  .stat{padding:44px 28px;border-left:1px solid var(--border);}
-  .stat:first-child{border-left:0;padding-left:0;}
-  .stat__num{font-family:var(--font-display);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:700;color:var(--navy);line-height:1;}
-  .stat__num b{color:var(--green);}
-  .stat__cap{font-size:0.88rem;color:var(--muted);margin-top:10px;letter-spacing:.03em;}
+/* stats */
+.stats{background:#fff;border-bottom:1px solid var(--border)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{text-align:center;padding:44px 24px;border-left:1px solid var(--border)}.stat:first-child{border-left:0}.stat strong{display:block;font-family:var(--display);font-size:clamp(2rem,3.2vw,2.8rem);line-height:1;color:var(--emerald)}.stat span{display:block;margin-top:11px;color:var(--navy);font-size:0.80rem;font-weight:800;text-transform:uppercase;letter-spacing:.11em}
 
-  /* ─── Sections ───────────────────────── */
-  .section{padding:96px 0;}
-  .section--off{background:var(--off);}
-  .section--navy{background:var(--navy);color:#fff;}
-  .eyebrow{font-size:0.75rem;letter-spacing:.36em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;display:block;margin-bottom:14px;}
-  .section--navy .eyebrow{color:rgba(255,255,255,.5);}
-  h2.title{font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:700;line-height:1.1;color:var(--navy);margin-bottom:20px;}
-  .section--navy h2.title{color:#fff;}
-  .divider{height:1px;background:var(--border);margin:28px 0 48px;}
-  .section--navy .divider{background:rgba(255,255,255,.12);}
-  .lead-text{font-size:clamp(1rem,1.4vw,1.12rem);color:var(--muted);max-width:62ch;line-height:1.9;font-style:italic;}
-  .section--navy .lead-text{color:rgba(255,255,255,.6);}
+/* how it works */
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:start}.prose p{color:var(--muted);font-size:1.02rem;line-height:1.92;font-style:italic}.prose p strong{color:var(--navy);font-style:normal}.choice{background:#e2efe7;border-left:4px solid var(--emerald);padding:30px 28px}.choice small{display:block;color:var(--green);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:0.71rem;margin-bottom:11px}.choice h3{font-family:var(--display);font-size:1.4rem;margin:0 0 16px}.choice p{color:var(--muted);font-size:0.92rem;line-height:1.75;margin:0 0 0}.choice p+p{margin-top:12px}.choice strong{color:var(--navy)}
 
-  /* ─── Prose ──────────────────────────── */
-  .prose p{font-size:1.04rem;color:var(--muted);line-height:1.9;font-style:italic;max-width:66ch;}
-  .prose p b{color:var(--navy);font-style:normal;}
-  .section--navy .prose p{color:rgba(255,255,255,.65);}
-  .section--navy .prose p b{color:#fff;}
+/* 4-feature tiles */
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:48px}.feature{padding:38px 28px;border-left:1px solid var(--border);background:#fff}.feature:first-child{border-left:0}.feature-icon{width:44px;height:44px;border:2px solid var(--emerald);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--emerald)}.feature-icon svg{width:20px;height:20px}.feature h3{font-family:var(--display);font-size:1.15rem;line-height:1.3;margin:0 0 10px;color:var(--navy)}.feature p{font-size:0.93rem;line-height:1.75;color:var(--muted);margin:0}
 
-  /* ─── Two-col layout ─────────────────── */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+/* comparison */
+.compare-wrap{margin-top:48px;border:1px solid var(--border)}.compare-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--border)}.compare-row:last-child{border-bottom:0}.cell{padding:18px 22px;color:var(--muted);font-size:0.93rem}.cell:not(:first-child){text-align:center;border-left:1px solid var(--border)}.compare-row.head{background:var(--navy)}.compare-row.head .cell{color:#fff;font-size:0.69rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800}.compare-row.head .cell:not(:first-child){border-left-color:rgba(255,255,255,.16)}.cell strong{color:var(--navy)}.cell.win{color:var(--emerald);font-weight:800;background:#f0f8f4}
 
-  /* ─── Cards grid ─────────────────────── */
-  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:44px;}
-  .card{background:var(--white);padding:32px 28px;}
-  .section--off .card{background:#f0f5f1;}
-  .section--navy .card{background:#1b2e52;}
-  .card__mark{font-size:0.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:12px;display:block;}
-  .section--navy .card__mark{color:rgba(255,255,255,.5);}
-  .card h3{font-size:1.15rem;color:var(--navy);margin-bottom:10px;}
-  .section--navy .card h3{color:#fff;}
-  .card p{font-size:.93rem;color:var(--muted);margin:0;line-height:1.85;}
-  .section--navy .card p{color:rgba(255,255,255,.6);}
+/* use cases */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.1);margin-top:48px}.case{background:#182a4c;padding:32px 26px}.case small{display:block;color:var(--gold);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:0.73rem;margin-bottom:12px}.case h3{font-family:var(--display);font-size:1.05rem;color:#fff;margin:0 0 10px;line-height:1.35}.case p{color:rgba(255,255,255,.62);font-size:0.89rem;line-height:1.72;margin:0}
 
-  /* ─── Stat feature blocks ────────────── */
-  .stat-blocks{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:44px;}
-  .stat-block{background:var(--white);padding:40px 36px;}
-  .section--off .stat-block{background:#f0f5f1;}
-  .stat-block__num{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--navy);line-height:1;margin-bottom:10px;}
-  .stat-block__num b{color:var(--green);}
-  .stat-block__label{font-size:0.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:12px;display:block;}
-  .stat-block p{font-size:.95rem;color:var(--muted);margin:0;line-height:1.85;}
+/* cta */
+.cta{background:linear-gradient(120deg,var(--navy),#1a3d72);color:#fff;text-align:center;padding:96px 0}.cta .eyebrow{color:var(--gold)}.cta h2{font-family:var(--display);font-size:clamp(2rem,4vw,3.35rem);margin:0 auto 18px}.cta p{max-width:630px;margin:0 auto 32px;color:rgba(255,255,255,.68);font-style:italic}.button{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);padding:14px 31px;font-size:0.80rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}.button:hover{background:#fff;color:var(--navy)}.footer{background:var(--deep);padding:28px 0;color:rgba(255,255,255,.4);font-size:0.80rem}.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer strong{color:#fff;font:700 1.1rem/1 var(--brand);letter-spacing:.07em}
 
-  /* ─── Framing block ──────────────────── */
-  .framing{border-left:4px solid var(--green);padding:22px 26px;background:var(--off);margin-top:44px;max-width:72ch;}
-  .framing h4{font-size:0.71rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-bottom:10px;}
-  .framing p{font-size:.95rem;color:var(--muted);margin:0;line-height:1.85;}
-  .framing p b{color:var(--navy);}
+/* navy section typography */
+.navy-section .eyebrow{color:rgba(255,255,255,.85)}.navy-section .title{color:#fff}.navy-section .rule{background:rgba(255,255,255,.12)}.navy-section .lead{color:rgba(255,255,255,.65)}
 
-  /* ─── Callout ────────────────────────── */
-  .callout{background:var(--navy);border-left:4px solid var(--green);padding:30px 36px;margin-top:44px;max-width:74ch;}
-  .callout .k{font-size:0.71rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:var(--font-body);font-weight:800;margin-bottom:12px;display:block;}
-  .callout p{font-size:1.04rem;color:#fff;margin:0;line-height:1.6;}
-  .callout p b{color:#86efac;}
-
-  /* ─── CTA band ───────────────────────── */
-  .cta-band{background:var(--navy);padding:96px 0;text-align:center;}
-  .cta-band .eyebrow{color:rgba(255,255,255,.5);}
-  .cta-band h2{color:#fff;max-width:22ch;margin:0 auto 20px;}
-  .cta-band .lead-text{max-width:52ch;margin:0 auto 36px;}
-
-  /* ─── Buttons ────────────────────────── */
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 40px;font-family:var(--font-body);font-size:.95rem;font-weight:500;letter-spacing:.06em;text-decoration:none;transition:background .2s,color .2s,border-color .2s;cursor:pointer;}
-  .btn--white{background:var(--white);color:var(--navy);}
-  .btn--white:hover{background:var(--green);color:#fff;}
-  .btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);}
-  .btn--ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff;}
-
-  /* ─── Back link ──────────────────────── */
-  .back-link{display:inline-flex;align-items:center;gap:.5em;font-size:0.79rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-family:var(--font-body);font-weight:800;margin-top:14px;}
-  .back-link svg{transform:rotate(180deg);}
-  .back-link:hover{color:#145c32;}
-
-  /* ─── Footer ─────────────────────────── */
-  .site-footer{background:#0b1628;border-top:1px solid rgba(255,255,255,.06);padding:28px 0;}
-  .site-footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;}
-  .footer-brand{font-family:var(--font-brand);font-size:1.2rem;font-weight:700;color:#fff;}
-  .footer-mission{font-size:0.88rem;color:rgba(255,255,255,.22);font-style:italic;}
-  .footer-copy{font-size:0.8rem;color:rgba(255,255,255,.16);}
-
-  /* ─── Reveal ─────────────────────────── */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-  .reveal.in{opacity:1;transform:none;}
-  .reveal[data-d="1"]{transition-delay:.08s;}
-  .reveal[data-d="2"]{transition-delay:.16s;}
-
-  /* ─── Responsive ─────────────────────── */
-  @media(max-width:760px){
-    .stats-grid,.stat-blocks,.card-grid{grid-template-columns:repeat(2,1fr);}
-    .stat:nth-child(3){border-left:1px solid var(--border);}
-    .two-col{grid-template-columns:1fr;gap:40px;}
-    .nav-links{display:none;}
-    .section{padding:72px 0;}
-  }
-  @media(max-width:480px){
-    .stats-grid{grid-template-columns:1fr;}
-    .stat{border-left:0!important;padding-left:0!important;border-top:1px solid var(--border);}
-    .stat:first-child{border-top:0;}
-    .stat-blocks,.card-grid{grid-template-columns:1fr;}
-  }
+@media(max-width:860px){.nav-links{display:none}.feature-grid{grid-template-columns:repeat(2,1fr)}.feature:nth-child(3){border-left:0;border-top:1px solid var(--border)}.feature:nth-child(4){border-top:1px solid var(--border)}.two-col{grid-template-columns:1fr;gap:40px}.case-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0;border-top:1px solid var(--border)}.stat:nth-child(4){border-top:1px solid var(--border)}.compare-row{grid-template-columns:1fr 1fr}.cell:first-child{display:none}}
+@media(max-width:560px){.wrap{padding:0 20px}.section{padding:74px 0}.hero h1{font-size:2.8rem}.stats-grid{grid-template-columns:1fr}.stat{border-left:0;border-top:1px solid var(--border)}.stat:first-child{border-top:0}.feature-grid{grid-template-columns:1fr}.feature{border-left:0;border-top:1px solid var(--border)}.feature:first-child{border-top:0}.case-grid{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.cell{border-left:0!important}.footer .wrap{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
 
-<!-- ─── Nav ─────────────────────────────────── -->
-<nav class="site-nav">
-  <div class="wrap">
-    <a href="index.html" class="nav-brand">
-      <span class="mark">ITC</span>
-      <span class="sub">Inception Technology<br>Company, LLC</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="nta-aquity.html">NTA + Aquity</a></li>
-      <li><a href="aims.html">AIMS</a></li>
-      <li class="cta"><a href="index.html#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<nav class="nav"><div class="wrap"><a class="brand" href="/"><strong>ITC</strong><span>Inception Technology<br>Company, LLC</span></a><div class="nav-links"><a href="/">Home</a><a href="/#technologies">Technologies</a><a href="/nta-aquity.html">NTA + Aquity</a><a href="/aims.html">AIMS</a><a class="contact" href="/#contact">Contact</a></div></div></nav>
 
-<!-- ─── Page head ─────────────────────────────── -->
-<header class="page-head">
-  <div class="wrap">
-    <div class="breadcrumb reveal">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <a href="portfolio.html">Portfolio</a><span class="sep">/</span>Rapid Bacterial Test
-    </div>
-    <span class="eyebrow-light reveal">Portfolio · CEC Analytics</span>
-    <h1 class="reveal" data-d="1">Rapid Bacterial Test — Field Detection</h1>
-    <p class="lead reveal" data-d="1">3 mL. 10 seconds. No lab, no training, no delay. Deployable bacterial detection that meets operators exactly where they are — in the field.</p>
+<header class="hero">
+  <div class="wrap hero-copy">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; Rapid Bacterial Test</div>
+    <p class="eyebrow reveal">Field Detection</p>
+    <h1 class="reveal">Rapid Bacterial Test<span>Instant results. Anywhere.</span></h1>
+    <p class="intro reveal">3 mL. 10 seconds. No lab, no training, no delay. Deployable bacterial detection that meets operators exactly where they are — in the field.</p>
   </div>
 </header>
 
-<!-- ─── Stats band ────────────────────────────── -->
-<section class="stats-band">
+<!-- Stats -->
+<section class="stats">
   <div class="wrap stats-grid">
-    <div class="stat reveal">
-      <div class="stat__num">10 <b>sec</b></div>
-      <div class="stat__cap">Field results, no lab</div>
-    </div>
-    <div class="stat reveal" data-d="1">
-      <div class="stat__num">3 <b>mL</b></div>
-      <div class="stat__cap">Water sample required</div>
-    </div>
-    <div class="stat reveal" data-d="1">
-      <div class="stat__num"><b>$10</b></div>
-      <div class="stat__cap">Per test at scale</div>
-    </div>
-    <div class="stat reveal" data-d="2">
-      <div class="stat__num">$2.3<b>B</b></div>
-      <div class="stat__cap">Market being disrupted</div>
-    </div>
+    <div class="stat reveal"><strong>10 sec</strong><span>Field results, no lab</span></div>
+    <div class="stat reveal"><strong>3 mL</strong><span>Water sample required</span></div>
+    <div class="stat reveal"><strong>$10</strong><span>Per test at scale</span></div>
+    <div class="stat reveal"><strong>$2.3B</strong><span>Market being disrupted</span></div>
   </div>
 </section>
 
-<!-- ─── How it works ──────────────────────────── -->
+<!-- How it Works -->
 <section class="section">
   <div class="wrap">
-    <span class="eyebrow reveal">How it works</span>
-    <h2 class="title reveal" data-d="1">A bacterial test that works in anyone's hands.</h2>
-    <div class="divider"></div>
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="title reveal">A bacterial test that works in anyone's hands.</h2>
+    <div class="rule"></div>
     <div class="two-col">
       <div class="prose reveal">
-        <p>The Rapid Bacterial Test requires <b>3 mL of water</b>, returns results in <b>10 seconds</b>, and requires zero technical training to operate. Detection is built into the test itself — no interpretation, no equipment, no expertise required.</p>
+        <p>The Rapid Bacterial Test requires <strong>3 mL of water</strong>, returns results in <strong>10 seconds</strong>, and requires zero technical training to operate. Detection is built into the test itself — no interpretation, no equipment, no expertise required.</p>
         <p>This isn't a simplified version of a lab test. It's a purpose-built field detection tool designed for the real world — where speed and simplicity determine whether testing happens at all.</p>
-        <p>Current market leaders — <b>3M, Thermo Fisher, Danaher</b> — dominate a $2.3B space with solutions that require laboratories, trained personnel, and significant time. The Rapid Bacterial Test competes on every dimension that matters to operators in the field.</p>
+        <p>Current market leaders — <strong>3M, Thermo Fisher, Danaher</strong> — dominate a $2.3B space with solutions that require laboratories, trained personnel, and significant time. The Rapid Bacterial Test competes on every dimension that matters to operators in the field.</p>
       </div>
-      <div>
-        <div class="framing reveal" data-d="1">
-          <h4>How this works</h4>
-          <p>The Rapid Bacterial Test is developed and produced by <b>CEC Analytics</b>. Inception Technology Company is a U.S. distributor — we connect municipalities, utilities, NGOs, and industry with the technology and manage deployment in the United States.</p>
+      <aside class="reveal">
+        <div class="choice">
+          <small>Who makes it &amp; who deploys it</small>
+          <h3>CEC Analytics + ITC</h3>
+          <p>The Rapid Bacterial Test is developed and produced by <strong>CEC Analytics</strong>. Inception Technology Company is the exclusive U.S. distributor — connecting municipalities, utilities, NGOs, and industry with the technology and managing deployment across the United States.</p>
         </div>
-        <a href="portfolio.html" class="back-link reveal" data-d="1" style="margin-top:28px;">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back to portfolio
+        <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:0.77rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green);">
+          ← Back to home
         </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Built for the Field -->
+<section class="section off">
+  <div class="wrap">
+    <p class="eyebrow reveal">Built for the field</p>
+    <h2 class="title reveal">Four things that matter where labs don't exist.</h2>
+    <div class="rule"></div>
+    <div class="feature-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Simple</h3>
+        <p>Intuitive to use. No training required. Detection logic is built directly into the test — any operator can run it without a protocol or certification.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Fast</h3>
+        <p>Results in 10 seconds on site. Current methods require hours to days. This enables real-time response decisions the moment they're needed.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Reliable</h3>
+        <p>Purpose-built detection you can trust. Not a simplified lab test — a field tool engineered from the ground up for real-world conditions.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Portable</h3>
+        <p>Lightweight and ready for any environment. No instruments, no reagents to prepare, no incubation. Fully self-contained and immediately deployable.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── What makes it different ──────────────── -->
-<section class="section section--off">
+<!-- Head-to-head comparison -->
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow reveal">What makes it different</span>
-    <h2 class="title reveal" data-d="1">Speed and simplicity that no current product delivers.</h2>
-    <div class="divider"></div>
-    <div class="stat-blocks">
-      <div class="stat-block reveal">
-        <span class="stat-block__label">No equipment</span>
-        <div class="stat-block__num">Zero <b>setup</b></div>
-        <p>No instruments, no reagents to prepare, no incubation time. The test is self-contained and fully ready to use in the field.</p>
-      </div>
-      <div class="stat-block reveal" data-d="1">
-        <span class="stat-block__label">No training</span>
-        <div class="stat-block__num">Anyone <b>runs it</b></div>
-        <p>Detection logic is built into the test itself. Any operator, anywhere, can use it without a protocol or a certification.</p>
-      </div>
-      <div class="stat-block reveal">
-        <span class="stat-block__label">Speed</span>
-        <div class="stat-block__num">10 <b>seconds</b></div>
-        <p>Current methods require hours to days. This returns a result in 10 seconds — enabling real-time response decisions in the field.</p>
-      </div>
-      <div class="stat-block reveal" data-d="1">
-        <span class="stat-block__label">Accessible pricing</span>
-        <div class="stat-block__num"><b>$10</b> base</div>
-        <p>Starts at $10 per test for end consumers, scales down by customer type (NGO, municipal, volume) — making routine testing genuinely affordable.</p>
-      </div>
+    <p class="eyebrow reveal">Head-to-head</p>
+    <h2 class="title reveal">10 seconds versus hours. No lab versus a full facility.</h2>
+    <div class="rule"></div>
+    <div class="compare-wrap reveal">
+      <div class="compare-row head"><div class="cell"></div><div class="cell">Rapid Bacterial Test</div><div class="cell">Conventional lab</div></div>
+      <div class="compare-row"><div class="cell"><strong>Turnaround</strong></div><div class="cell win">10 seconds</div><div class="cell">Hours to days</div></div>
+      <div class="compare-row"><div class="cell"><strong>Sample volume</strong></div><div class="cell win">3 mL</div><div class="cell">Larger sample required</div></div>
+      <div class="compare-row"><div class="cell"><strong>Training required</strong></div><div class="cell win">None</div><div class="cell">Certified personnel</div></div>
+      <div class="compare-row"><div class="cell"><strong>Lab infrastructure</strong></div><div class="cell win">None</div><div class="cell">Required</div></div>
+      <div class="compare-row"><div class="cell"><strong>Per-test cost</strong></div><div class="cell win">$10 at scale</div><div class="cell">Significantly higher</div></div>
     </div>
   </div>
 </section>
 
-<!-- ─── Use cases ─────────────────────────────── -->
-<section class="section section--navy">
+<!-- Use Cases -->
+<section class="section navy-section">
   <div class="wrap">
-    <span class="eyebrow reveal">Use cases</span>
-    <h2 class="title reveal" data-d="1">Every situation where a lab is too slow, too far, or too expensive.</h2>
-    <div class="divider"></div>
-    <div class="card-grid">
-      <div class="card reveal">
-        <span class="card__mark">Municipal water</span>
+    <p class="eyebrow reveal">Where it deploys</p>
+    <h2 class="title reveal">Every situation where a lab is too slow, too far, or too expensive.</h2>
+    <div class="rule" style="background:rgba(255,255,255,.12)"></div>
+    <div class="case-grid">
+      <div class="case reveal">
+        <small>Municipal water</small>
         <h3>Distribution system monitoring</h3>
-        <p>Operators can test at any point in the distribution system — on-site, in real time — without shipping samples to a laboratory.</p>
+        <p>Test at any point in the distribution system — on-site, in real time — without shipping samples to a laboratory.</p>
       </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">NGO & humanitarian</span>
+      <div class="case reveal">
+        <small>NGO &amp; humanitarian</small>
         <h3>Field deployment in resource-limited settings</h3>
-        <p>No infrastructure required. The test works in the field anywhere water safety needs to be verified quickly and without technical support.</p>
+        <p>No infrastructure required. Verify water safety anywhere in the field, without technical support or equipment.</p>
       </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Emergency response</span>
+      <div class="case reveal">
+        <small>Emergency response</small>
         <h3>Post-event contamination verification</h3>
-        <p>After floods, infrastructure events, or system failures — rapid on-the-ground testing before water is declared safe to consume.</p>
+        <p>After floods, infrastructure events, or system failures — rapid on-the-ground testing before water is cleared.</p>
       </div>
-      <div class="card reveal">
-        <span class="card__mark">Agriculture & food</span>
-        <h3>Irrigation water & process verification</h3>
-        <p>Quick bacterial screening at irrigation points, processing facilities, or anywhere product safety depends on water quality.</p>
+      <div class="case reveal">
+        <small>Agriculture &amp; food</small>
+        <h3>Irrigation water &amp; process verification</h3>
+        <p>Quick bacterial screening at irrigation points or processing facilities where product safety depends on water quality.</p>
       </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Industrial</span>
-        <h3>Cooling tower & process water</h3>
-        <p>Routine bacterial monitoring in industrial water systems where speed matters and lab turnaround creates unacceptable risk windows.</p>
+      <div class="case reveal">
+        <small>Industrial</small>
+        <h3>Cooling tower &amp; process water</h3>
+        <p>Routine bacterial monitoring in industrial water systems where lab turnaround creates unacceptable risk windows.</p>
       </div>
-      <div class="card reveal" data-d="1">
-        <span class="card__mark">Consumer & private</span>
-        <h3>Well water & home testing</h3>
-        <p>The $10 price point brings meaningful bacterial testing into the hands of private well owners and rural communities for the first time.</p>
+      <div class="case reveal">
+        <small>Consumer &amp; private</small>
+        <h3>Well water &amp; home testing</h3>
+        <p>The $10 price point brings meaningful bacterial testing to private well owners and rural communities for the first time.</p>
       </div>
-    </div>
-
-    <div class="callout reveal" data-d="1">
-      <span class="k">Market context</span>
-      <p>The $2.3B bacterial testing market is currently dominated by <b>3M, Thermo Fisher, and Danaher</b> — all of whom require laboratory infrastructure, trained staff, and significant processing time. The Rapid Bacterial Test removes every one of those barriers.</p>
     </div>
   </div>
 </section>
 
-<!-- ─── CTA band ──────────────────────────────── -->
-<section class="cta-band">
+<!-- CTA -->
+<section class="cta">
   <div class="wrap">
-    <span class="eyebrow reveal">Start a conversation</span>
-    <h2 class="title reveal" data-d="1">We'd like to hear what you're working on.</h2>
-    <p class="lead-text reveal" data-d="1">Operators, municipalities, innovators, investors — there's no wrong reason to get in touch.</p>
-    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;" class="reveal" data-d="2">
-      <a href="index.html#contact" class="btn btn--white">Get in touch <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="portfolio.html" class="btn btn--ghost">View full portfolio</a>
-    </div>
+    <p class="eyebrow reveal">Talk to ITC</p>
+    <h2 class="reveal">Need faster answers in the field?</h2>
+    <p class="reveal">Contact ITC for test pricing, sample requirements, and deployment options.</p>
+    <a class="button reveal" href="/#contact">Contact ITC &nbsp;→</a>
   </div>
 </section>
 
-<!-- ─── Footer ────────────────────────────────── -->
-<footer class="site-footer">
-  <div class="wrap">
-    <span class="footer-brand">ITC</span>
-    <span class="footer-mission">Innovation through Economically and Ecologically Advantaged Technology</span>
-    <span class="footer-copy">&copy; <span id="yr"></span> Inception Technology Company</span>
-  </div>
-</footer>
+<footer class="footer"><div class="wrap"><strong>ITC</strong><span>Inception Technology Company, LLC</span><span>© <span id="year"></span> ITC</span></div></footer>
 
 <script>
-(function(){
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold: 0.12, rootMargin: '0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
+document.getElementById('year').textContent = new Date().getFullYear();
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.1, rootMargin:'0px 0px -6%'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
