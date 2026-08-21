@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 // ─── Contact form ─────────────────────────────────────────────────────────
 
 // ─── Palette ──────────────────────────────────────────────────────────────
-const NAVY  = "#132040";
+const NAVY  = "#0d2154";
 const GREEN = "#1a6b3c";
 const WHITE = "#ffffff";
 const OFF   = "#eef3ef";   // light green-tinted off-white — clearly distinct from white
 const MUTED = "#445060";   // mid-tone text — darker for contrast
 const BORDER = "#b8c4d0";  // more visible borders
+const GOLD   = "#C9A444";  // accent — use sparingly
+const EMERALD = "#0d7250"; // rich dark emerald
 
 // ─── Typography ───────────────────────────────────────────────────────────
 const DISPLAY = "'Libre Baskerville', Georgia, serif";
@@ -34,8 +36,8 @@ const FadeUp = ({ children, delay = 0, className = "" }: {
 
 const Label = ({ children, light = false }: { children: React.ReactNode; light?: boolean }) => (
   <p style={{
-    fontSize: "0.72rem", letterSpacing: "0.36em", textTransform: "uppercase",
-    color: light ? "rgba(255,255,255,0.55)" : GREEN,
+    fontSize: "0.82rem", letterSpacing: "0.36em", textTransform: "uppercase",
+    color: light ? GOLD : GREEN,
     marginBottom: "14px", fontFamily: BODY, fontWeight: 800,
   }}>
     {children}
@@ -160,7 +162,7 @@ export default function Home() {
             <p style={{ fontFamily: ORBITRON, fontSize: "2.6rem", fontWeight: 700, lineHeight: 1, letterSpacing: "0.06em", color: WHITE }}>
               ITC
             </p>
-            <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", color: "rgba(255,255,255,0.65)", marginTop: "5px", textTransform: "uppercase", fontFamily: BODY, lineHeight: 1.5 }}>
+            <p style={{ fontSize: "0.7rem", letterSpacing: "0.28em", color: "rgba(255,255,255,0.65)", marginTop: "5px", textTransform: "uppercase", fontFamily: BODY, lineHeight: 1.5 }}>
               Inception Technology<br />Company, LLC
             </p>
           </div>
@@ -172,8 +174,8 @@ export default function Home() {
                 About <ChevronDown size={14} />
               </button>
               <div className="absolute right-0 top-full hidden group-hover:flex group-focus-within:flex flex-col" style={{ minWidth: "170px", background: "rgba(19,32,64,0.97)", border: "1px solid rgba(255,255,255,0.2)", padding: "8px 0" }}>
-                <a href="#standards" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.86rem", textDecoration: "none", whiteSpace: "nowrap" }}>Our Standards</a>
-                <a href="#team" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.86rem", textDecoration: "none", whiteSpace: "nowrap" }}>The Team</a>
+                <a href="#standards" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.94rem", textDecoration: "none", whiteSpace: "nowrap" }}>Our Standards</a>
+                <a href="#team" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.94rem", textDecoration: "none", whiteSpace: "nowrap" }}>The Team</a>
               </div>
             </div>
             <a href="#contact" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: "9px 16px" }}>Contact Us</a>
@@ -204,7 +206,7 @@ export default function Home() {
         {/* Hero copy */}
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-16">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ fontSize: "0.65rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "22px", fontFamily: BODY }}>
+            style={{ fontSize: "0.76rem", letterSpacing: "0.4em", textTransform: "uppercase", color: GOLD, marginBottom: "22px", fontFamily: BODY }}>
             Efficient. Economical. Effective.
           </motion.p>
 
@@ -217,7 +219,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            <h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'white', fontSize: '0.67em' }}>built by people who know the land, the lab, and the boardroom.</h1></h1></h1></h1>
+            Scientific solutions, curated for longstanding problems.
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -282,15 +284,15 @@ export default function Home() {
                     onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
                     <Label>{p.tag}</Label>
                     <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
-                    <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
+                    <p style={{ fontSize: "0.88rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
                     <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                     <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
                     <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
                       <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
-                      <p style={{ fontSize: "0.68rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
+                      <p style={{ fontSize: "0.79rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
                     </div>
                     <div style={{ marginTop: "18px" }}>
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.88rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
                         View details <ArrowRight size={12} />
                       </span>
                     </div>
@@ -342,7 +344,7 @@ export default function Home() {
                   height: "100%",
                 }}>
                   <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px" }}>{t.keyword}</h3>
-                  <p style={{ fontSize: "0.68rem", letterSpacing: "0.28em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "20px" }}>{t.tagline}</p>
+                  <p style={{ fontSize: "0.79rem", letterSpacing: "0.28em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "20px" }}>{t.tagline}</p>
                   <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                   <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{t.body}</p>
                 </div>
@@ -392,9 +394,9 @@ export default function Home() {
                     </span>
                   </div>
                   <p style={{ fontFamily: DISPLAY, fontSize: "1.05rem", fontWeight: 600, color: NAVY, marginBottom: "4px" }}>{m.name}</p>
-                  <p style={{ fontSize: "0.78rem", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: m.bio ? "12px" : "0" }}>{m.role}</p>
+                  <p style={{ fontSize: "0.88rem", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: m.bio ? "12px" : "0" }}>{m.role}</p>
                   {m.bio && (
-                    <p style={{ fontSize: "0.88rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic", margin: "0" }}>{m.bio}</p>
+                    <p style={{ fontSize: "0.96rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic", margin: "0" }}>{m.bio}</p>
                   )}
                 </div>
               </FadeUp>
@@ -419,7 +421,7 @@ export default function Home() {
               <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                 {[{ l: "General", e: "scott@itc.eco" }, { l: "Sales", e: "jeff@itc.eco" }].map(c => (
                   <div key={c.e}>
-                    <p style={{ fontSize: "0.6rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "4px", fontFamily: BODY }}>{c.l}</p>
+                    <p style={{ fontSize: "0.71rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "4px", fontFamily: BODY }}>{c.l}</p>
                     <a href={`mailto:${c.e}`} style={{ color: "#86efac", fontSize: "1rem", textDecoration: "none", fontFamily: DISPLAY, fontWeight: 500 }}>{c.e}</a>
                   </div>
                 ))}
@@ -442,7 +444,7 @@ export default function Home() {
                       { label: "Phone", key: "phone", req: false, ph: "(555) 000-0000" },
                     ].map(f => (
                       <div key={f.key}>
-                        <label style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>{f.label}</label>
+                        <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>{f.label}</label>
                         <input required={f.req} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                           placeholder={f.ph} value={(form as any)[f.key]}
                           onChange={e => setForm({ ...form, [f.key]: e.target.value })}
@@ -452,7 +454,7 @@ export default function Home() {
                     ))}
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Email *</label>
+                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Email *</label>
                     <input required type="email" style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                       placeholder="you@company.com" value={form.email}
                       onChange={e => setForm({ ...form, email: e.target.value })}
@@ -460,7 +462,7 @@ export default function Home() {
                       onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")} />
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Area of Interest</label>
+                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Area of Interest</label>
                     <select style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                       value={form.interest} onChange={e => setForm({ ...form, interest: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = "#86efac")}
@@ -474,7 +476,7 @@ export default function Home() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Message *</label>
+                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Message *</label>
                     <textarea required rows={5} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)", resize: "vertical" }}
                       placeholder="Tell us what you're working on..." value={form.message}
                       onChange={e => setForm({ ...form, message: e.target.value })}
@@ -482,7 +484,7 @@ export default function Home() {
                       onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")} />
                   </div>
                   {status === "error" && (
-                    <p style={{ fontSize: "0.85rem", color: "#fca5a5", fontStyle: "italic" }}>Something went wrong — email us directly at scott@itc.eco.</p>
+                    <p style={{ fontSize: "0.93rem", color: "#fca5a5", fontStyle: "italic" }}>Something went wrong — email us directly at scott@itc.eco.</p>
                   )}
                   <button type="submit" disabled={status === "sending"}
                     style={{ background: GREEN, color: WHITE, padding: "14px 0", fontFamily: BODY, fontSize: "1rem", fontWeight: 500, letterSpacing: "0.1em", border: "none", cursor: "pointer", width: "100%", opacity: status === "sending" ? 0.7 : 1, transition: "opacity 0.2s, background 0.2s" }}
@@ -501,10 +503,10 @@ export default function Home() {
       <footer style={{ backgroundColor: "#0b1628", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "28px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p style={{ fontFamily: ORBITRON, fontSize: "1.2rem", fontWeight: 700, color: WHITE }}>ITC</p>
-          <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.25)", fontStyle: "italic" }}>
+          <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.25)", fontStyle: "italic" }}>
             Precision technology. Proven performance. No trade-offs.
           </p>
-          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.18)" }}>
+          <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.18)" }}>
             &copy; {new Date().getFullYear()} Inception Technology Company
           </p>
         </div>
