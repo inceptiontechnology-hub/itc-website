@@ -51,7 +51,7 @@ const products = [
     tag: "Source Intelligence",
     name: "NTA + Aquity",
     sub: "Non-Targeted Analysis + Intelligence Platform",
-    body: "Screen 72,000+ organic compounds from a single 25 mL sample — no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
+    body: "Screen 72,000+ organic compounds from a single 25 mL sample, no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
     stat: "72,000+", unit: "Detectable compounds",
   },
   {
@@ -59,7 +59,7 @@ const products = [
     tag: "Targeted Detection",
     name: "AIMS",
     sub: "Ambient Ionization Mass Spectrometry",
-    body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt — with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
+    body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt, with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
     stat: "48 hr", unit: "Lab turnaround",
   },
   {
@@ -67,26 +67,26 @@ const products = [
     tag: "Field Detection",
     name: "Rapid Bacterial Test",
     sub: "Instant Field Water Safety",
-    body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
+    body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately, anywhere in the field.",
     stat: "10 seconds", unit: "Field results",
   },
 ];
 
 // ─── Team ─────────────────────────────────────────────────────────────────
 const team = [
-  { initials: "SE", name: "Scott Ensminger", role: "Founder", bio: "Twenty years in cattle operations, wildlife ecology, public health, and wastewater before founding ITC. He was the customer this company was built to serve — and leads strategy and commercial from farm to lab to boardroom." },
-  { initials: "JS", name: "Jeff Streck", role: "Sales & Marketing", bio: "Based in Colorado, Jeff builds ITC's commercial relationships and owns the external brand. He connects the portfolio with buyers across agriculture, water, and municipal markets." },
-  { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter runs logistics, partnerships, and the operational backbone. When ITC makes a commitment, he's the reason it holds — from distribution through partner coordination." },
-  { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie bridges the lab and the field, translating the science behind the portfolio into language operators, municipalities, and buyers can act on. The technology gets understood as deeply as it gets sold." },
-  { initials: "LD", name: "Logan Deal", role: "General Manager", bio: "Based in Texas, Logan runs day-to-day operations across the company. She keeps timelines, teams, and commitments aligned — on time, on spec." },
-  { initials: "JE", name: "Jyl Ensminger", role: "Montana", bio: "" },
+  { initials: "SE", name: "Scott Ensminger", role: "Founder & CEO", bio: "Scott has a BS in Biology with an emphasis in organic chemistry from Iowa State University. His role at ITC is to identify emerging technologies and imagine how they can be applied to solve real-world problems. His experience spans on-site wastewater, drinking water, stormwater, and biological soil and water systems developed through 20 years as a commercial farmer and several years in stormwater management." },
+  { initials: "JE", name: "Jyl Ensminger", role: "Co-Founder & Business Operations", bio: "Jyl has a background in healthcare administration, with experience in both clinical support and patient services. At ITC, she helps oversee day-to-day team operations while supporting the company's financial management and organization. Her role focuses on keeping the business coordinated, organized, and running efficiently as the company and its partnerships continue to grow." },
+  { initials: "LD", name: "Logan Deal", role: "General Manager", bio: "Logan has a BS in Business Management from the United States Military Academy and spent 12 years on active duty as a U.S. Army officer. Her experience includes leading and managing organizations ranging from small teams to more than 100 personnel. As General Manager at ITC, she oversees the company's administrative and business operations, bringing a background in organizational leadership, planning, and execution to the company's day-to-day management." },
+  { initials: "JS", name: "Jeff Streck", role: "Marketing & Sales Lead", bio: "Jeff has an MBA and nearly 20 years of experience in the wine and beverage industry, working across retail, wholesale, and producer operations. At ITC, he leads sales strategy and market development, connecting businesses, municipalities, and organizations with technologies that address environmental challenges. His background brings a practical understanding of how to build markets, develop relationships, and move solutions into commercial use." },
+  { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie has a BS in Biology with a minor in Chemistry from MSU Denver and a background in synthetic chemistry research. Her work focuses on chemistries that are both environmentally responsible and practically useful. Her background includes R&D experience developing water-treatment and feed-additive technologies. At ITC, her focus is on helping move new products from the laboratory toward commercial application." },
+  { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter has a BS in Business from the University of Wyoming and focuses on operations and technology implementation at ITC. His experience spans laboratory testing, water treatment, advanced oxidation, and carbon-based technologies, combined with a practical background in business operations. His role is centered on evaluating how technologies work in real-world conditions and helping turn promising concepts into practical, economical solutions for customers." },
 ];
 
 const tenants = [
   {
     keyword: "Simple.",
     tagline: "Works in the real world",
-    body: "Good tools work without instruction. The people running these operations are busy — the technology has to work the first time, in real conditions, without a troubleshooting manual.",
+    body: "Good tools work without instruction. The people running these operations are busy; the technology has to work the first time, in real conditions, without a troubleshooting manual.",
   },
   {
     keyword: "True.",
@@ -96,12 +96,12 @@ const tenants = [
   {
     keyword: "Economical.",
     tagline: "Advantaged on returns",
-    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is — adoption happens because it makes financial sense to the people buying it.",
+    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is; adoption happens because it makes financial sense to the people buying it.",
   },
   {
     keyword: "Enduring.",
     tagline: "Built to last",
-    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
+    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time, not just on the day it ships.",
   },
 ];
 
@@ -416,7 +416,7 @@ export default function Home() {
             <FadeUp>
               <Label light>Get In Touch</Label>
               <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, fontStyle: "italic", marginBottom: "40px", marginTop: "20px" }}>
-                Whether you're a municipality, a producer, or a potential partner — if the technology matches the mission, we want to hear from you.
+                Whether you're a municipality, a producer, or a potential partner; if the technology matches the mission, we want to hear from you.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                 {[{ l: "General", e: "scott@itc.eco" }, { l: "Sales", e: "jeff@itc.eco" }].map(c => (
