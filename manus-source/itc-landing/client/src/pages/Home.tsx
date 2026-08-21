@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, Check, CheckCircle, ChevronDown, Droplets, Crosshair, Timer } from "lucide-react";
+import { Menu, X, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ─── Contact form ─────────────────────────────────────────────────────────
@@ -50,9 +50,7 @@ const products = [
     name: "NTA + Aquity",
     sub: "Non-Targeted Analysis + Intelligence Platform",
     body: "Screen 72,000+ organic compounds from a single 25 mL sample — no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
-    stat: "72,000+", unit: "Compounds screened",
-    icon: Droplets,
-    cta: "Explore NTA + Aquity",
+    stat: "72,000+", unit: "Detectable compounds",
   },
   {
     href: "/aims.html",
@@ -61,8 +59,6 @@ const products = [
     sub: "Ambient Ionization Mass Spectrometry",
     body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt — with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
     stat: "48 hr", unit: "Lab turnaround",
-    icon: Crosshair,
-    cta: "Explore AIMS",
   },
   {
     href: "/rbt.html",
@@ -70,27 +66,25 @@ const products = [
     name: "Rapid Bacterial Test",
     sub: "Instant Field Water Safety",
     body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately — anywhere in the field.",
-    stat: "10 sec", unit: "Field results",
-    icon: Timer,
-    cta: "Explore rapid testing",
+    stat: "10 seconds", unit: "Field results",
   },
 ];
 
 // ─── Team ─────────────────────────────────────────────────────────────────
 const team = [
-  { initials: "SE", name: "Scott Ensminger", role: "Founder & CEO", bio: "Scott has a BS in Biology with an emphasis in organic chemistry from Iowa State University. His role at ITC is to identify emerging technologies and imagine how they can be applied to solve real-world problems. His experience spans on-site wastewater, drinking water, stormwater, and biological soil and water systems developed through 20 years as a commercial farmer and several years in stormwater management." },
-  { initials: "JE", name: "Jyl Ensminger", role: "Co-Founder & Business Operations", bio: "Jyl has a background in healthcare administration, with experience in both clinical support and patient services. At ITC, she helps oversee day-to-day team operations while supporting the company's financial management and organization. Her role focuses on keeping the business coordinated, organized, and running efficiently as the company and its partnerships continue to grow." },
-  { initials: "LD", name: "Logan Deal", role: "General Manager", bio: "Logan has a BS in Business Management from the United States Military Academy and spent 12 years on active duty as a U.S. Army officer. Her experience includes leading and managing organizations ranging from small teams to more than 100 personnel. As General Manager at ITC, she oversees the company's administrative and business operations, bringing a background in organizational leadership, planning, and execution to the company's day-to-day management." },
-  { initials: "JS", name: "Jeff Streck", role: "Marketing & Sales Lead", bio: "Jeff has an MBA and nearly 20 years of experience in the wine and beverage industry, working across retail, wholesale, and producer operations. At ITC, he leads sales strategy and market development, connecting businesses, municipalities, and organizations with technologies that address environmental challenges. His background brings a practical understanding of how to build markets, develop relationships, and move solutions into commercial use." },
-  { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie has a BS in Biology with a minor in Chemistry from MSU Denver and a background in synthetic chemistry research. Her work focuses on chemistries that are both environmentally responsible and practically useful. Her background includes R&D experience developing water-treatment and feed-additive technologies. At ITC, her focus is on helping move new products from the laboratory toward commercial application." },
-  { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter has a BS in Business from the University of Wyoming and focuses on operations and technology implementation at ITC. His experience spans laboratory testing, water treatment, advanced oxidation, and carbon-based technologies, combined with a practical background in business operations. His role is centered on evaluating how technologies work in real-world conditions and helping turn promising concepts into practical, economical solutions for customers." },
+  { initials: "SE", name: "Scott Ensminger", role: "Founder", bio: "Twenty years in cattle operations, wildlife ecology, public health, and wastewater before founding ITC. He was the customer this company was built to serve — and leads strategy and commercial from farm to lab to boardroom." },
+  { initials: "JS", name: "Jeff Streck", role: "Sales & Marketing", bio: "Based in Colorado, Jeff builds ITC's commercial relationships and owns the external brand. He connects the portfolio with buyers across agriculture, water, and municipal markets." },
+  { initials: "HE", name: "Hunter Ensminger", role: "Operations Lead", bio: "Hunter runs logistics, partnerships, and the operational backbone. When ITC makes a commitment, he's the reason it holds — from distribution through partner coordination." },
+  { initials: "LG", name: "Lillie Geiersbach", role: "Technical Lead", bio: "Lillie bridges the lab and the field, translating the science behind the portfolio into language operators, municipalities, and buyers can act on. The technology gets understood as deeply as it gets sold." },
+  { initials: "LD", name: "Logan Deal", role: "General Manager", bio: "Based in Texas, Logan runs day-to-day operations across the company. She keeps timelines, teams, and commitments aligned — on time, on spec." },
+  { initials: "JE", name: "Jyl Ensminger", role: "Montana", bio: "" },
 ];
 
 const tenants = [
   {
     keyword: "Simple.",
     tagline: "Works in the real world",
-    body: "Good tools work without instruction. The people running the operations that we engage with are busy. The technology must work the first time, in real conditions, without a troubleshooting manual.",
+    body: "Good tools work without instruction. The people running these operations are busy — the technology has to work the first time, in real conditions, without a troubleshooting manual.",
   },
   {
     keyword: "True.",
@@ -100,12 +94,12 @@ const tenants = [
   {
     keyword: "Economical.",
     tagline: "Advantaged on returns",
-    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is, adoption happens because it makes financial sense to the people buying it.",
+    body: "Good technology pays for itself. If the numbers don't pencil out, it doesn't matter how good the science is — adoption happens because it makes financial sense to the people buying it.",
   },
   {
     keyword: "Enduring.",
     tagline: "Built to last",
-    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time, not just on the day it ships.",
+    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time — not just on the day it ships.",
   },
 ];
 
@@ -223,7 +217,7 @@ export default function Home() {
               color: WHITE, maxWidth: "900px",
               textShadow: "0 2px 32px rgba(0,0,0,0.55)",
             }}>
-            Scientific solutions, curated for longstanding problems.
+            <h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'red' }}><h1 style={{ color: 'white', fontSize: '0.67em' }}>built by people who know the land, the lab, and the boardroom.</h1></h1></h1></h1>
           </motion.h1>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -264,59 +258,46 @@ export default function Home() {
       <section id="technologies" style={{ backgroundColor: WHITE, padding: "96px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <FadeUp>
-            <div className="flex items-end justify-between flex-wrap gap-6 mb-4">
-              <div>
-                <p style={{ fontSize: "0.66rem", letterSpacing: "0.3em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "12px" }}>
-                  CEC Technologies
-                </p>
-                <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2.2rem, 4vw, 3.4rem)", fontWeight: 700, lineHeight: 1.08, color: NAVY }}>
-                  Our Technologies
-                </h2>
-              </div>
-              <p style={{ color: MUTED, fontSize: "1rem", maxWidth: "390px", lineHeight: 1.7, fontStyle: "italic", margin: 0 }}>
+            <Label>Offerings</Label>
+            <div className="flex items-end justify-between flex-wrap gap-4 mb-4">
+              <h2 style={{ fontFamily: DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, lineHeight: 1.1, color: NAVY }}>
+                CEC Technologies
+              </h2>
+              <p style={{ color: MUTED, fontSize: "1rem", maxWidth: "300px", lineHeight: 1.7, fontStyle: "italic" }}>
                 ITC is the exclusive U.S. distributor for CEC Analytics.
               </p>
             </div>
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 48px" }} />
           </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {products.map((p, i) => {
-              const ProductIcon = p.icon;
-              return (
-                <FadeUp key={i} delay={i * 0.1}>
-                  <a href={p.href} className="group block h-full" style={{ textDecoration: "none" }}>
-                    <div className="flex flex-col h-full" style={{
-                      border: `1px solid ${BORDER}`,
-                      borderRadius: "3px",
-                      background: WHITE,
-                      padding: "34px 28px 28px",
-                      textAlign: "center",
-                      boxShadow: "0 8px 28px rgba(19,32,64,0.06)",
-                      transition: "transform 0.25s, box-shadow 0.25s, border-color 0.25s",
-                    }}
-                      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(19,32,64,0.13)"; e.currentTarget.style.borderColor = GREEN; }}
-                      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(19,32,64,0.06)"; e.currentTarget.style.borderColor = BORDER; }}>
-                      <div style={{ width: "64px", height: "64px", margin: "0 auto 22px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: OFF, border: `1px solid ${BORDER}`, color: GREEN }}>
-                        <ProductIcon size={28} strokeWidth={1.8} aria-hidden="true" />
-                      </div>
-                      <p style={{ fontSize: "0.64rem", letterSpacing: "0.25em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "12px" }}>{p.tag}</p>
-                      <h3 style={{ fontFamily: DISPLAY, fontSize: "1.65rem", fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: "10px" }}>{p.name}</h3>
-                      <p style={{ fontSize: "0.68rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.1em", lineHeight: 1.5, textTransform: "uppercase", fontWeight: 700 }}>{p.sub}</p>
-                      <div style={{ width: "44px", height: "1px", background: BORDER, margin: "0 auto 20px" }} />
-                      <p style={{ fontSize: "0.94rem", color: MUTED, lineHeight: 1.75, flex: 1, fontStyle: "italic", margin: 0 }}>{p.body}</p>
-                      <div style={{ marginTop: "26px", paddingTop: "22px", borderTop: `1px solid ${BORDER}` }}>
-                        <p style={{ fontFamily: DISPLAY, fontSize: "2.35rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
-                        <p style={{ fontSize: "0.64rem", color: GREEN, marginTop: "7px", letterSpacing: "0.16em", textTransform: "uppercase", fontWeight: 800 }}>{p.unit}</p>
-                      </div>
-                      <span style={{ marginTop: "22px", width: "100%", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "9px", background: NAVY, color: WHITE, padding: "13px 18px", fontFamily: BODY, fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
-                        {p.cta} <ArrowRight size={13} />
+          <div className="grid md:grid-cols-3 gap-8">
+            {products.map((p, i) => (
+              <FadeUp key={i} delay={i * 0.1}>
+                <a href={p.href} style={{ textDecoration: "none" }}>
+                  <div className="flex flex-col h-full" style={{
+                    borderTop: `3px solid ${NAVY}`, borderLeft: `1px solid ${BORDER}`, borderRight: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "40px 32px",
+                    transition: "border-top-color 0.25s, box-shadow 0.25s",
+                  }}
+                    onMouseEnter={e => { e.currentTarget.style.borderTopColor = GREEN; e.currentTarget.style.boxShadow = "0 6px 32px rgba(19,32,64,0.10)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
+                    <Label>{p.tag}</Label>
+                    <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
+                    <p style={{ fontSize: "0.78rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
+                    <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
+                    <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
+                    <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
+                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
+                      <p style={{ fontSize: "0.68rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
+                    </div>
+                    <div style={{ marginTop: "18px" }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                        View details <ArrowRight size={12} />
                       </span>
                     </div>
-                  </a>
-                </FadeUp>
-              );
-            })}
+                  </div>
+                </a>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>
@@ -337,7 +318,7 @@ export default function Home() {
                 ITC connects proven analytical and environmental technologies with the scientific expertise, business experience, and operational credibility to deploy them at scale.
               </p>
               <p style={{ fontSize: "1.1rem", color: MUTED, lineHeight: 1.9, marginTop: "18px", fontStyle: "italic", maxWidth: "680px" }}>
-                Every technology in our portfolio must clear two bars: better on performance, and better on economics than anything else out there. We don't accept trade-offs between the two.
+                Every technology in our portfolio must clear two bars: better on performance, and better on economics. We don't accept trade-offs between the two.
               </p>
             </FadeUp>
           </div>
@@ -359,18 +340,8 @@ export default function Home() {
                   borderTopColor: GREEN,
                   padding: "36px 32px",
                   height: "100%",
-                  position: "relative",
                 }}>
-                  <div aria-label="ITC requirement" title="ITC requirement" style={{
-                    position: "absolute", top: "22px", right: "22px",
-                    width: "34px", height: "34px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    background: "#15805b", color: WHITE,
-                    boxShadow: "0 4px 12px rgba(21,128,91,0.18)",
-                  }}>
-                    <Check size={20} strokeWidth={2.5} aria-hidden="true" />
-                  </div>
-                  <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px", paddingRight: "48px" }}>{t.keyword}</h3>
+                  <h3 style={{ fontFamily: DISPLAY, fontSize: "2rem", fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: "8px" }}>{t.keyword}</h3>
                   <p style={{ fontSize: "0.68rem", letterSpacing: "0.28em", textTransform: "uppercase", color: GREEN, fontFamily: BODY, fontWeight: 800, marginBottom: "20px" }}>{t.tagline}</p>
                   <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
                   <p style={{ fontSize: "0.98rem", color: MUTED, lineHeight: 1.85, fontStyle: "italic" }}>{t.body}</p>
