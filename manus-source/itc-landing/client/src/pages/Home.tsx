@@ -206,7 +206,7 @@ export default function Home() {
         {/* Hero copy */}
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center px-6 pb-16">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ fontSize: "0.76rem", letterSpacing: "0.4em", textTransform: "uppercase", color: GOLD, marginBottom: "22px", fontFamily: BODY }}>
+            style={{ fontSize: "0.76rem", letterSpacing: "0.4em", textTransform: "uppercase", color: WHITE, fontWeight: 700, marginBottom: "22px", fontFamily: BODY }}>
             Efficient. Economical. Effective.
           </motion.p>
 
@@ -228,13 +228,13 @@ export default function Home() {
             <a href="#technologies"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "10px",
-                background: WHITE, color: NAVY,
+                background: GOLD, color: NAVY,
                 padding: "14px 40px", fontFamily: BODY, fontSize: "0.95rem",
-                fontWeight: 500, letterSpacing: "0.08em", textDecoration: "none",
+                fontWeight: 700, letterSpacing: "0.08em", textDecoration: "none",
                 transition: "background 0.2s, color 0.2s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = GREEN; e.currentTarget.style.color = WHITE; }}
-              onMouseLeave={e => { e.currentTarget.style.background = WHITE; e.currentTarget.style.color = NAVY; }}>
+              onMouseEnter={e => { e.currentTarget.style.background = WHITE; e.currentTarget.style.color = NAVY; }}
+              onMouseLeave={e => { e.currentTarget.style.background = GOLD; e.currentTarget.style.color = NAVY; }}>
               Explore the Tech <ArrowRight size={14} />
             </a>
             <a href="#contact"
