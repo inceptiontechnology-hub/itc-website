@@ -146,7 +146,7 @@ export default function Home() {
 
         <video className="absolute inset-0 w-full h-full object-cover"
           autoPlay muted loop playsInline
-          src="/hero2.mp4" poster="/hero-poster.jpg" />
+          src="/hero-new.mp4" poster="/hero-poster.jpg" />
 
         {/* Much lighter overlay — let the nature breathe */}
         <div className="absolute inset-0" style={{
