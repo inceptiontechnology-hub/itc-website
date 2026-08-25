@@ -59,16 +59,16 @@ const products = [
     tag: "Targeted Detection",
     name: "AIMS",
     sub: "Ambient Ionization Mass Spectrometry",
-    body: "Targeted panels for drugs of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt, with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
+    body: "Targeted panels for substances of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt, with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
     stat: "48 hr", unit: "Lab turnaround",
   },
   {
     href: "/rbt.html",
-    tag: "Field Detection",
+    tag: "Point-of-Use Testing",
     name: "Rapid Bacterial Test",
-    sub: "Instant Field Water Safety",
+    sub: "Lab-free testing",
     body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately, anywhere in the field.",
-    stat: "10 seconds", unit: "Field results",
+    stat: "10 seconds", unit: "on-site results",
   },
 ];
 
@@ -101,7 +101,7 @@ const tenants = [
   {
     keyword: "Enduring.",
     tagline: "Built to last",
-    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time, not just on the day it ships.",
+    body: "We want to be proud of these decisions years from now. The technology we back has to leave things measurably better over time, not just at the point of sale.",
   },
 ];
 
@@ -266,7 +266,7 @@ export default function Home() {
                 CEC Technologies
               </h2>
               <p style={{ color: MUTED, fontSize: "1rem", maxWidth: "300px", lineHeight: 1.7, fontStyle: "italic" }}>
-                ITC is the exclusive U.S. distributor for CEC Analytics.
+                ITC is the distributor for CEC Analytics.
               </p>
             </div>
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 48px" }} />
@@ -416,7 +416,7 @@ export default function Home() {
             <FadeUp>
               <Label light>Get In Touch</Label>
               <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.85, fontStyle: "italic", marginBottom: "40px", marginTop: "20px" }}>
-                Whether you're a municipality, a producer, or a potential partner; if the technology matches the mission, we want to hear from you.
+                Municipality, producer, or potential partner — there's no wrong reason to reach out. Ask a hard question, float an idea, or see whether any of this is useful to you.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                 {[{ l: "General", e: "scott@itc.eco" }, { l: "Sales", e: "jeff@itc.eco" }].map(c => (
