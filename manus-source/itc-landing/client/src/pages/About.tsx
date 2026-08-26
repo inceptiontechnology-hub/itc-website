@@ -71,7 +71,7 @@ export default function About() {
                   <Link href="/products" className="text-xl font-medium hover:text-primary transition-colors">BioSpan Products</Link>
                   <Link href="/aims" className="text-xl font-medium hover:text-primary transition-colors">AIMS Technology</Link>
                   <Link href="/rbt" className="text-xl font-medium hover:text-primary transition-colors">Rapid Bacterial Test</Link>
-                  <a href="/products#contact" className="text-xl font-medium hover:text-primary transition-colors">Contact</a>
+                  <a href="/#contact" className="text-xl font-medium hover:text-primary transition-colors">Contact</a>
                 </nav>
               </div>
             </SheetContent>
