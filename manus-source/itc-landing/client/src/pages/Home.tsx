@@ -167,7 +167,16 @@ export default function Home() {
             </p>
           </div>
           <div className="hidden md:flex items-center gap-8" style={{ fontFamily: BODY }}>
-            <a href="#technologies" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none" }}>Products</a>
+            <div className="relative group" style={{ paddingBottom: "14px", marginBottom: "-14px" }}>
+              <a href="#technologies" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none" }}>
+                Product Portfolio <ChevronDown size={14} />
+              </a>
+              <div className="absolute left-0 top-full hidden group-hover:flex group-focus-within:flex flex-col" style={{ minWidth: "220px", background: "rgba(19,32,64,0.97)", border: "1px solid rgba(255,255,255,0.2)", padding: "8px 0" }}>
+                <a href="/nta-aquity.html" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.94rem", textDecoration: "none", whiteSpace: "nowrap" }}>NTA + Aquity</a>
+                <a href="/aims.html" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.94rem", textDecoration: "none", whiteSpace: "nowrap" }}>AIMS</a>
+                <a href="/rbt.html" style={{ color: WHITE, padding: "10px 16px", fontSize: "0.94rem", textDecoration: "none", whiteSpace: "nowrap" }}>Rapid Bacterial Test</a>
+              </div>
+            </div>
             <a href="#blog" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none" }}>Blog</a>
             <div className="relative group" style={{ paddingBottom: "14px", marginBottom: "-14px" }}>
               <button type="button" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: WHITE, background: "transparent", border: 0, padding: 0, fontFamily: BODY, fontSize: "0.92rem", fontWeight: 600, cursor: "pointer" }}>
@@ -188,8 +197,16 @@ export default function Home() {
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-8"
             style={{ background: "rgba(19,32,64,0.97)" }}>
             <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8" style={{ color: WHITE }}><X size={26} /></button>
+            <a href="#technologies" onClick={() => setMenuOpen(false)}
+              style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 600, color: WHITE, textDecoration: "none" }}>
+              Product Portfolio
+            </a>
+            <div className="flex flex-col items-center gap-3" style={{ marginTop: "-20px" }}>
+              <a href="/nta-aquity.html" onClick={() => setMenuOpen(false)} style={{ color: "rgba(255,255,255,0.78)", fontSize: "1rem", textDecoration: "none" }}>NTA + Aquity</a>
+              <a href="/aims.html" onClick={() => setMenuOpen(false)} style={{ color: "rgba(255,255,255,0.78)", fontSize: "1rem", textDecoration: "none" }}>AIMS</a>
+              <a href="/rbt.html" onClick={() => setMenuOpen(false)} style={{ color: "rgba(255,255,255,0.78)", fontSize: "1rem", textDecoration: "none" }}>Rapid Bacterial Test</a>
+            </div>
             {[
-              { href: "#technologies", l: "Products" },
               { href: "#blog", l: "Blog" },
               { href: "#standards", l: "Our Standards" },
               { href: "#team", l: "The Team" },
