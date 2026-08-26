@@ -561,10 +561,10 @@ export default function Home() {
       <footer style={{ backgroundColor: "#0b1628", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "28px 0" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p style={{ fontFamily: ORBITRON, fontSize: "1.2rem", fontWeight: 700, color: WHITE }}>ITC</p>
-          <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.25)", fontStyle: "italic" }}>
+          <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.65)", fontStyle: "italic" }}>
             Precision technology. Proven performance. No trade-offs.
           </p>
-          <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.18)" }}>
+          <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.65)" }}>
             &copy; {new Date().getFullYear()} Inception Technology Company
           </p>
         </div>
