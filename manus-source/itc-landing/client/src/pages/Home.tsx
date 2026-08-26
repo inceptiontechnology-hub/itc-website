@@ -206,14 +206,32 @@ export default function Home() {
             </div>
             <a href="#contact" style={{ color: WHITE, fontSize: "0.92rem", fontWeight: 600, textDecoration: "none", border: "1px solid rgba(255,255,255,0.55)", padding: "9px 16px" }}>Contact Us</a>
           </div>
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2" style={{ color: WHITE }}><Menu size={26} /></button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2"
+            style={{ color: WHITE }}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+          >
+            <Menu size={26} aria-hidden="true" />
+          </button>
         </nav>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-8"
+          <div id="mobile-navigation" className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-8"
             style={{ background: "rgba(19,32,64,0.97)" }}>
-            <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8" style={{ color: WHITE }}><X size={26} /></button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              className="absolute top-8 right-8"
+              style={{ color: WHITE }}
+              aria-label="Close navigation menu"
+            >
+              <X size={26} aria-hidden="true" />
+            </button>
             <a href="#technologies" onClick={() => setMenuOpen(false)}
               style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 600, color: WHITE, textDecoration: "none" }}>
               Product Portfolio
