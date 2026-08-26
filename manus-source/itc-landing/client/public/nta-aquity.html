@@ -3,589 +3,115 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NTA + Aquity — Portfolio | ITC</title>
-<meta name="description" content="Non-targeted analysis screening 72,000+ organic compounds from a 25 mL sample, with source attribution by geography and industry via CEC's Aquity platform. Distributed in the U.S. by ITC." />
+<title>NTA + Aquity — Find What You Weren't Looking For | ITC</title>
+<meta name="description" content="Use Non-Targeted Analysis to reveal a broader picture of organic chemistry in water, then turn the results into usable intelligence with Aquity." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --navy:#131F3A;
-    --navy-2:#1B2A49;
-    --navy-3:#22335A;
-    --green:#2E5B3D;
-    --green-bright:#3F7C53;
-    --gold:#BD8A32;
-    --gold-light:#D6A34A;
-    --burgundy:#4E1018;
-    --paper:#F4F2EB;
-    --paper-2:#FBFAF5;
-    --ink:#131F3A;
-    --ink-soft:#4A5468;
-    --cream:#EFEBE1;
-    --cream-soft:#AAB3C6;
-    --line-dark:rgba(189,138,50,.45);
-    --font-display:'Orbitron', 'Helvetica Neue', sans-serif;
-    --font-body:'Helvetica Neue','Inter',Arial,sans-serif;
-    --font-accent:'EB Garamond',Georgia,serif;
-    --maxw:1180px;
-    --ease:cubic-bezier(.22,.61,.36,1);
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--paper);
-    -webkit-font-smoothing:antialiased;
-    line-height:1.62;
-    font-size:17px;
-  }
-  h1,h2,h3,h4{line-height:1.08;margin:0;font-weight:700;letter-spacing:-.015em;}
-  p{margin:0 0 1.1em;}
-  a{color:var(--green);text-decoration:none;transition:color .2s var(--ease);}
-  a:hover{color:var(--green-bright);}
-  img{max-width:100%;display:block;}
-  ::selection{background:var(--gold);color:var(--navy);}
-
-  /* ---------- shared ---------- */
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-  .section{padding:112px 0;}
-  .eyebrow{
-    font-family:var(--font-display);
-    font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
-    color:var(--gold);margin:0 0 22px;display:inline-block;
-  }
-  .section--dark .eyebrow{color:var(--gold-light);}
-  h2.title{font-size:clamp(1.95rem,3.6vw,2.85rem);max-width:16ch;margin-bottom:.55em;}
-  .lead{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-soft);max-width:60ch;}
-  .section--dark{background:var(--navy);color:var(--cream);}
-  .section--dark .lead{color:var(--cream-soft);}
-
-  .btn{
-    display:inline-flex;align-items:center;gap:.6em;
-    font-weight:600;font-size:.98rem;letter-spacing:.01em;
-    padding:15px 30px;border-radius:2px;border:0;cursor:pointer;
-    transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
-  }
-  .btn--gold{background:var(--gold);color:var(--navy);box-shadow:0 1px 0 rgba(0,0,0,.15);}
-  .btn--gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(189,138,50,.7);color:var(--navy);}
-  .btn--ghost{background:transparent;color:var(--cream);border:1px solid rgba(239,235,225,.35);}
-  .btn--ghost:hover{border-color:var(--gold-light);color:var(--gold-light);}
-  .link-arrow{display:inline-flex;align-items:center;gap:.5em;font-weight:600;}
-  .link-arrow svg{transition:transform .2s var(--ease);}
-  .link-arrow:hover svg{transform:translateX(4px);}
-
-  :focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;border-radius:2px;}
-
-  /* ---------- nav ---------- */
-  .nav{
-    position:fixed;top:0;left:0;right:0;z-index:60;
-    transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
-    padding:20px 0;
-  }
-  .nav__inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;}
-  .nav__logo{height:38px;width:auto;transition:height .3s var(--ease);}
-  .nav__logo--light{display:block;}
-  .nav__logo--dark{display:none;}
-  .nav__links{display:flex;align-items:center;gap:34px;list-style:none;margin:0;padding:0;}
-  .nav__links a{
-    color:var(--cream);font-weight:500;font-size:.95rem;letter-spacing:.01em;position:relative;padding:4px 0;
-  }
-  .nav__links a::after{
-    content:'';position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--gold-light);transition:width .25s var(--ease);
-  }
-  .nav__links a:hover{color:var(--gold-light);}
-  .nav__links a:hover::after{width:100%;}
-  .nav__cta{margin-left:6px;}
-  .nav__cta a{
-    border:1px solid rgba(239,235,225,.4);padding:9px 18px;border-radius:2px;
-  }
-  .nav__cta a::after{display:none;}
-  .nav__cta a:hover{background:var(--gold-light);color:var(--navy);border-color:var(--gold-light);}
-
-  .nav.scrolled{background:rgba(244,242,235,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(19,31,58,.09), 0 8px 24px -18px rgba(19,31,58,.5);padding:12px 0;}
-  .nav.scrolled .nav__logo--light{display:none;}
-  .nav.scrolled .nav__logo--dark{display:block;}
-  .nav.scrolled .nav__logo{height:34px;}
-  .nav.scrolled .nav__links a{color:var(--navy);}
-  .nav.scrolled .nav__links a:hover{color:var(--green);}
-  .nav.scrolled .nav__links a::after{background:var(--gold);}
-  .nav.scrolled .nav__cta a{border-color:rgba(19,31,58,.28);color:var(--navy);}
-  .nav.scrolled .nav__cta a:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-
-  .nav__toggle{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;padding:10px;}
-  .nav__toggle span{display:block;height:2px;background:var(--cream);margin:5px 0;transition:.3s var(--ease);border-radius:2px;}
-  .nav.scrolled .nav__toggle span{background:var(--navy);}
-
-  .mobile-menu{
-    position:fixed;inset:0;z-index:55;background:var(--navy);
-    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
-    padding:0 40px;gap:6px;transform:translateY(-100%);transition:transform .45s var(--ease);
-  }
-  .mobile-menu.open{transform:translateY(0);}
-  .mobile-menu a{color:var(--cream);font-size:2rem;font-weight:600;letter-spacing:-.02em;padding:12px 0;}
-  .mobile-menu a:hover{color:var(--gold-light);}
-  .mobile-menu .mm-mission{font-family:var(--font-accent);font-style:italic;color:var(--gold-light);font-size:1.2rem;margin-top:30px;letter-spacing:0;}
-
-  /* ---------- hero (pinned globe → horizon) ---------- */
-  .hero{
-    position:relative;height:210svh;
-    background:radial-gradient(120% 90% at 78% 8%, #1d2f52 0%, var(--navy) 46%, #0e1830 100%);
-    color:var(--cream);
-  }
-  .hero__sticky{
-    position:sticky;top:0;height:100svh;overflow:hidden;
-    display:flex;align-items:center;
-  }
-  .hero__globe{position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%;display:block;}
-  .hero__scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
-    background:linear-gradient(105deg, var(--navy) 20%, rgba(19,31,58,.55) 44%, rgba(19,31,58,0) 66%);}
-  .hero__inner{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%;
-    will-change:opacity,transform;}
-  .hero__micro{
-    font-family:var(--font-display);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
-    color:var(--gold-light);margin-bottom:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  }
-  .hero__micro .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block;}
-  .hero h1{
-    font-size:clamp(2.5rem,6.2vw,4.6rem);max-width:19ch;letter-spacing:-.03em;font-weight:700;
-  }
-  .hero h1 em{font-style:normal;color:var(--gold-light);}
-  .hero__sub{
-    font-size:clamp(1.08rem,1.7vw,1.32rem);color:#C6CEDD;max-width:54ch;margin:30px 0 40px;line-height:1.55;
-  }
-  .hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 30px;}
-  .hero__cred{
-    margin-top:52px;font-size:.9rem;color:var(--cream-soft);letter-spacing:.01em;
-    padding-left:16px;border-left:2px solid var(--gold);max-width:44ch;
-  }
-  .hero__scroll{
-    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:4;
-    font-family:var(--font-display);font-size:.62rem;letter-spacing:.24em;color:var(--cream-soft);text-transform:uppercase;
-    display:flex;flex-direction:column;align-items:center;gap:8px;
-  }
-  .hero__scroll .bar{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:pulse 2.4s var(--ease) infinite;}
-  @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.7);}50%{opacity:1;transform:scaleY(1);}}
-
-  /* ---------- stats band ---------- */
-  .stats{background:var(--navy);border-top:1px solid var(--line-dark);}
-  .stats__eyebrow{
-    max-width:var(--maxw);margin:0 auto;padding:32px 28px 0;
-    font-family:var(--font-display);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);
-  }
-  .stats__grid{
-    max-width:var(--maxw);margin:0 auto;padding:8px 28px 0;
-    display:grid;grid-template-columns:repeat(4,1fr);
-  }
-  .stat{padding:44px 26px;border-left:1px solid rgba(255,255,255,.07);}
-  .stat:first-child{border-left:0;padding-left:0;}
-  .stat__num{font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--cream);letter-spacing:-.02em;line-height:1;}
-  .stat__num b{color:var(--gold-light);font-weight:700;}
-  .stat__cap{font-size:.82rem;color:var(--cream-soft);margin-top:12px;letter-spacing:.02em;}
-  .stat__tag{font-family:var(--font-display);font-size:.58rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-top:6px;}
-
-  /* ---------- about ---------- */
-  .about__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start;}
-  .about__standard{
-    margin-top:30px;font-size:1.05rem;color:var(--ink);border-left:3px solid var(--green);padding-left:22px;
-  }
-  .mission-quote{
-    font-family:var(--font-accent);font-style:italic;font-size:clamp(1.35rem,2.2vw,1.72rem);
-    line-height:1.4;color:var(--navy);letter-spacing:0;
-    background:var(--paper-2);border:1px solid rgba(19,31,58,.08);border-top:3px solid var(--gold);
-    padding:38px 40px;border-radius:3px;box-shadow:0 20px 50px -34px rgba(19,31,58,.4);
-  }
-  .mission-quote cite{display:block;font-style:normal;font-family:var(--font-display);font-size:.66rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-top:22px;}
-
-  .criteria{margin-top:88px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(19,31,58,.1);border-radius:3px;overflow:hidden;}
-  .crit{background:var(--paper-2);padding:34px 28px 38px;position:relative;transition:transform .3s var(--ease);}
-  .crit__mark{font-family:var(--font-display);font-size:.7rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
-  .crit h3{font-size:1.32rem;margin:16px 0 12px;color:var(--navy);letter-spacing:-.02em;}
-  .crit p{font-size:.95rem;color:var(--ink-soft);margin:0;}
-  .crit::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
-  .crit:hover::before{transform:scaleX(1);}
-
-  /* ---------- team ---------- */
-  .team{background:var(--paper-2);}
-  .team__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
-  .member{
-    background:var(--paper);border:1px solid rgba(19,31,58,.09);border-radius:4px;padding:32px 30px 34px;
-    transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
-  }
-  .member:hover{transform:translateY(-4px);box-shadow:0 26px 50px -34px rgba(19,31,58,.55);border-color:rgba(189,138,50,.5);}
-  .avatar{
-    width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    background:var(--navy);color:var(--cream);font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:.04em;
-    box-shadow:0 0 0 2px var(--paper), 0 0 0 4px var(--gold);margin-bottom:22px;
-  }
-  .member h3{font-size:1.24rem;color:var(--navy);}
-  .member .role{font-family:var(--font-display);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:8px 0 16px;}
-  .member p{font-size:.94rem;color:var(--ink-soft);margin:0 0 16px;}
-  .member .contact-mini a{font-size:.86rem;font-weight:600;}
-
-  /* ---------- partners ---------- */
-  .tree{margin-top:64px;display:flex;flex-direction:column;align-items:center;}
-  .node{
-    background:var(--navy-2);border:1px solid rgba(189,138,50,.35);border-radius:5px;
-    text-align:center;position:relative;
-  }
-  .node--itc{padding:22px 40px;background:var(--gold);border-color:var(--gold);}
-  .node--itc .n-name{color:var(--navy);font-family:var(--font-display);font-weight:700;letter-spacing:.08em;font-size:1.05rem;}
-  .node--itc .n-sub{color:#3d2f10;font-size:.78rem;letter-spacing:.02em;margin-top:4px;}
-  .connector{width:2px;height:34px;background:var(--line-dark);}
-  .node--cec{padding:28px 40px;max-width:640px;}
-  .node--cec .n-name{color:var(--cream);font-weight:700;font-size:1.35rem;letter-spacing:-.01em;}
-  .node--cec .n-tag{font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;color:var(--gold-light);text-transform:uppercase;margin-bottom:8px;}
-  .node--cec p{color:var(--cream-soft);font-size:.92rem;margin:12px 0 0;max-width:52ch;margin-inline:auto;}
-
-  .branch{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;margin-top:0;position:relative;padding-top:34px;
-  }
-  .branch::before{content:'';position:absolute;top:0;left:50%;width:2px;height:34px;transform:translateX(-50%);background:var(--line-dark);}
-  .offer{
-    background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:30px 28px 32px;
-    position:relative;transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
-  }
-  .offer::before{content:'';position:absolute;top:-34px;left:0;right:0;height:2px;background:var(--line-dark);}
-  .offer:first-child::before{left:50%;}
-  .offer:last-child::before{right:50%;}
-  .offer::after{content:'';position:absolute;top:-34px;left:50%;width:2px;height:34px;transform:translateX(-50%);background:var(--line-dark);}
-  .offer:hover{transform:translateY(-4px);border-color:rgba(189,138,50,.55);background:var(--navy-3);}
-  .offer__code{font-family:var(--font-display);font-size:.62rem;letter-spacing:.2em;color:var(--gold-light);text-transform:uppercase;}
-  .offer h3{color:var(--cream);font-size:1.2rem;margin:14px 0 12px;}
-  .offer p{color:var(--cream-soft);font-size:.9rem;margin:0 0 18px;}
-  .offer .spec{display:flex;flex-wrap:wrap;gap:8px;}
-  .offer .spec span{font-size:.72rem;color:var(--cream);background:rgba(189,138,50,.14);border:1px solid rgba(189,138,50,.3);padding:4px 10px;border-radius:20px;letter-spacing:.02em;}
-  .partners__note{margin-top:40px;text-align:center;font-size:.86rem;color:var(--cream-soft);}
-  .partners__note b{color:var(--gold-light);font-weight:600;}
-
-  /* ---------- contact ---------- */
-  .contact{background:var(--paper-2);}
-  .contact__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:start;}
-  .contact__direct{margin-top:44px;padding-top:28px;border-top:1px solid rgba(19,31,58,.12);}
-  .contact__direct-k{display:block;font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;}
-  .contact__direct a{font-size:1.15rem;font-weight:600;display:inline-block;}
-  .contact__direct .phone{display:block;color:var(--ink-soft);margin-top:6px;font-size:1rem;font-weight:500;}
-  .contact__direct .phone:hover{color:var(--green);}
-
-  .contact__card{background:var(--paper);border:1px solid rgba(19,31,58,.1);border-top:3px solid var(--gold);border-radius:4px;padding:34px 34px 36px;box-shadow:0 26px 60px -40px rgba(19,31,58,.45);}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip-btn{
-    font-family:var(--font-body);font-size:.84rem;color:var(--ink-soft);cursor:pointer;
-    background:var(--paper-2);border:1px solid rgba(19,31,58,.18);border-radius:20px;padding:8px 15px;
-    transition:all .2s var(--ease);
-  }
-  .chip-btn:hover{border-color:var(--gold);color:var(--navy);}
-  .chip-btn.selected{background:var(--navy);border-color:var(--navy);color:var(--cream);}
-  @media (hover:none),(max-width:720px){
-    .chip-btn{min-height:44px;padding:11px 17px;}
-  }
-
-  .field{margin-bottom:20px;}
-  .field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
-  .field input,.field textarea{
-    width:100%;font-family:var(--font-body);font-size:1rem;color:var(--ink);
-    background:var(--paper-2);border:1px solid rgba(19,31,58,.18);border-radius:3px;padding:13px 15px;transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
-  }
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(189,138,50,.16);}
-  .field textarea{resize:vertical;min-height:120px;}
-  .form-note{font-size:.82rem;color:var(--ink-soft);margin-top:12px;}
-  .form-success{color:var(--green);font-weight:600;font-size:.95rem;margin-top:14px;display:none;}
-  .field .err{display:none;color:var(--burgundy);font-size:.76rem;margin-top:7px;font-weight:600;letter-spacing:.01em;}
-  .field.invalid input,.field.invalid textarea{border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(78,16,24,.14);}
-  .field.invalid .err{display:block;}
-
-  /* ---------- footer ---------- */
-  .footer{background:var(--navy);color:var(--cream);padding:72px 0 34px;}
-  .footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;align-items:start;}
-  .footer__logo{height:52px;margin-bottom:20px;}
-  .footer__tag{font-family:var(--font-accent);font-style:italic;font-size:1.35rem;color:var(--gold-light);letter-spacing:0;}
-  .footer h4{font-family:var(--font-display);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-  .footer ul{list-style:none;padding:0;margin:0;}
-  .footer li{margin-bottom:11px;}
-  .footer a{color:var(--cream-soft);font-size:.95rem;}
-  .footer a:hover{color:var(--gold-light);}
-  .footer__bottom{
-    margin-top:56px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--cream-soft);
-  }
-
-  /* ---------- reveal animation ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-  .reveal.in{opacity:1;transform:none;}
-  .reveal[data-d="1"]{transition-delay:.08s;}
-  .reveal[data-d="2"]{transition-delay:.16s;}
-  .reveal[data-d="3"]{transition-delay:.24s;}
-
-
-  /* ---------- portfolio links ---------- */
-  a.offer{display:block;text-decoration:none;color:inherit;}
-  .offer__more{display:inline-flex;align-items:center;gap:.4em;margin-top:18px;
-    font-family:var(--font-display);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);}
-  .offer__more svg{transition:transform .2s var(--ease);}
-  a.offer:hover .offer__more svg{transform:translateX(4px);}
-  .portfolio__cta{margin-top:52px;text-align:center;}
-  .portfolio__cta .partners__note{margin-top:22px;}
-
-  /* ---------- responsive ---------- */
-  @media (max-width:960px){
-    .about__grid,.contact__grid{grid-template-columns:1fr;gap:40px;}
-    .team__grid{grid-template-columns:repeat(2,1fr);}
-    .criteria{grid-template-columns:repeat(2,1fr);}
-    .stats__grid{grid-template-columns:repeat(2,1fr);}
-    .stat:nth-child(3){border-left:0;padding-left:0;}
-    .footer__top{grid-template-columns:1fr 1fr;}
-  }
-  @media (max-width:720px){
-    body{font-size:16px;}
-    .section{padding:82px 0;}
-    .nav__links,.nav__cta{display:none;}
-    .nav__toggle{display:block;}
-    .team__grid{grid-template-columns:1fr;}
-    .branch{grid-template-columns:1fr;gap:0;padding-top:34px;}
-    .branch::before{height:34px;}
-    .offer{margin-top:34px;}
-    .offer::before{display:none;}
-    .offer::after{top:-34px;}
-    .offer:first-child{margin-top:0;}
-    .offer:first-child::after{display:none;}
-    .footer__top{grid-template-columns:1fr;gap:34px;}
-    .hero__cred{margin-top:38px;}
-    .stat:nth-child(3){border-left:1px solid rgba(255,255,255,.07);padding-left:26px;}
-  }
-  @media (max-width:520px){
-    .stats__grid{grid-template-columns:1fr;}
-    .stat{border-left:0!important;padding-left:0!important;border-top:1px solid rgba(255,255,255,.07);}
-    .stat:first-child{border-top:0;}
-    .criteria{grid-template-columns:1fr;}
-    .hero__actions .btn{width:100%;justify-content:center;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{scroll-behavior:auto!important;}
-    .reveal{opacity:1!important;transform:none!important;transition:none!important;}
-    .hero__scroll .bar{animation:none;}
-  }
-
-
-  /* ---------- sub-page ---------- */
-  .page-head{background:radial-gradient(120% 130% at 82% -10%, #1d2f52 0%, var(--navy) 55%, #0e1830 100%);color:var(--cream);padding:148px 0 68px;}
-  .page-head .eyebrow{color:var(--gold-light);}
-  .page-head h1{font-size:clamp(2.05rem,4.4vw,3.25rem);max-width:22ch;letter-spacing:-.03em;color:var(--cream);}
-  .page-head .lead{color:var(--cream-soft);max-width:62ch;margin-top:20px;}
-  .breadcrumb{font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:26px;color:var(--cream-soft);}
-  .breadcrumb a{color:var(--gold-light);}.breadcrumb a:hover{color:var(--gold);}
-  .breadcrumb span{opacity:.45;margin:0 .55em;}
-  .section-intro .lead{max-width:64ch;}
-  .prose p{max-width:64ch;font-size:1.05rem;color:var(--ink-soft);}
-  .prose p b{color:var(--navy);}
-  h3.sub{font-size:1.4rem;color:var(--navy);margin:0 0 18px;letter-spacing:-.02em;}
-  .framing{background:var(--paper-2);border:1px solid rgba(19,31,58,.1);border-left:3px solid var(--green);border-radius:3px;padding:26px 30px;margin-top:48px;max-width:70ch;}
-  .framing h4{font-family:var(--font-display);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
-  .framing p{font-size:.97rem;color:var(--ink-soft);margin:0;}
-  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(19,31,58,.1);border-radius:3px;overflow:hidden;margin-top:44px;}
-  .cap{background:var(--paper-2);padding:26px 28px 30px;}
-  .cap__mark{font-family:var(--font-display);font-size:.6rem;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;}
-  .cap h3{font-size:1.1rem;margin:11px 0 8px;color:var(--navy);letter-spacing:-.01em;}
-  .cap p{font-size:.92rem;color:var(--ink-soft);margin:0;}
-  .panel{background:var(--paper-2);border:1px solid rgba(19,31,58,.1);border-radius:4px;padding:24px 28px;margin-bottom:16px;transition:border-color .3s var(--ease),transform .3s var(--ease);}
-  .panel:hover{border-color:rgba(189,138,50,.5);transform:translateY(-2px);}
-  .panel__tag{font-family:var(--font-display);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-  .panel h3{font-size:1.14rem;color:var(--navy);margin:0 0 6px;}
-  .panel p{font-size:.94rem;color:var(--ink-soft);margin:0;}
-  .callout{background:var(--navy);color:var(--cream);border-left:3px solid var(--gold);border-radius:3px;padding:30px 36px;margin-top:44px;max-width:74ch;}
-  .callout .k{font-family:var(--font-display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;display:block;}
-  .callout p{font-size:1.06rem;color:var(--cream);margin:0;line-height:1.5;}
-  .callout p b,.callout b{color:var(--gold-light);font-weight:600;}
-  .partner{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;background:var(--paper-2);border:1px solid rgba(19,31,58,.1);border-top:3px solid var(--gold);border-radius:4px;padding:34px 38px;margin-top:26px;}
-  .partner__badge{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--navy);background:var(--paper);border:1px solid rgba(189,138,50,.4);border-radius:6px;padding:20px 24px;text-align:center;letter-spacing:.04em;line-height:1;}
-  .partner__badge small{display:block;font-size:.52rem;letter-spacing:.14em;color:var(--gold);margin-top:8px;font-weight:600;}
-  .partner .p-tag{font-family:var(--font-display);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-  .partner h3{font-size:1.5rem;color:var(--navy);letter-spacing:-.02em;}
-  .partner p{font-size:.98rem;color:var(--ink-soft);margin:12px 0 0;max-width:66ch;}
-  .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
-  .tech-grid .offer::before,.tech-grid .offer::after{display:none;}
-  .cta-band{background:var(--navy);color:var(--cream);text-align:center;}
-  .cta-band .eyebrow{color:var(--gold-light);}
-  .cta-band .title{margin-left:auto;margin-right:auto;}
-  .cta-band .lead{color:var(--cream-soft);margin:0 auto 32px;}
-  .back-link{display:inline-flex;align-items:center;gap:.55em;margin-top:8px;font-family:var(--font-display);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
-  .back-link svg{transform:rotate(180deg);}
-  @media (max-width:720px){
-    .caps{grid-template-columns:1fr;}
-    .tech-grid{grid-template-columns:1fr;}
-    .partner{grid-template-columns:1fr;gap:20px;text-align:left;}
-  }
-
-  .know{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-top:52px;}
-  .know__item{background:var(--navy-2);padding:26px 24px 28px;}
-  .know__k{font-family:var(--font-display);font-size:.58rem;letter-spacing:.22em;color:var(--gold-light);text-transform:uppercase;}
-  .know__item h3{color:var(--cream);font-size:1.1rem;margin:12px 0 8px;letter-spacing:-.01em;}
-  .know__item p{color:var(--cream-soft);font-size:.88rem;margin:0;}
-  @media(max-width:860px){.know{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:520px){.know{grid-template-columns:1fr;}}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
-  .step{background:var(--paper-2);border:1px solid rgba(19,31,58,.1);border-radius:4px;padding:28px 26px 30px;}
-  .step__n{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--navy);background:var(--gold);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-  .step h3{font-size:1.08rem;color:var(--navy);margin:0 0 8px;letter-spacing:-.01em;}
-  .step p{font-size:.92rem;color:var(--ink-soft);margin:0;}
-  @media(max-width:720px){.steps{grid-template-columns:1fr;}}
+:root{--navy:#0d2154;--deep:#060f28;--green:#1a6b3c;--emerald:#0d7250;--gold:#c9a444;--white:#fff;--off:#eef3ef;--muted:#445060;--border:#b8c4d0;--display:'Libre Baskerville',Georgia,serif;--body:'Lora',Georgia,serif;--brand:'Orbitron',sans-serif;--max:1120px;--ease:cubic-bezier(.25,.46,.45,.94);--aquity-navy-950:#031326;--aquity-navy-900:#061b34;--aquity-screen:#f8fbfe;--aquity-cycle:18s}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--navy);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}h1,h2,h3,p{margin-top:0}.wrap{max-width:var(--max);margin:auto;padding:0 28px}.section{padding:110px 0}.off{background:var(--off)}.eyebrow{font-size:.76rem;letter-spacing:.32em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0 0 16px}.title{font-family:var(--display);font-size:clamp(2.15rem,4vw,3.55rem);line-height:1.12;letter-spacing:-.02em;margin:0;color:var(--navy)}.lead{max-width:730px;color:var(--muted);font-size:1.07rem;line-height:1.9;font-style:italic;margin:22px 0 0}.section-head{margin-bottom:52px}.section-head.center{text-align:center}.section-head.center .lead{margin-left:auto;margin-right:auto}.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.in{opacity:1;transform:none}
+/* navigation */
+.nav{position:absolute;z-index:30;left:0;right:0;top:0;border-bottom:1px solid rgba(255,255,255,.12)}.nav .wrap{height:92px;display:flex;align-items:center;justify-content:space-between}.brand strong{font-family:var(--brand);font-size:2rem;letter-spacing:.07em;color:#fff;display:block;line-height:1}.brand span{display:block;color:rgba(255,255,255,.5);font-size:.59rem;text-transform:uppercase;letter-spacing:.24em;line-height:1.5;margin-top:5px}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:rgba(255,255,255,.76);font-size:.92rem}.nav-links a:hover{color:#fff}.nav-links .contact{border:1px solid rgba(255,255,255,.5);padding:9px 17px}
+/* hero */
+.hero{position:relative;min-height:760px;overflow:hidden;color:#fff;display:flex;align-items:center;padding:150px 0 90px;background:url('nta-hero.jpg') center center/cover no-repeat}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(3,13,36,.93) 0%,rgba(5,23,51,.85) 52%,rgba(4,17,39,.78) 100%)}.hero:after{content:"";position:absolute;inset:0;opacity:.2;background-image:linear-gradient(rgba(91,180,219,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(91,180,219,.14) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(110deg,#000,transparent 72%);-webkit-mask-image:linear-gradient(110deg,#000,transparent 72%)}.hero-copy{position:relative;z-index:2;max-width:850px}.crumb{font-size:.69rem;text-transform:uppercase;letter-spacing:.22em;color:rgba(255,255,255,.5);margin-bottom:44px}.crumb a{color:rgba(255,255,255,.72)}.hero .eyebrow{color:var(--gold)}.hero h1{font-family:var(--display);font-size:clamp(3.05rem,6.7vw,6.15rem);line-height:1.01;letter-spacing:-.035em;max-width:920px;margin:0;text-shadow:0 5px 30px rgba(0,0,0,.32)}.hero .intro{max-width:760px;color:rgba(255,255,255,.79);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.85;margin:30px 0 0;font-style:italic}.hero-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:36px}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 27px;font-size:.79rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800;transition:background .2s,color .2s,border-color .2s}.button.primary{background:var(--gold);color:var(--deep);border:1px solid var(--gold)}.button.primary:hover{background:#fff;border-color:#fff}.button.secondary{border:1px solid rgba(255,255,255,.48);color:#fff}.button.secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+/* proof */
+.proof{background:#fff;border-bottom:1px solid var(--border)}.proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}.proof-item{padding:44px 35px;text-align:center;border-left:1px solid var(--border)}.proof-item:first-child{border-left:0}.proof-item strong{display:block;font-family:var(--display);font-size:clamp(2rem,3.2vw,2.85rem);line-height:1.05;color:var(--emerald)}.proof-item span{display:block;margin-top:12px;color:var(--navy);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+/* problem cards */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.problem-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--border);border-top:3px solid var(--emerald);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}.problem-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(13,33,84,.1)}.problem-image{position:relative;aspect-ratio:16/8.7;overflow:hidden;background:var(--navy)}.problem-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,15,40,.02) 42%,rgba(6,15,40,.42) 100%)}.problem-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .6s var(--ease)}.problem-card:hover .problem-image img{transform:scale(1.035)}.card-num{position:absolute;z-index:2;left:20px;bottom:17px;color:#fff;font:700 .7rem/1 var(--brand);letter-spacing:.18em;text-shadow:0 2px 8px rgba(0,0,0,.5)}.problem-body{padding:26px 27px 29px}.problem-card h3,.outcome h3{font-family:var(--display);font-size:1.15rem;line-height:1.35;margin:0 0 12px;color:var(--navy)}.problem-card p,.outcome p{color:var(--muted);font-size:.93rem;line-height:1.75;margin:0}
+/* NTA comparison */
+.test-intro{max-width:780px}.comparison{display:grid;grid-template-columns:1fr 74px 1fr;align-items:stretch;margin-top:52px}.compare{padding:43px 39px;border:1px solid var(--border);background:#fff;min-height:310px}.compare.targeted{background:#f6f8f7}.compare.nta{background:var(--navy);border-color:var(--navy);box-shadow:0 18px 42px rgba(13,33,84,.16)}.compare-label{display:block;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;font-weight:800;color:#677383;margin-bottom:23px}.compare.nta .compare-label{color:var(--gold)}.compare h3{font-family:var(--display);font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.3;margin:0 0 17px;color:var(--navy)}.compare.nta h3{color:#fff}.compare p{font-size:.96rem;line-height:1.82;color:var(--muted);margin:0}.compare.nta p{color:rgba(255,255,255,.72)}.versus{position:relative;display:flex;align-items:center;justify-content:center}.versus:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--border)}.versus span{position:relative;z-index:2;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--emerald);color:#fff;border:6px solid var(--off);font:700 .7rem/1 var(--brand);letter-spacing:.08em}.nta-proof{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:29px}.nta-proof div{padding:17px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13)}.nta-proof strong{display:block;color:#80d7ac;font-family:var(--display);font-size:1.25rem;line-height:1.15}.nta-proof span{display:block;color:rgba(255,255,255,.55);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-top:7px}
+/* Aquity section and supplied tablet */
+.aquity-section{position:relative;isolation:isolate;overflow:hidden;padding:110px 0;color:#fff;background:linear-gradient(180deg,var(--aquity-navy-950) 0%,var(--aquity-navy-900) 55%,#04172b 100%)}.aquity-section:before,.aquity-section:after{content:"";position:absolute;z-index:-1;width:58%;height:68%;bottom:-27%;opacity:.65;background-image:linear-gradient(rgba(30,145,226,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(30,145,226,.14) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to top,#000,transparent 86%);-webkit-mask-image:linear-gradient(to top,#000,transparent 86%)}.aquity-section:before{left:-18%;transform:perspective(560px) rotateX(63deg) rotateZ(10deg);transform-origin:50% 100%}.aquity-section:after{right:-18%;transform:perspective(560px) rotateX(63deg) rotateZ(-10deg);transform-origin:50% 100%}.aquity-grid{display:grid;grid-template-columns:1fr;gap:56px}.aquity-copy{max-width:980px}.aquity-name{font-family:var(--display);font-size:clamp(3rem,5.8vw,5.5rem);line-height:.98;letter-spacing:-.035em;color:#fff;margin:0 0 22px}.aquity-subtitle{font-family:var(--display);font-size:clamp(1.65rem,2.8vw,2.55rem);line-height:1.2;letter-spacing:-.02em;color:rgba(255,255,255,.92);margin:0;max-width:850px}.aquity-summary{color:rgba(255,255,255,.88);font-size:1.13rem;line-height:1.82;margin:30px 0 0;padding:24px 0 24px 25px;border-left:3px solid var(--gold);font-style:italic;max-width:920px}.aquity-list{list-style:none;padding:0;margin:31px 0 0;display:grid;grid-template-columns:repeat(2,1fr);column-gap:44px}.aquity-list li{position:relative;padding:13px 0 13px 25px;border-top:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.6}.aquity-list li:before{content:"";position:absolute;left:1px;top:23px;width:7px;height:7px;border-radius:50%;background:#79d1a5}.aquity-device-section{position:relative;min-width:0;width:100%;padding:clamp(32px,4vw,58px) clamp(12px,3vw,38px);background:radial-gradient(70% 90% at 50% 104%,rgba(14,121,205,.22),transparent 58%),radial-gradient(42% 50% at 9% 75%,rgba(0,121,214,.13),transparent 70%),radial-gradient(42% 50% at 91% 75%,rgba(0,121,214,.13),transparent 70%)}.aquity-tablet-wrap{width:100%;margin-inline:auto}.aquity-tablet{position:relative;width:100%;padding:clamp(7px,1vw,13px);border-radius:clamp(20px,2.4vw,34px);background:linear-gradient(145deg,#4a4e52 0%,#151719 7%,#020304 46%,#17191b 92%,#62676b 100%);border:1px solid rgba(255,255,255,.28);box-shadow:0 42px 80px rgba(0,0,0,.36),0 10px 25px rgba(0,0,0,.28),inset 0 1px 1px rgba(255,255,255,.4)}.aquity-tablet:before{content:"";position:absolute;z-index:4;top:clamp(4px,.5vw,7px);left:50%;translate:-50% 0;width:clamp(4px,.4vw,6px);aspect-ratio:1;border-radius:50%;background:#07101a;box-shadow:inset 0 0 0 1px rgba(103,174,225,.28),0 0 5px rgba(14,133,220,.2)}.aquity-screen{position:relative;overflow:hidden;aspect-ratio:2400/1044;border-radius:clamp(14px,1.6vw,23px);background:var(--aquity-screen);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),inset 0 0 22px rgba(6,21,38,.06)}.aquity-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;opacity:0;transform:scale(1.002);animation:aquityCrossfade var(--aquity-cycle) infinite ease-in-out;will-change:opacity}.aquity-slide:nth-child(1){animation-delay:0s}.aquity-slide:nth-child(2){animation-delay:4.5s}.aquity-slide:nth-child(3){animation-delay:9s}.aquity-slide:nth-child(4){animation-delay:13.5s}.aquity-tablet-reflection{position:absolute;pointer-events:none;inset:clamp(7px,1vw,13px);z-index:3;border-radius:clamp(14px,1.6vw,23px);background:linear-gradient(118deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.035) 15%,transparent 34%,transparent 100%)}.aquity-device-shadow{width:82%;height:22px;margin:10px auto 0;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(16px);opacity:.52}@keyframes aquityCrossfade{0%{opacity:0}3%{opacity:1}22%{opacity:1}25%{opacity:0}100%{opacity:0}}
+/* outcomes */
+.outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);background:var(--border);gap:1px}.outcome{background:#fff;padding:34px 29px;min-height:215px}.outcome-mark{width:36px;height:2px;background:var(--emerald);margin-bottom:26px}
+/* CTA/footer */
+.cta{background:linear-gradient(120deg,var(--navy),#1a3d72);color:#fff;text-align:center;padding:105px 0}.cta .eyebrow{color:var(--gold)}.cta h2{font-family:var(--display);font-size:clamp(2.2rem,4.5vw,3.75rem);line-height:1.12;margin:0 auto 20px;max-width:820px}.cta p{max-width:690px;margin:0 auto 34px;color:rgba(255,255,255,.7);font-size:1.04rem;line-height:1.85;font-style:italic}.cta .button{background:#fff;color:var(--navy);border:1px solid #fff}.cta .button:hover{background:var(--gold);border-color:var(--gold)}.microcopy{display:block;margin-top:18px;color:rgba(255,255,255,.48);font-size:.76rem;letter-spacing:.06em}.footer{background:#071221;color:rgba(255,255,255,.4);padding:28px 0;font-size:.8rem}.footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer strong{font-family:var(--brand);color:#fff;font-size:1.1rem;letter-spacing:.06em}
+@media(max-width:900px){.nav-links{display:none}.problem-grid,.outcome-grid{grid-template-columns:repeat(2,1fr)}.aquity-grid{gap:46px}.aquity-copy{max-width:750px}.aquity-device-section{padding:30px 14px}.comparison{grid-template-columns:1fr}.versus{height:70px}.versus:before{top:0;bottom:0}.versus span{border-color:var(--off)}}
+@media(max-width:600px){.wrap{padding:0 20px}.section,.aquity-section{padding:78px 0}.hero{min-height:730px;padding-top:128px}.hero h1{font-size:clamp(2.75rem,13vw,4rem)}.hero-actions{align-items:stretch;flex-direction:column;max-width:310px}.proof-grid,.problem-grid,.outcome-grid{grid-template-columns:1fr}.proof-item{border-left:0;border-top:1px solid var(--border);padding:32px 24px}.proof-item:first-child{border-top:0}.problem-card,.outcome{min-height:0}.compare{padding:34px 25px}.nta-proof,.aquity-list{grid-template-columns:1fr}.aquity-device-section{margin:0 -10px;width:calc(100% + 20px);padding:24px 8px}.aquity-tablet{padding:6px;border-radius:20px}.aquity-screen,.aquity-tablet-reflection{border-radius:14px}.aquity-tablet-reflection{inset:6px}.footer .wrap{flex-direction:column;text-align:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.aquity-slide{animation:none;opacity:0}.aquity-slide:first-child{opacity:1}}
 </style>
 </head>
 <body>
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" aria-label="ITC home">
-      <img src="data:image/png;base64,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" alt="Inception Technology Company" class="nav__logo nav__logo--light" />
-      <img src="data:image/png;base64,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" alt="Inception Technology Company" class="nav__logo nav__logo--dark" />
-    </a>
-    <nav aria-label="Primary">
-      <ul class="nav__links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#team">Team</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li class="nav__cta"><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
+<nav class="nav"><div class="wrap"><a class="brand" href="/"><strong>ITC</strong><span>Inception Technology<br>Company, LLC</span></a><div class="nav-links"><a href="/">Home</a><a href="/#technologies">Technologies</a><a href="/aims.html">AIMS</a><a href="/rbt.html">Rapid Bacterial Test</a><a class="contact" href="/#contact">Contact Us</a></div></div></nav>
+
+<header class="hero">
+  <div class="wrap hero-copy">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; NTA + Aquity</div>
+    <p class="eyebrow reveal">Non-Targeted Analysis + Aquity</p>
+    <h1 class="reveal">Find what you weren't looking for.</h1>
+    <p class="intro reveal">When targeted testing isn't giving you the whole answer, NTA can reveal a much broader picture of the organic chemistry in your water — and Aquity helps turn those results into usable intelligence.</p>
+    <div class="hero-actions reveal"><a class="button primary" href="#investigate">What can we investigate? <span>↓</span></a><a class="button secondary" href="#contact">Talk to our team <span>→</span></a></div>
   </div>
 </header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-  <a href="index.html#home">Home</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#team">Team</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="index.html#contact">Contact</a>
-  <div class="mm-mission">Regenerate Earth's biosphere.</div>
-</nav>
-<header class="page-head">
-  <div class="wrap">
-    <div class="breadcrumb reveal"><a href="index.html">Home</a><span>/</span><a href="portfolio.html">Portfolio</a><span>/</span>NTA + Aquity</div>
-    <span class="eyebrow reveal">Portfolio &middot; CEC Analytics</span>
-    <h1 class="reveal" data-d="1">Non-Targeted Analysis + the Aquity Platform</h1>
-    <p class="lead reveal" data-d="1">The first complete picture of what&rsquo;s in your water. Aquity screens 72,000+ organic compounds from a single 25 mL grab sample and turns raw chemistry into clarity, context, and action.</p>
-  </div>
-</header>
+
+<section class="proof" aria-label="NTA proof points"><div class="wrap proof-grid">
+  <div class="proof-item reveal"><strong>72,000</strong><span>Compound reference capability</span></div>
+  <div class="proof-item reveal"><strong>25 mL</strong><span>Sample volume</span></div>
+  <div class="proof-item reveal"><strong>Historical Data</strong><span>Compiled and Analyzed</span></div>
+</div></section>
+
 <main>
-<section class="stats"><p class="stats__eyebrow">At a glance</p><div class="stats__grid"><div class="stat"><div class="stat__num">25 <b>mL</b></div><div class="stat__cap">Sample volume</div></div><div class="stat"><div class="stat__num">5 <b>ppt</b></div><div class="stat__cap">Detection limit</div></div><div class="stat"><div class="stat__num">72k<b>+</b></div><div class="stat__cap">Compounds screened</div></div><div class="stat"><div class="stat__num">1&ndash;2 <b>wk</b></div><div class="stat__cap">Turnaround</div></div></div></section>
-<section class="section prose">
+<section class="section off" id="investigate">
   <div class="wrap">
-    <span class="eyebrow reveal">How it works</span>
-    <h2 class="title reveal" data-d="1">A wide net, then a clear picture.</h2>
-    <p class="reveal" data-d="1">Traditional water testing only detects the compounds it is specifically programmed to find. <b>Non-targeted analysis (NTA)</b> uses advanced mass spectrometry to scan a single 25 mL grab sample for more than 72,000 organic compounds at once &mdash; with no pre-programmed target list. It works across water, wastewater, biosolids, foam, FOG, and storm water.</p>
-    <p class="reveal">Results are then processed through CEC&rsquo;s proprietary <b>Aquity platform</b>, which turns raw chemistry into clarity, context, and action &mdash; not just a list of compounds, but what they mean for your treatment operations.</p>
-    <div class="callout reveal">
-      <span class="k">The difference</span>
-      <p>Labs using LC-MS / GC-MS can match the 1&ndash;2 week turnaround &mdash; but they hand back raw compound data. <b>Aquity is the only platform that identifies contamination sources by geography and industry</b>, turning chemistry into decisions.</p>
+    <div class="section-head reveal"><p class="eyebrow">Start with the problem</p><h2 class="title">What are you trying to solve?</h2><p class="lead">You don't need to arrive with a compound name or a perfectly defined testing plan. Start with what you're seeing, what you're worried about, or what you need to understand.</p></div>
+    <div class="problem-grid">
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/unknown-contamination.webp" alt="Water flowing from a pipe into a receiving waterway"></div><div class="problem-body"><h3>Unknown contamination</h3><p>Something is in the water, but conventional targeted panels aren't telling you what.</p></div></article>
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/source-investigation.webp" alt="Industrial discharge point entering a vegetated waterway"></div><div class="problem-body"><h3>Tracking Down a Source</h3><p>Look for chemical fingerprints and patterns that may help connect detections to potential industry sources.</p></div></article>
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/pfas-fluorinated.webp" alt="Circular wastewater treatment basin viewed from above"></div><div class="problem-body"><h3>PFAS &amp; fluorinated compounds</h3><p>Investigate fluorinated chemistry beyond a narrow list of routinely targeted compounds.</p></div></article>
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/treatment-problems.webp" alt="Wastewater treatment clarifier under a clear sky"></div><div class="problem-body"><h3>Treatment problems</h3><p>Explore chemistry associated with biological treatment interference or vulnerable processes.</p></div></article>
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/toxicity-foaming.webp" alt="Foam collecting on the surface of treatment water"></div><div class="problem-body"><h3>Toxicity, foaming &amp; unexplained effects</h3><p>Use broader chemical information to investigate outcomes that don't have an obvious cause.</p></div></article>
+      <article class="problem-card reveal"><div class="problem-image"><img src="/assets/nta/change-over-time.webp" alt="Water treatment operator inspecting an industrial facility"></div><div class="problem-body"><h3>Change over time</h3><p>Compare samples to understand changing chemical profiles, treatment effects, or emerging issues.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="section section--dark">
+<section class="section">
   <div class="wrap">
-    <span class="eyebrow reveal">Water intelligence</span>
-    <h2 class="title reveal" data-d="1">Know what&rsquo;s in your water.</h2>
-    <p class="lead reveal" data-d="1">One 25 mL grab sample becomes a full operational picture.</p>
-    <div class="know">
-      <div class="know__item reveal"><div class="know__k">Know</div><h3>What entered</h3><p>72,000+ organic compounds screened from a single 25 mL grab &mdash; no target list required.</p></div>
-      <div class="know__item reveal" data-d="1"><div class="know__k">Know</div><h3>Where it came from</h3><p>Every compound attributed to its most likely source industry &mdash; and often the facility.</p></div>
-      <div class="know__item reveal" data-d="2"><div class="know__k">Know</div><h3>What made it through</h3><p>Influent-vs-effluent removal efficiency, category by category, into your effluent.</p></div>
-      <div class="know__item reveal" data-d="3"><div class="know__k">Know</div><h3>What comes next</h3><p>High-severity alerts and process-vulnerability ranking, prioritized for action.</p></div>
+    <div class="test-intro reveal"><p class="eyebrow">The test</p><h2 class="title">Stop the Guess and Check.</h2><p class="lead">Traditional targeted analysis is extremely useful when you already know what you need to measure. Non-targeted analysis approaches a different question: what else is present?</p></div>
+    <div class="comparison reveal">
+      <article class="compare targeted"><span class="compare-label">Targeted testing</span><h3>Look for a defined list.</h3><p>You select specific compounds or analytes in advance. The laboratory tells you whether those targets were detected.</p></article>
+      <div class="versus" aria-hidden="true"><span>VS</span></div>
+      <article class="compare nta"><span class="compare-label">Non-Targeted Analysis</span><h3>Look at the broader chemical picture.</h3><p>NTA screens a sample against an extensive organic-compound reference library, helping surface chemistry you may not have known to request.</p><div class="nta-proof"><div><strong>72,000</strong><span>Organic compounds in the reference capability</span></div><div><strong>25 mL</strong><span>Sample volume</span></div></div></article>
     </div>
   </div>
 </section>
 
-<section class="section team">
-  <div class="wrap">
-    <span class="eyebrow reveal">What Aquity shows you</span>
-    <h2 class="title reveal" data-d="1">Chemistry, translated into operations.</h2>
-    <div class="caps"><div class="cap reveal"><div class="cap__mark">01</div><h3>Compound intelligence</h3><p>Classifies every detected compound by function &mdash; biocides, flame retardants, foamants, PFAS, pharmaceuticals, agricultural runoff &mdash; and links each to treatment risk.</p></div><div class="cap reveal"><div class="cap__mark">02</div><h3>Source attribution</h3><p>Identifies which industries, and often which specific facilities, are discharging problem compounds &mdash; ranked by volume and severity.</p></div><div class="cap reveal"><div class="cap__mark">03</div><h3>Process vulnerability ranking</h3><p>Scores every treatment process &mdash; nitrification, anaerobic digestion, clarification, membranes &mdash; by its exposure to detected compounds.</p></div><div class="cap reveal"><div class="cap__mark">04</div><h3>Removal efficiency</h3><p>Tracks what your plant removes versus what passes through to effluent, broken down by compound class.</p></div><div class="cap reveal"><div class="cap__mark">05</div><h3>THOD analysis</h3><p>Quantifies oxygen-demand load split between residential and industrial sources, with time-series trend tracking.</p></div><div class="cap reveal"><div class="cap__mark">06</div><h3>PFAS &amp; regulatory tracking</h3><p>Flags fluorinated compounds with EPA DTXSID registry links for compliance reporting.</p></div><div class="cap reveal"><div class="cap__mark">07</div><h3>High-severity alerts</h3><p>Real-time alerts for critical compound categories, with signal strength and risk classification.</p></div></div>
-  </div>
-</section>
-
-<section class="section prose">
-  <div class="wrap">
-    <span class="eyebrow reveal">Working with ITC</span>
-    <h2 class="title reveal" data-d="1">Three steps to your first dataset.</h2>
-    <p class="lead reveal" data-d="1">ITC connects and deploys; CEC runs the science. Here&rsquo;s how an engagement starts.</p>
-    <div class="steps">
-      <div class="step reveal"><div class="step__n">1</div><h3>Tell us where your system is hurting</h3><p>Start with the problem &mdash; a process upset, a compliance question, an unknown load. We listen first.</p></div>
-      <div class="step reveal" data-d="1"><div class="step__n">2</div><h3>We pick sample points together</h3><p>ITC helps you choose where and when to sample for the clearest, most actionable picture.</p></div>
-      <div class="step reveal" data-d="2"><div class="step__n">3</div><h3>See your data in Aquity</h3><p>CEC runs the analysis; your results arrive in the Aquity dashboard. You decide what&rsquo;s next.</p></div>
+<section class="aquity-section">
+  <div class="wrap aquity-grid">
+    <div class="aquity-copy reveal"><h2 class="aquity-name">Meet Aquity</h2><h3 class="aquity-subtitle">Thousands of detections are only useful if you can understand them.</h3><p class="aquity-summary">Aquity is your portal to all of your NTA sample data. It organizes, analyzes, and tracks over time. Rather than handing you a wall of compounds, you receive a complex overview of your test results, organized so you can clearly see patterns and findings that deserve attention with ease.</p><ul class="aquity-list"><li>Prioritize high-severity findings and categories.</li><li>Explore industrial, agricultural, pharmaceutical and fluorinated compound signals.</li><li>Connect chemical findings to potential sources and vulnerable processes.</li><li>Turn complex analytical output into something your team can actually explore.</li></ul></div>
+    <div class="aquity-device-section reveal" aria-label="Aquity analytics platform preview">
+      <div class="aquity-tablet-wrap"><div class="aquity-tablet"><div class="aquity-screen">
+        <img class="aquity-slide" src="/assets/aquity/aquity-01-ag-biocide-pharma.webp" alt="Aquity agricultural, biocide, and pharmaceutical compound analysis dashboard">
+        <img class="aquity-slide" src="/assets/aquity/aquity-02-industrial-pfas.webp" alt="Aquity industrial manufacturing and PFAS compound analysis dashboard">
+        <img class="aquity-slide" src="/assets/aquity/aquity-03-high-severity.webp" alt="Aquity high severity category alert dashboard">
+        <img class="aquity-slide" src="/assets/aquity/aquity-04-industry-attribution.webp" alt="Aquity industry source attribution dashboard">
+      </div><div class="aquity-tablet-reflection" aria-hidden="true"></div></div><div class="aquity-device-shadow" aria-hidden="true"></div></div>
     </div>
   </div>
 </section>
 
-<section class="section team">
+<section class="section off">
   <div class="wrap">
-    <span class="eyebrow reveal">Engagements</span>
-    <h2 class="title reveal" data-d="1">Built for pilots and programs.</h2>
-    <p class="lead reveal" data-d="1">Engagements range from a short pilot to a committed, ongoing municipal program. Talk to us about the right scope for your system.</p>
-    <a href="portfolio.html" class="back-link reveal"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to portfolio</a>
+    <div class="section-head center reveal"><p class="eyebrow">What you get</p><h2 class="title">More than a list of compounds.</h2><p class="lead">The goal is to give you information you can use to investigate, communicate and make better decisions about what happens next.</p></div>
+    <div class="outcome-grid">
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>See what was detected</h3><p>Explore the breadth of organic chemistry found in the sample.</p></article>
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>Find what deserves attention</h3><p>Surface high-severity categories and notable chemical signals.</p></article>
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>Investigate potential sources</h3><p>Use chemical patterns to explore possible industry or activity fingerprints.</p></article>
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>Understand process risk</h3><p>Identify chemistry associated with vulnerable treatment processes.</p></article>
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>Dig into specific categories</h3><p>Explore PFAS, pharmaceuticals, biocides, industrial compounds and more.</p></article>
+      <article class="outcome reveal"><div class="outcome-mark"></div><h3>Build a clearer story</h3><p>Bring complex analytical results into a platform designed for interpretation.</p></article>
+    </div>
   </div>
 </section>
-<section class="section cta-band">
-  <div class="wrap">
-    <span class="eyebrow reveal">Start a conversation</span>
-    <h2 class="title reveal" data-d="1">We&rsquo;d like to hear what you&rsquo;re working on.</h2>
-    <p class="lead reveal" data-d="1">Operators, municipalities, innovators, investors &mdash; there&rsquo;s no wrong reason to get in touch.</p>
-    <a href="index.html#contact" class="btn btn--gold reveal" data-d="2">Get in touch <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  </div>
-</section>
+
+<section class="cta" id="contact"><div class="wrap reveal"><p class="eyebrow">Bring us the problem</p><h2>You don't need to know which test to order.</h2><p>Tell us what you're trying to understand. We'll talk through the problem with you and help determine whether Non-Targeted Analysis and Aquity are the right tools for the job.</p><a class="button" href="/#contact">Discuss your testing needs <span>→</span></a></div></section>
 </main>
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <img src="data:image/png;base64,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" alt="Inception Technology Company" class="footer__logo" />
-        <div class="footer__tag">Regenerate Earth's biosphere.</div>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#team">Team</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:scott@itc.eco">scott@itc.eco</a></li>
-          <li><a href="tel:+14064932386">(406) 493-2386</a></li>
-          <li><a href="https://itc.eco" target="_blank" rel="noopener">itc.eco</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>Inception Technology Company, LLC</span>
-      <span>&copy; <span id="year"></span> Inception Technology Company. All rights reserved.</span>
-    </div>
-  </div>
-</footer>
+
+<footer class="footer"><div class="wrap"><strong>ITC</strong><span>Inception Technology Company, LLC</span><span>© <span id="year"></span> ITC</span></div></footer>
 <script>
-(function(){
-  var nav=document.getElementById('nav');
-  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>40); }
-  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
-  var toggle=document.getElementById('navToggle'), menu=document.getElementById('mobileMenu');
-  toggle.addEventListener('click', function(){
-    var open=menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open?'Close menu':'Open menu');
-    document.body.style.overflow=open?'hidden':'';
-  });
-  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }); });
-  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  document.getElementById('year').textContent=new Date().getFullYear();
-})();
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -6%'});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

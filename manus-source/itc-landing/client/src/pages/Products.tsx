@@ -192,7 +192,7 @@ export default function Products() {
                 <div>
                   <h3 className="font-orbitron text-2xl font-bold text-white mb-2">Get in Touch</h3>
                   <p className="font-rajdhani text-white/60 mb-6">
-                    Ready to learn more or request pricing? Reach out directly or use the form.
+                    Ready to learn more? Reach out directly or use the form.
                   </p>
                   <div className="space-y-4">
                     <div>

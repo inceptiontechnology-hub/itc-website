@@ -3,3 +3,10 @@ dist/
 .DS_Store
 *.log
 test: logan-edits branch preview test
+.vercel
+__MACOSX/
+*.fld/
+website\ html\ data*/
+new-mockup/
+new-website.html
+redesign/

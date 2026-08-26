@@ -177,7 +177,7 @@ export default function RBT() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
                 { icon: "⚡", title: "Instant Results", desc: "Answers in seconds — no lab equipment, no cultures, no waiting. Make decisions in real time, in the field." },
-                { icon: "💰", title: "Exceptional Value", desc: "Far less expensive than traditional lab testing. Special NGO pricing available for humanitarian programs." },
+                { icon: "🌐", title: "Broad Access", desc: "Designed for practical deployment across municipal, rural, industrial, and humanitarian settings." },
                 { icon: "🎯", title: "High Sensitivity", desc: "Detects bacterial presence at 10⁻¹ CFU/ml — approaching lab-grade detection in a simple visual format." },
                 { icon: "✋", title: "No Training Needed", desc: "Simple colorimetric test — if you can see pink vs. purple, you can run this test. Designed for field deployment." },
                 { icon: "🌍", title: "Field Deployable", desc: "Room-temperature stable for 2 years. No refrigeration, no electricity, no incubator. Works anywhere in the world." },

@@ -26,8 +26,8 @@ export default function Home() {
             <h1 className="font-orbitron text-4xl font-bold tracking-wider text-white md:text-6xl">
               ITC
             </h1>
-            <span className="font-rajdhani text-lg font-medium tracking-widest text-white/90 md:text-xl">
-              Inception Technology Company
+            <span className="font-rajdhani text-base font-medium tracking-widest text-white/90 leading-tight">
+              Inception Technology<br />Company, LLC
             </span>
           </div>
 
