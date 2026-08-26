@@ -48,27 +48,36 @@ const Label = ({ children, light = false }: { children: React.ReactNode; light?:
 const products = [
   {
     href: "/nta-aquity.html",
-    tag: "Source Intelligence",
+    image: "/product-nta-aquity.jpg",
+    imageAlt: "Aquity analytics dashboard displayed on a tablet",
+    imagePosition: "center",
+    tag: "Non-Targeted Analysis",
     name: "NTA + Aquity",
-    sub: "Non-Targeted Analysis + Intelligence Platform",
-    body: "Screen 72,000+ organic compounds from a single 25 mL sample, no target list required. The Aquity platform maps every hit back to its industrial and geographic source.",
-    stat: "72,000+", unit: "Detectable compounds",
+    sub: "See what is there. Understand where it came from.",
+    body: "Screen 72,000+ organic compounds from a single 25 mL sample, with no target list required. Aquity turns the findings into actionable source intelligence.",
+    cta: "Explore NTA + Aquity",
   },
   {
     href: "/aims.html",
+    image: "/product-aims.jpg",
+    imageAlt: "Sunlight reflecting across moving water",
+    imagePosition: "center",
     tag: "Targeted Detection",
     name: "AIMS",
-    sub: "Ambient Ionization Mass Spectrometry",
-    body: "Targeted panels for substances of abuse, PFAS, glyphosate, and more. Quantified at 5 ppt, with 48-hour turnaround versus the 1–2 weeks of conventional labs.",
-    stat: "48 hr", unit: "Lab turnaround",
+    sub: "Known targets. Quantitative answers.",
+    body: "Measure targeted panels for substances of abuse, PFAS, glyphosate, and more at ultra-trace concentrations, with rapid results issued shortly after sample receipt.",
+    cta: "Explore AIMS",
   },
   {
     href: "/rbt.html",
+    image: "/product-rbt.jpg",
+    imageAlt: "Rapid bacterial testing in a point-of-use setting",
+    imagePosition: "center",
     tag: "Point-of-Use Testing",
     name: "Rapid Bacterial Test",
-    sub: "Lab-free testing",
-    body: "3 mL. 10 seconds. No lab, no training required. Results you can act on immediately, anywhere in the field.",
-    stat: "10 seconds", unit: "on-site results",
+    sub: "Fast answers wherever they are needed.",
+    body: "Test a 3 mL water sample in 10 seconds without laboratory equipment or technical training. Get results you can act on immediately in the field.",
+    cta: "Explore Rapid Bacterial Test",
   },
 ];
 
@@ -289,32 +298,38 @@ export default function Home() {
             <div style={{ height: "1px", background: BORDER, margin: "28px 0 48px" }} />
           </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-10 md:gap-14">
             {products.map((p, i) => (
-              <FadeUp key={i} delay={i * 0.1}>
-                <a href={p.href} style={{ textDecoration: "none" }}>
-                  <div className="flex flex-col h-full" style={{
-                    borderTop: `3px solid ${NAVY}`, borderLeft: `1px solid ${BORDER}`, borderRight: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: "40px 32px",
-                    transition: "border-top-color 0.25s, box-shadow 0.25s",
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.borderTopColor = GREEN; e.currentTarget.style.boxShadow = "0 6px 32px rgba(19,32,64,0.10)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderTopColor = NAVY; e.currentTarget.style.boxShadow = "none"; }}>
-                    <Label>{p.tag}</Label>
-                    <h3 style={{ fontFamily: DISPLAY, fontSize: "1.6rem", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "6px" }}>{p.name}</h3>
-                    <p style={{ fontSize: "0.88rem", color: MUTED, marginBottom: "20px", letterSpacing: "0.02em", fontWeight: 600 }}>{p.sub}</p>
-                    <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
-                    <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, flex: 1, fontStyle: "italic" }}>{p.body}</p>
-                    <div style={{ marginTop: "28px", paddingTop: "20px", borderTop: `1px solid ${BORDER}` }}>
-                      <p style={{ fontFamily: DISPLAY, fontSize: "2.4rem", fontWeight: 700, color: NAVY, lineHeight: 1 }}>{p.stat}</p>
-                      <p style={{ fontSize: "0.79rem", color: NAVY, marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{p.unit}</p>
-                    </div>
-                    <div style={{ marginTop: "18px" }}>
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: GREEN, color: WHITE, padding: "10px 22px", fontFamily: BODY, fontSize: "0.88rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-                        View details <ArrowRight size={12} />
-                      </span>
-                    </div>
+              <FadeUp key={p.href} delay={i * 0.08}>
+                <article className="grid md:grid-cols-2 overflow-hidden" style={{
+                  background: WHITE,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "14px",
+                  boxShadow: "0 12px 38px rgba(13,33,84,0.09)",
+                }}>
+                  <div className={`relative min-h-[280px] md:min-h-[390px] ${i % 2 === 1 ? "md:order-2" : ""}`} style={{ background: NAVY }}>
+                    <img
+                      src={p.image}
+                      alt={p.imageAlt}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      style={{ objectPosition: p.imagePosition }}
+                    />
                   </div>
-                </a>
+                  <div className={`flex flex-col justify-center px-7 py-10 sm:px-10 md:px-14 md:py-14 ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                    <Label>{p.tag}</Label>
+                    <h3 style={{ fontFamily: DISPLAY, fontSize: "clamp(1.8rem, 3vw, 2.65rem)", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: "12px" }}>{p.name}</h3>
+                    <p style={{ fontSize: "1rem", color: NAVY, marginBottom: "20px", lineHeight: 1.6, fontWeight: 700 }}>{p.sub}</p>
+                    <div style={{ width: "54px", height: "2px", background: GOLD, marginBottom: "22px" }} />
+                    <p style={{ fontSize: "1rem", color: MUTED, lineHeight: 1.85, marginBottom: "30px", fontStyle: "italic" }}>{p.body}</p>
+                    <a href={p.href}
+                      style={{ alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "9px", background: GREEN, color: WHITE, padding: "12px 22px", fontFamily: BODY, fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.09em", textTransform: "uppercase", textDecoration: "none", transition: "background 0.2s" }}
+                      onMouseEnter={e => { e.currentTarget.style.background = NAVY; }}
+                      onMouseLeave={e => { e.currentTarget.style.background = GREEN; }}>
+                      {p.cta} <ArrowRight size={13} />
+                    </a>
+                  </div>
+                </article>
               </FadeUp>
             ))}
           </div>
