@@ -502,8 +502,8 @@ export default function Home() {
                       { label: "Phone", key: "phone", req: false, ph: "(555) 000-0000" },
                     ].map(f => (
                       <div key={f.key}>
-                        <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>{f.label}</label>
-                        <input required={f.req} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
+                        <label htmlFor={`contact-${f.key}`} style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>{f.label}</label>
+                        <input id={`contact-${f.key}`} name={f.key} required={f.req} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                           placeholder={f.ph} value={(form as any)[f.key]}
                           onChange={e => setForm({ ...form, [f.key]: e.target.value })}
                           onFocus={e => (e.currentTarget.style.borderColor = "#86efac")}
@@ -512,16 +512,16 @@ export default function Home() {
                     ))}
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Email *</label>
-                    <input required type="email" style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
+                    <label htmlFor="contact-email" style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Email *</label>
+                    <input id="contact-email" name="email" required type="email" style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                       placeholder="you@company.com" value={form.email}
                       onChange={e => setForm({ ...form, email: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = "#86efac")}
                       onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")} />
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Area of Interest</label>
-                    <select style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
+                    <label htmlFor="contact-interest" style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Area of Interest</label>
+                    <select id="contact-interest" name="interest" style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)" }}
                       value={form.interest} onChange={e => setForm({ ...form, interest: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = "#86efac")}
                       onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")}>
@@ -534,8 +534,8 @@ export default function Home() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Message *</label>
-                    <textarea required rows={5} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)", resize: "vertical" }}
+                    <label htmlFor="contact-message" style={{ fontSize: "0.71rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: "6px", fontFamily: BODY }}>Message *</label>
+                    <textarea id="contact-message" name="message" required rows={5} style={{ ...fieldStyle, background: "rgba(255,255,255,0.07)", color: WHITE, border: "1px solid rgba(255,255,255,0.15)", resize: "vertical" }}
                       placeholder="Tell us what you're working on..." value={form.message}
                       onChange={e => setForm({ ...form, message: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = "#86efac")}
