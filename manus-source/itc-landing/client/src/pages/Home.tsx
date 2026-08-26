@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -118,6 +118,14 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  useEffect(() => {
+    if (window.location.hash !== "#contact") return;
+
+    requestAnimationFrame(() => {
+      document.getElementById("contact")?.scrollIntoView({ block: "start" });
+    });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
